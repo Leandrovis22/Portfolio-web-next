@@ -2,6 +2,7 @@
 import About from '@/components/About';
 import Gradient from '@/components/Gradient';
 import Navbarcomponent from '@/components/Navbar';
+import Secondabout from '@/components/Secondabout';
 import Skills from '@/components/Skills';
 
 function Home() {
@@ -10,7 +11,7 @@ function Home() {
       <Navbarcomponent/>
       <About />
       <Skills />
-      <Gradient />
+      <Secondabout />
       </>
   );
 }
