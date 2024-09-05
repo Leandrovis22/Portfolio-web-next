@@ -1,21 +1,22 @@
+// src/components/Gradient.tsx
 "use client";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
 export default function Gradient({
-  gradientBackgroundStart = "rgb(108, 0, 162)",
-  gradientBackgroundEnd = "rgb(0, 17, 82)",
-  firstColor = "18, 113, 255",
-  secondColor = "221, 74, 255",
-  thirdColor = "100, 220, 255",
-  fourthColor = "200, 50, 50",
-  fifthColor = "180, 180, 50",
-  pointerColor = "140, 100, 255",
-  size = "80%",
+  gradientBackgroundStart = "rgb(0, 0, 0)",
+  gradientBackgroundEnd = "rgb(0, 11, 50)",
+  firstColor = "var(--firstcolor)",
+  secondColor = "var(--secondcolor)",
+  thirdColor = "var(--thirdcolor)",
+  fourthColor = "var(--fourthcolor)",
+  fifthColor = "var(--fifthcolor)",
+  pointerColor = "var(--pointercolor)",
+  size = "50%",
   blendingValue = "hard-light",
   children,
   className,
-  interactive = true,
+  interactive = false,
   containerClassName,
 }: {
   gradientBackgroundStart?: string;
@@ -32,14 +33,13 @@ export default function Gradient({
   className?: string;
   interactive?: boolean;
   containerClassName?: string;
-}) {
+}): JSX.Element {
   const interactiveRef = useRef<HTMLDivElement>(null);
 
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
-
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -74,13 +74,7 @@ export default function Gradient({
     move();
   }, [tgX, tgY]);
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
-    }
-  };
+  
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
@@ -90,7 +84,7 @@ export default function Gradient({
   return (
     <div
       className={cn(
-        "h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "h-screen w-auto relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
     >
@@ -115,11 +109,10 @@ export default function Gradient({
       <div className={cn("", className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
+          "gradients-container relative top-[-100%] h-full w-full blur-lg",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
-        {/* Gradient Circles */}
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
@@ -166,18 +159,8 @@ export default function Gradient({
           )}
         ></div>
 
-        {interactive && (
-          <div
-            ref={interactiveRef}
-            onMouseMove={handleMouseMove}
-            className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`
-            )}
-          ></div>
-        )}
+        
       </div>
     </div>
   );
-}
+};

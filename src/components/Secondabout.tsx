@@ -10,15 +10,9 @@ export default function Secondabout() {
     <Gradient
       gradientBackgroundStart="rgb(0, 0, 0)"
       gradientBackgroundEnd="rgb(0, 11, 50)"
-      firstColor="18, 113, 255"
-      secondColor="15, 59, 35"
-      thirdColor="100, 220, 255"
-      fourthColor="59, 31, 15"
-      fifthColor="180, 180, 50"
-      pointerColor="140, 100, 255"
       size="50%"
       blendingValue="hard-light"
-      interactive={true}
+      interactive={false}
     >
       <section id="secondabout" className=" font-primary relative pt-[4rem] -mt-[4rem]" style={{ zIndex: '1' }}>
         <div className="container mx-auto">
@@ -43,7 +37,7 @@ export default function Secondabout() {
                   <FiDownload className="text-xl" />
                 </Button>
                 <div className="mb-8 xl:mb-0">
-                 {/*  <Social
+                  {/*  <Social
                     containerStyles="flex gap-6"
                     iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
                   /> */}

@@ -38,6 +38,12 @@ const config: Config = {
           DEFAULT: "#fbcc6c"
         },
         accentlight: '#071952',
+        firstcolor: 'rgb(241, 14, 14)', // no aparece
+        secondcolor: '#33FF57',
+        thirdcolor: '#3357FF',
+        fourthcolor: '#3809b9', // no aparece
+        fifthcolor: '#ffffff', // aparece como amarillo
+        pointercolor: '#FFFFFF',
       },
       animation: {
         first: "moveVertical 30s ease infinite",
@@ -85,7 +91,7 @@ const config: Config = {
   },
   darkMode: 'class',
   plugins: [
-    nextui({}), 
+    nextui({}),
     addVariablesForColors
   ],
 };
