@@ -38,11 +38,11 @@ const config: Config = {
           DEFAULT: "#fbcc6c"
         },
         accentlight: '#071952',
-        firstcolor: 'rgb(241, 14, 14)', // no aparece
-        secondcolor: '#33FF57',
-        thirdcolor: '#3357FF',
-        fourthcolor: '#3809b9', // no aparece
-        fifthcolor: '#ffffff', // aparece como amarillo
+        firstcolor: 'rgb(120, 7, 7)',
+        secondcolor: '#128327',
+        thirdcolor: '#1c36a7',
+        fourthcolor: '#711091', 
+        fifthcolor: '#71380e',
         pointercolor: '#FFFFFF',
       },
       animation: {

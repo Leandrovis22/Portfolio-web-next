@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 export default function Gradient({
   gradientBackgroundStart = "rgb(108, 0, 162)",
   gradientBackgroundEnd = "rgb(0, 17, 82)",
-  firstColor = "18, 113, 255",
-  secondColor = "221, 74, 255",
-  thirdColor = "100, 220, 255",
-  fourthColor = "200, 50, 50",
-  fifthColor = "180, 180, 50",
+  firstColor = "120, 7, 7",
+  secondColor = "10, 56, 18",
+  thirdColor = "28, 54, 167",
+  fourthColor = "113, 16, 145",
+  fifthColor = "113, 56, 14",
   pointerColor = "140, 100, 255",
   size = "80%",
   blendingValue = "hard-light",
@@ -90,7 +90,7 @@ export default function Gradient({
   return (
     <div
       className={cn(
-        "h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        " pt-[4rem] -mt-[4rem] xl:h-screen w-auto relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
     >
@@ -115,7 +115,7 @@ export default function Gradient({
       <div className={cn("", className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
+          "gradients-container relative top-[-100%] h-[] xl:h-full w-full blur-lg",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >

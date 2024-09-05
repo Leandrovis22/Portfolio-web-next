@@ -14,9 +14,9 @@ export default function Secondabout() {
       blendingValue="hard-light"
       interactive={false}
     >
-      <section id="secondabout" className=" font-primary relative pt-[4rem] -mt-[4rem]" style={{ zIndex: '1' }}>
+      <section id="about" className="xl:h-screen font-primary relative pt-[4rem] -mt-[4rem]" style={{ zIndex: '1' }}>
         <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row items-center justify-between xl:mx-[10%] xl:py-[5%]">
+          <div className="flex flex-col xl:flex-row items-center justify-between xl:mx-[10%] xl:py-[5%] pt-10">
             <div className="text-center xl:text-left order-2 xl:order-none">
               <h1 className="text-5xl mb-6">
                 Hello 👋<br />
