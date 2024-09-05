@@ -33,12 +33,31 @@ export default function Gradient({
   interactive?: boolean;
   containerClassName?: string;
 }) {
+  const [height, setHeight] = useState("auto");
+  const containerRef = useRef<HTMLDivElement>(null);
   const interactiveRef = useRef<HTMLDivElement>(null);
 
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+
+  useEffect(() => {
+    function updateHeight() {
+      if (containerRef.current) {
+        const containerHeight = containerRef.current.clientHeight;
+        const additionalHeight = 0; 
+        setHeight(`${containerHeight + additionalHeight}px`);
+      }
+    }
+
+    // Update height on initial render
+    updateHeight();
+
+    // Update height on window resize
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   useEffect(() => {
     document.body.style.setProperty(
@@ -89,19 +108,17 @@ export default function Gradient({
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        " pt-[4rem] -mt-[4rem] xl:h-screen w-auto relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "pt-[4rem] -mt-[4rem] xl:h-screen w-auto relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
+      style={{ height: `calc(${height})` }} // Adjust height here
     >
       <svg className="hidden">
         <defs>
           <filter id="blurMe">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -115,7 +132,7 @@ export default function Gradient({
       <div className={cn("", className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container relative top-[-100%] h-[] xl:h-full w-full blur-lg",
+          "gradients-container relative top-[-100%] h-full xl:h-full w-full blur-lg",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
