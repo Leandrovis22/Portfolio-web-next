@@ -26,6 +26,8 @@ export default function Secondabout() {
               <h2 className="text-4xl mb-6">Fullstack Web Developer</h2>
               <p className="max-w-[580px] mb-9 dark:text-white/80 text-lg">
                 I excel at crafting elegant digital experiences and I am proficient in various programming languages and technologies.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aliquid harum ipsa, aliquam tempore in, quisquam sit rem tenetur culpa eligendi voluptatum odit natus dolorum doloribus repudiandae, blanditiis laborum nesciunt.
+                fugit cumque eveniet reprehenderit omnis? Ducimus, hic fugit. Illum, delectus.
               </p>
               <div className="flex flex-col xl:flex-row items-center gap-8">
                 <Button

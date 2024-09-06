@@ -1,5 +1,3 @@
-// src/components/Navbar.tsx
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -19,26 +17,31 @@ export default function Navbarcomponent() {
     { name: "Contacto", id: "contact" },
   ];
 
-  // Detectar la sección activa basándose en el scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = menuItems.map(item => document.getElementById(item.id));
-      const scrollY = window.scrollY + window.innerHeight / 2;
+  // Función para detectar la sección activa basándose en el scroll
+  const handleScroll = () => {
+    const sections = menuItems.map(item => document.getElementById(item.id));
+    const scrollY = window.scrollY + window.innerHeight / 2;
 
-      const currentSection = sections.find(section => {
-        if (section) {
-          const { offsetTop, offsetHeight } = section;
-          return scrollY >= offsetTop && scrollY < offsetTop + offsetHeight;
-        }
-        return false;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection.id);
+    const currentSection = sections.find(section => {
+      if (section) {
+        const { offsetTop, offsetHeight } = section;
+        return scrollY >= offsetTop && scrollY < offsetTop + offsetHeight;
       }
-    };
+      return false;
+    });
 
+    if (currentSection) {
+      setActiveSection(currentSection.id);
+    }
+  };
+
+  useEffect(() => {
+    // Detectar la sección activa al hacer scroll
     window.addEventListener("scroll", handleScroll);
+
+    // Detectar la sección activa al cargar la página
+    handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
