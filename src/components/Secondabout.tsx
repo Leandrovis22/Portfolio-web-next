@@ -8,11 +8,8 @@ import Photo from './Photo'; // Asegúrate de tener este componente
 export default function Secondabout() {
   return (
     <Gradient
-      gradientBackgroundStart="rgb(0, 0, 0)"
-      gradientBackgroundEnd="rgb(0, 11, 50)"
-      size="50%"
-      blendingValue="hard-light"
-      interactive={false}
+      // gradientBackgroundStart="rgb(0, 0, 0)"
+      // gradientBackgroundEnd="rgb(0, 11, 50)"
     >
       <section id="about" className="xl:h-screen font-primary relative pt-[4rem] -mt-[4rem]" style={{ zIndex: '1' }}>
         <div className="container mx-auto">

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Link as ReactScrollLink } from 'react-scroll';
 import ThemeButton from "./ThemeButton";
 import Image from "next/image";
 
@@ -36,10 +37,7 @@ export default function Navbarcomponent() {
   };
 
   useEffect(() => {
-    // Detectar la sección activa al hacer scroll
     window.addEventListener("scroll", handleScroll);
-
-    // Detectar la sección activa al cargar la página
     handleScroll();
 
     return () => {
@@ -58,13 +56,16 @@ export default function Navbarcomponent() {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={index}>
-            <Link
-              color="foreground"
-              href={`#${item.id}`}
-              className={`${activeSection === item.id ? "text-accentlight dark:text-accentdark border-b-2 border-accentlight dark:border-accentdark" : ""} capitalize font-medium hover:text-accentlight dark:hover:text-accentdark transition-all`}
+            <ReactScrollLink
+              to={item.id}
+              spy={true}
+              smooth={true}
+              offset={-125}
+              duration={500}
+              className={`${activeSection === item.id ? "text-accentlight dark:text-accentdark border-b-2 border-accentlight dark:border-accentdark" : ""} capitalize font-medium hover:text-accentlight dark:hover:text-accentdark transition-all cursor-pointer`}
             >
               {item.name}
-            </Link>
+            </ReactScrollLink>
           </NavbarItem>
         ))}
       </NavbarContent>
@@ -82,14 +83,17 @@ export default function Navbarcomponent() {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.name}-${index}`}>
-            <Link
-              color="foreground"
-              className={`${activeSection === item.id ? "text-accent border-b-2 border-accent" : ""} w-full justify-end flex`}
-              href={`#${item.id}`}
-              size="lg"
+            <ReactScrollLink
+              to={item.id}
+              spy={true}
+              smooth={true}
+              offset={-125}
+              duration={500}
+              className={`${activeSection === item.id ? "text-accent border-b-2 border-accent" : ""} w-full justify-end flex cursor-pointer`}
+              onClick={() => setIsMenuOpen(false)} // Close menu after click
             >
               {item.name}
-            </Link>
+            </ReactScrollLink>
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem className="justify-end flex">
