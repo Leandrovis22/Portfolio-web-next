@@ -37,7 +37,7 @@ export default function Gradient({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
-  useEffect(() => {
+  /* useEffect(() => {
     function updateHeight() {
       if (containerRef.current) {
         const containerHeight = containerRef.current.clientHeight;
@@ -53,7 +53,7 @@ export default function Gradient({
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
   }, []);
-
+ */
   useEffect(() => {
     document.body.style.setProperty("--first-color", firstColor);
     document.body.style.setProperty("--second-color", secondColor);
@@ -80,10 +80,10 @@ export default function Gradient({
     move();
   }, [tgX, tgY]);
 
-  const [isSafari, setIsSafari] = useState(false);
+  /* const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
+  }, []); */
 
   return (
     <div
@@ -92,15 +92,22 @@ export default function Gradient({
         "pt-[4rem] -mt-[4rem] xl:h-screen w-auto relative overflow-hidden top-0 left-0 bg-transparent", // Cambia el fondo a transparente
         containerClassName
       )}
-      style={{ height: `calc(${height})` }} // Adjust height here
+      //style={{ height: `calc(${height})` }} // Adjust height here
     >
       <div className={cn("", className)}>{children}</div>
-      <div
+
+    {/*   <div
         className={cn(
           "gradients-container relative top-[-100%] h-full xl:h-full w-full blur-lg",
-          isSafari ? "blur-2xl" : ""
+        )}
+      > */}
+
+      <div
+        className={cn(
+          "gradients-container absolute top-0 left-0 h-full w-full blur-2xl",
         )}
       >
+
         {/* Gradient Circles */}
         <div
           className={cn(
