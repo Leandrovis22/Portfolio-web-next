@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunitoSans.className + " " + jetbrainsMono.variable + " " + "antialiased"}>
         <Providers>
-          <div className="relative bg-white dark:bg-[#0B0B0E] bg-[length:61px] bg-white dark:bg-grid-white/[0.06] bg-grid-black/[0.06]">
+          <div className="relative bg-white dark:bg-[#0B0B0E] bg-[length:61px] bg-white dark:bg-grid-white/[0.02] bg-grid-black/[0.02]">
             {children}
           </div>
           {/* La capa está fija en el fondo para efectos visuales */}

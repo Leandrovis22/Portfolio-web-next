@@ -7,20 +7,15 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <div className="w-full h-full relative dark:bg-[#071952] rounded-full">
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 0.4, ease: "easeIn" } }}>
-        <div className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px]">
-          <Image
-            src="/perfil.png"
-            priority
-            quality={100}
-            fill
-            alt=""
-            className="object-contain rounded-full"
-          />
-        </div>
-      </motion.div>
-    </div>
+    <div className="relative w-[298px] h-[298px] lg:w-full lg:pb-[100%] dark:bg-[#071952] rounded-full">
+    <Image
+      src="/perfil.png" // Cambia a la ruta de tu imagen
+      alt="foto de perfil"
+      layout="fill" // Se asegura que la imagen ocupe todo el espacio del contenedor
+      objectFit="cover" // Mantiene la relación de aspecto
+      className="rounded-full"
+    />
+  </div>
   );
 };
 

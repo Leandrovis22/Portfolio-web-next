@@ -60,8 +60,7 @@ export default function Navbarcomponent() {
               to={item.id}
               spy={true}
               smooth={true}
-              offset={-125}
-              duration={500}
+              duration={50}
               className={`${activeSection === item.id ? "text-accentlight dark:text-accentdark border-b-2 border-accentlight dark:border-accentdark" : ""} capitalize font-medium hover:text-accentlight dark:hover:text-accentdark transition-all cursor-pointer`}
             >
               {item.name}

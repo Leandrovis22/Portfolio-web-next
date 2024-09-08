@@ -11,10 +11,10 @@ export default function Secondabout() {
       // gradientBackgroundStart="rgb(0, 0, 0)"
       // gradientBackgroundEnd="rgb(0, 11, 50)"
     >
-      <section id="about" className="xl:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
-        <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row items-center justify-center xl:gap-16 my-[5%]">
-            <div className="text-center xl:text-left order-2 xl:order-none">
+      <section id="about" className="text-base lg:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
+        <div className="container mx-auto h-full">
+          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 lg:px-[5%] py-[5%]">
+            <div className="content-center h-full text-center lg:text-left order-2 lg:order-none">
               <h1 className="text-5xl mb-6">
                 Hello 👋<br />
                 I'm
@@ -26,7 +26,7 @@ export default function Secondabout() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aliquid harum ipsa, aliquam tempore in, quisquam sit rem tenetur culpa eligendi voluptatum odit natus dolorum doloribus repudiandae, blanditiis laborum nesciunt.
                 fugit cumque eveniet reprehenderit omnis? Ducimus, hic fugit. Illum, delectus.
               </p>
-              <div className="flex flex-col xl:flex-row items-center xl:gap-8">
+              <div className="flex flex-col lg:flex-row items-center lg:gap-8">
                 <Button
                   variant="ghost"
                   size="lg"
@@ -35,7 +35,7 @@ export default function Secondabout() {
                   Descargar CV
                   <FiDownload className="text-xl" />
                 </Button>
-                <div className="mb-8 xl:mb-0">
+                <div className="mb-8 lg:mb-0">
                   {/*  <Social
                     containerStyles="flex gap-6"
                     iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
@@ -43,7 +43,7 @@ export default function Secondabout() {
                 </div>
               </div>
             </div>
-            <div className="order-1 xl:order-none mb-8 xl:mb-0">
+            <div className="content-center order-1 lg:order-none mb-8 lg:mb-0 lg:w-[400px]">
               <Photo />
             </div>
           </div>

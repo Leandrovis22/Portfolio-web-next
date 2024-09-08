@@ -5,6 +5,11 @@
 html{
     scroll-behavior: smooth;
 }
+
+html::-webkit-scrollbar {
+    display: none;
+  }
+
 .dark {
     background-color: #010117;
   }

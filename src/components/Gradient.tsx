@@ -9,7 +9,7 @@ export default function Gradient({
   fourthColor = "113, 16, 145",
   fifthColor = "113, 56, 14",
   pointerColor = "140, 100, 255",
-  size = "80%",
+  size = "50%",
   blendingValue = "hard-light",
   children,
   className,
@@ -28,7 +28,6 @@ export default function Gradient({
   interactive?: boolean;
   containerClassName?: string;
 }) {
-  const [height, setHeight] = useState("auto");
   const containerRef = useRef<HTMLDivElement>(null);
   const interactiveRef = useRef<HTMLDivElement>(null);
 
@@ -37,23 +36,6 @@ export default function Gradient({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
-  /* useEffect(() => {
-    function updateHeight() {
-      if (containerRef.current) {
-        const containerHeight = containerRef.current.clientHeight;
-        const additionalHeight = 0; 
-        setHeight(`${containerHeight + additionalHeight}px`);
-      }
-    }
-
-    // Update height on initial render
-    updateHeight();
-
-    // Update height on window resize
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
-  }, []);
- */
   useEffect(() => {
     document.body.style.setProperty("--first-color", firstColor);
     document.body.style.setProperty("--second-color", secondColor);
@@ -80,27 +62,15 @@ export default function Gradient({
     move();
   }, [tgX, tgY]);
 
-  /* const [isSafari, setIsSafari] = useState(false);
-  useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []); */
-
   return (
     <div
       ref={containerRef}
       className={cn(
-        "pt-[4rem] -mt-[4rem] xl:h-screen w-auto relative overflow-hidden top-0 left-0 bg-transparent", // Cambia el fondo a transparente
+        "pt-[4rem] -mt-[4rem] lg:h-screen w-auto relative overflow-hidden top-0 left-0 bg-transparent",
         containerClassName
       )}
-      //style={{ height: `calc(${height})` }} // Adjust height here
     >
       <div className={cn("", className)}>{children}</div>
-
-    {/*   <div
-        className={cn(
-          "gradients-container relative top-[-100%] h-full xl:h-full w-full blur-lg",
-        )}
-      > */}
 
       <div
         className={cn(

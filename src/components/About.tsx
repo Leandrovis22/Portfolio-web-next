@@ -7,10 +7,10 @@ import Photo from './Photo'; // Asegúrate de tener este componente
 export default function About() {
     
   return (
-    <section id="about" className="xl:h-screen dark:bg-[url('/bg-black.jpg')] bg-[url('/bg-white.png')] font-primary relative pt-[4rem] -mt-[4rem]">
+    <section id="about" className="lg:h-screen dark:bg-[url('/bg-black.jpg')] bg-[url('/bg-white.png')] font-primary relative pt-[4rem] -mt-[4rem]">
       <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:mx-[10%] xl:py-[5%]">
-          <div className="text-center xl:text-left order-2 xl:order-none">
+        <div className="flex flex-col lg:flex-row items-center justify-between lg:mx-[10%] lg:py-[5%]">
+          <div className="text-center lg:text-left order-2 lg:order-none">
             <h1 className="text-5xl mb-6">
               Hello 👋<br />
               I'm
@@ -20,7 +20,7 @@ export default function About() {
             <p className="max-w-[580px] mb-9 dark:text-white/80 text-lg">
               I excel at crafting elegant digital experiences and I am proficient in various programming languages and technologies.
             </p>
-            <div className="flex flex-col xl:flex-row items-center gap-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
               <Button
                 variant="ghost"
                 size="lg"
@@ -29,7 +29,7 @@ export default function About() {
                 Descargar CV
                 <FiDownload className="text-xl" />
               </Button>
-              <div className="mb-8 xl:mb-0">
+              <div className="mb-8 lg:mb-0">
                {/*  <Social
                   containerStyles="flex gap-6"
                   iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
@@ -37,7 +37,7 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+          <div className="order-1 lg:order-none mb-8 lg:mb-0">
             <Photo />
           </div>
         </div>
