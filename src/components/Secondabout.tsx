@@ -13,7 +13,7 @@ export default function Secondabout() {
     >
       <section id="about" className="xl:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
         <div className="container mx-auto">
-          <div className="flex flex-col xl:flex-row items-center justify-center gap-16 xl:my-[5%]">
+          <div className="flex flex-col xl:flex-row items-center justify-center xl:gap-16 my-[5%]">
             <div className="text-center xl:text-left order-2 xl:order-none">
               <h1 className="text-5xl mb-6">
                 Hello 👋<br />
@@ -26,7 +26,7 @@ export default function Secondabout() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aliquid harum ipsa, aliquam tempore in, quisquam sit rem tenetur culpa eligendi voluptatum odit natus dolorum doloribus repudiandae, blanditiis laborum nesciunt.
                 fugit cumque eveniet reprehenderit omnis? Ducimus, hic fugit. Illum, delectus.
               </p>
-              <div className="flex flex-col xl:flex-row items-center gap-8">
+              <div className="flex flex-col xl:flex-row items-center xl:gap-8">
                 <Button
                   variant="ghost"
                   size="lg"

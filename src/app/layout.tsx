@@ -30,9 +30,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunitoSans.className + " " + jetbrainsMono.variable}>
-      <Providers>
-        {children}
-      </Providers>
+        <Providers>
+          <div className="relative bg-white dark:bg-[#0B0B0E] bg-[length:81px] bg-white dark:bg-grid-white/[0.06] bg-grid-black/[0.06]">
+            {children}
+          </div>
+          {/* La capa está fija en el fondo para efectos visuales */}
+          <div
+            className="fixed inset-0 w-full h-full bg-repeat pointer-events-none z-[9999] opacity-[0.13]"
+            style={{
+              backgroundImage: 'url(/Static.png)',
+              backgroundSize: '64px',
+            }}
+          />
+        </Providers>
       </body>
     </html>
   );
