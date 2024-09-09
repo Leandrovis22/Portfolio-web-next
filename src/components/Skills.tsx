@@ -3,7 +3,7 @@
 export default function Skills() {
 
     return (
-        <div id="skills" className="h-screen bg-[#082388]">
+        <div id="skills" className="h-screen">
           <h1>Habilidades</h1>
         </div>
     )

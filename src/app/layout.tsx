@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
-import { JetBrains_Mono, Nunito_Sans } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Portfolio Leandro Viscolungo",
@@ -16,12 +16,6 @@ const nunitoSans = Nunito_Sans({
   variable: "--font-nunitoSans",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  variable: "--font-jetbrainsMono",
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,9 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={nunitoSans.className + " " + jetbrainsMono.variable + " " + "antialiased"}>
+      <body className={nunitoSans.className + " " + "antialiased"}>
         <Providers>
-          <div className="relative bg-white dark:bg-[#0B0B0E] bg-[length:61px] bg-white dark:bg-grid-white/[0.02] bg-grid-black/[0.02]">
+          <div className="relative bg-background text-text bg-[length:61px] dark:bg-grid-white/[0.02] bg-grid-black/[0.02]">
             {children}
           </div>
           {/* La capa está fija en el fondo para efectos visuales */}

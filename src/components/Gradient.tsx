@@ -24,14 +24,28 @@ interface GradientCircle {
   vy: number;
 }
 
+const hexToRgb = (hex: string) => {
+  let r = 0, g = 0, b = 0;
+  if (hex.length === 4) {
+    r = parseInt(hex[1] + hex[1], 16);
+    g = parseInt(hex[2] + hex[2], 16);
+    b = parseInt(hex[3] + hex[3], 16);
+  } else if (hex.length === 7) {
+    r = parseInt(hex[1] + hex[2], 16);
+    g = parseInt(hex[3] + hex[4], 16);
+    b = parseInt(hex[5] + hex[6], 16);
+  }
+  return `${r}, ${g}, ${b}`;
+};
+
 export default function Gradient({
-  firstColor = "120, 7, 7",
-  secondColor = "10, 56, 18",
-  thirdColor = "28, 54, 167",
-  fourthColor = "113, 16, 145",
-  fifthColor = "113, 56, 14",
-  pointerColor = "140, 100, 255",
-  size = "20%",
+  firstColor = "#470404",
+  secondColor = "#0a3812",
+  thirdColor = "#142677",
+  fourthColor = "#340a43",
+  fifthColor = "#43220a",
+  pointerColor = "#ffffff",
+  size = "80%",
   blendingValue = "hard-light",
   children,
   className,
@@ -42,12 +56,12 @@ export default function Gradient({
   const animationRef = useRef<number>();
 
   const colorStyles = useMemo(() => ({
-    firstColor,
-    secondColor,
-    thirdColor,
-    fourthColor,
-    fifthColor,
-    pointerColor,
+    firstColor: firstColor.startsWith("#") ? hexToRgb(firstColor) : firstColor,
+    secondColor: secondColor.startsWith("#") ? hexToRgb(secondColor) : secondColor,
+    thirdColor: thirdColor.startsWith("#") ? hexToRgb(thirdColor) : thirdColor,
+    fourthColor: fourthColor.startsWith("#") ? hexToRgb(fourthColor) : fourthColor,
+    fifthColor: fifthColor.startsWith("#") ? hexToRgb(fifthColor) : fifthColor,
+    pointerColor: pointerColor.startsWith("#") ? hexToRgb(pointerColor) : pointerColor,
     size,
     blendingValue,
   }), [firstColor, secondColor, thirdColor, fourthColor, fifthColor, pointerColor, size, blendingValue]);
@@ -70,22 +84,28 @@ export default function Gradient({
     const initGradientCircles = () => {
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
+
+      // Factor para normalizar la velocidad basado en el tamaño de la pantalla
+      const speedFactor = Math.min(canvas.width, canvas.height) / 1000;
+      const slowdownFactor = canvas.width < 768 ? 0.5 : 1;
+
       gradientCircles = [
-        { color: colorStyles.firstColor, x: centerX, y: centerY, vx: 9, vy: 3 },
-        { color: colorStyles.secondColor, x: centerX - 400, y: centerY, vx: -6, vy: 6 },
-        { color: colorStyles.thirdColor, x: centerX + 400, y: centerY, vx: 3, vy: -9 },
-        { color: colorStyles.fourthColor, x: centerX - 200, y: centerY, vx: -9, vy: -3 },
-        { color: colorStyles.fifthColor, x: centerX - 800, y: centerY + 800, vx: 6, vy: 6 },
-        
+        { color: colorStyles.firstColor, x: centerX, y: centerY, vx: 9 * speedFactor * slowdownFactor, vy: 3 * speedFactor * slowdownFactor },
+        { color: colorStyles.secondColor, x: centerX - 400, y: centerY, vx: -6 * speedFactor * slowdownFactor, vy: 6 * speedFactor * slowdownFactor },
+        { color: colorStyles.thirdColor, x: centerX + 400, y: centerY, vx: 3 * speedFactor * slowdownFactor, vy: -9 * speedFactor * slowdownFactor },
+        { color: colorStyles.fourthColor, x: centerX - 200, y: centerY, vx: -9 * speedFactor * slowdownFactor, vy: -3 * speedFactor * slowdownFactor },
+        { color: colorStyles.fifthColor, x: centerX, y: centerY, vx: 6 * speedFactor * slowdownFactor, vy: 6 * speedFactor * slowdownFactor },
       ];
     };
 
     const drawGradients = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const maxRadius = Math.max(canvas.width, canvas.height) * parseFloat(size) / 100;
+      
+      // Usar promedio del ancho y alto para un tamaño más equilibrado
+      const avgRadius = (canvas.width + canvas.height) / 4 * parseFloat(size) / 100;
 
       gradientCircles.forEach((circle) => {
-        const gradient = ctx.createRadialGradient(circle.x, circle.y, 0, circle.x, circle.y, maxRadius);
+        const gradient = ctx.createRadialGradient(circle.x, circle.y, 0, circle.x, circle.y, avgRadius);
         gradient.addColorStop(0, `rgba(${circle.color}, 0.8)`);
         gradient.addColorStop(1, `rgba(${circle.color}, 0)`);
 
@@ -93,11 +113,11 @@ export default function Gradient({
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Update position
+        // Actualizar posición
         circle.x += circle.vx;
         circle.y += circle.vy;
 
-        // Bounce off edges
+        // Rebote en los bordes
         if (circle.x < 0 || circle.x > canvas.width) circle.vx *= -1;
         if (circle.y < 0 || circle.y > canvas.height) circle.vy *= -1;
       });
@@ -132,7 +152,7 @@ export default function Gradient({
     >
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full blur-2xl"
+        className="hidden dark:block absolute top-0 left-0 w-full h-full blur-2xl"
       />
       <div className={cn("relative z-10", className)}>{children}</div>
     </div>

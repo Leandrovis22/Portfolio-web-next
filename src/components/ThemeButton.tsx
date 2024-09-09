@@ -33,7 +33,7 @@ const ThemeButton = () => {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="#ccbc60"
+            stroke="#fbcb6a"
             className="h-10"
             style={{ fill: "transparent" }}
           >
@@ -50,7 +50,7 @@ const ThemeButton = () => {
             strokeWidth="1.5"
             stroke=""
             className="h-10"
-            style={{ fill: "#101075" }}
+            style={{ fill: "#14004a" }}
           >
             <path
               strokeLinecap="round"

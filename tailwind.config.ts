@@ -22,17 +22,16 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      secondary: 'var(--font-jetbrainsMono)',
       primary: 'var(--font-nunitoSans)',
     },
     extend: {
       colors: {
-        primary: '#1c1c22',
-        accentdark: {
-          DEFAULT: "#fbcc6c"
-        },
-        accentlight: '#071952',
-      },
+        'text': 'var(--text)',
+        'background': 'var(--background)',
+        'primary': 'var(--primary)',
+        'secondary': 'var(--secondary)',
+        'accent': 'var(--accent)',
+       },       
       animation: {
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",

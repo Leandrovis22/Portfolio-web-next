@@ -2,14 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+
+@layer base {
+  :root {
+    --text: #02032c;
+    --background: #e0dfe3;
+    --primary: #14004a;
+    --secondary: #a7a790;
+    --accent: #c38b1b;
   }
 
-.dark {
-    background-color: #010117;
+  .dark {
+    --text: #d5d6fd;
+    --background: #010118;
+    --primary: #07006b;
+    --secondary: #675a42;
+    --accent: #fbcb6a;
   }
+}

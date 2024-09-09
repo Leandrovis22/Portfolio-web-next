@@ -61,7 +61,7 @@ export default function Navbarcomponent() {
               spy={true}
               smooth={true}
               duration={50}
-              className={`${activeSection === item.id ? "text-accentlight dark:text-accentdark border-b-2 border-accentlight dark:border-accentdark" : ""} capitalize font-medium hover:text-accentlight dark:hover:text-accentdark transition-all cursor-pointer`}
+              className={`${activeSection === item.id ? "text-accent border-b-2 border-accent" : ""} capitalize font-medium hover:text-accent transition-all cursor-pointer`}
             >
               {item.name}
             </ReactScrollLink>
