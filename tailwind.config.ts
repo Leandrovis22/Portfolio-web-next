@@ -31,6 +31,8 @@ const config: Config = {
         'primary': 'var(--primary)',
         'secondary': 'var(--secondary)',
         'accent': 'var(--accent)',
+        'ui': 'var(--ui)',
+        'uihover': 'var(--uihover)',
        },       
       animation: {
         first: "moveVertical 30s ease infinite",

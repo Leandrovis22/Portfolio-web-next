@@ -17,6 +17,8 @@ html::-webkit-scrollbar {
     --primary: #14004a;
     --secondary: #a7a790;
     --accent: #c38b1b;
+    --ui: #ebebeb;
+    --uihover: #ffffff;
   }
 
   .dark {
@@ -25,5 +27,7 @@ html::-webkit-scrollbar {
     --primary: #07006b;
     --secondary: #675a42;
     --accent: #fbcb6a;
+    --ui: #0e0e0e;
+    --uihover: #000000;
   }
 }
