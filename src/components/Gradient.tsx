@@ -85,22 +85,18 @@ export default function Gradient({
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
 
-      // Factor para normalizar la velocidad basado en el tamaño de la pantalla
-      const speedFactor = Math.min(canvas.width, canvas.height) / 1000;
-      const slowdownFactor = canvas.width < 768 ? 0.5 : 1;
-
       gradientCircles = [
-        { color: colorStyles.firstColor, x: centerX, y: centerY, vx: 9 * speedFactor * slowdownFactor, vy: 3 * speedFactor * slowdownFactor },
-        { color: colorStyles.secondColor, x: centerX - 400, y: centerY, vx: -6 * speedFactor * slowdownFactor, vy: 6 * speedFactor * slowdownFactor },
-        { color: colorStyles.thirdColor, x: centerX + 400, y: centerY, vx: 3 * speedFactor * slowdownFactor, vy: -9 * speedFactor * slowdownFactor },
-        { color: colorStyles.fourthColor, x: centerX - 200, y: centerY, vx: -9 * speedFactor * slowdownFactor, vy: -3 * speedFactor * slowdownFactor },
-        { color: colorStyles.fifthColor, x: centerX, y: centerY, vx: 6 * speedFactor * slowdownFactor, vy: 6 * speedFactor * slowdownFactor },
+        { color: colorStyles.firstColor, x: centerX, y: centerY, vx: 1.5, vy: 0.5 },
+        { color: colorStyles.secondColor, x: centerX - 400, y: centerY, vx: -1.0, vy: 1.0 },
+        { color: colorStyles.thirdColor, x: centerX + 400, y: centerY, vx: 0.5, vy: -1.5 },
+        { color: colorStyles.fourthColor, x: centerX - 200, y: centerY, vx: -1.5, vy: -0.5 },
+        { color: colorStyles.fifthColor, x: centerX - 800, y: centerY + 800, vx: 1.0, vy: 1.0 },        
       ];
     };
 
     const drawGradients = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Usar promedio del ancho y alto para un tamaño más equilibrado
       const avgRadius = (canvas.width + canvas.height) / 4 * parseFloat(size) / 100;
 

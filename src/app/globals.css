@@ -10,12 +10,16 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+.circle{
+  @apply absolute inset-0 border-2 rounded-full shadow-[0_0_80px_inset] shadow-black;
+}
+
 @layer base {
   :root {
     --text: #02032c;
     --background: #e0dfe3;
     --primary: #14004a;
-    --secondary: #a7a790;
+    --secondary: #b13e0c;
     --accent: #c38b1b;
     --ui: #ebebeb;
     --uihover: #ffffff;
@@ -25,7 +29,7 @@ html::-webkit-scrollbar {
     --text: #d5d6fd;
     --background: #010118;
     --primary: #07006b;
-    --secondary: #675a42;
+    --secondary: #b13e0c;
     --accent: #fbcb6a;
     --ui: #0e0e0e;
     --uihover: #000000;
