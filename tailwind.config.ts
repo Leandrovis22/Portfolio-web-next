@@ -40,8 +40,13 @@ const config: Config = {
         third: "moveInCircle 40s linear infinite",
         fourth: "moveHorizontal 40s ease infinite",
         fifth: "moveInCircle 20s ease infinite",
+        scroll: 'scroll 60s linear infinite',
       },
       keyframes: {
+          scroll: {
+            '0%': { transform: 'translateX(0)' },
+            '100%': { transform: 'translateX(-50%)' },
+          },
         moveHorizontal: {
           "0%": {
             transform: "translateX(-50%) translateY(-10%)",

@@ -14,6 +14,10 @@ html::-webkit-scrollbar {
   @apply absolute inset-0 border-2 rounded-full shadow-[0_0_80px_inset] shadow-black;
 }
 
+.card {
+  @apply bg-ui p-4 rounded-3xl shadow-lg border-1 dark:border-[#3e3e3e] hover:bg-uihover transition-all duration-300
+}
+
 @layer base {
   :root {
     --text: #02032c;

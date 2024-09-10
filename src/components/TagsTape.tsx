@@ -1,25 +1,43 @@
-// src/components/TagsTape.tsx
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 
 const words = ["Responsive", "Funcional", "Seguro", "Interactivo", "Mantenible", "Escalable", "Moderno", "De Vanguardia", "Al Instante", "Creativo", "Innovador", "UX/UI", "English", "Debugged", "Automatizado", "Desarrollo Constante"];
 
 export const TagsTape = () => {
-    return (
-      <div className="py-16 lg:py-24 overflow-x-clip">
-        <div className="bg-gradient-to-r from-emerald-300 to-sky-400 -rotate-3 -mx-1">
-          <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="flex flex-none gap-4 py-3">
-              {words.map((word) => (
-                <div key={word} className="inline-flex gap-4 items-center">
-                  <span className="text-gray-900 font-extrabold text-sm">
-                    {word}
-                  </span>
-                  <span className="size-6 text-gray-900 -rotate-12">🏆</span>
-                </div>
-              ))}
-            </div>
+  const [contentWidth, setContentWidth] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentWidth(contentRef.current.offsetWidth);
+    }
+  }, []);
+
+  return (
+    <div className="py-8 lg:py-16 overflow-hidden">
+      <div className="card -rotate-3 -mx-1" style={{ borderRadius: 0 }}>
+        <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div 
+            className="flex flex-none gap-4 py-3 animate-scroll" 
+            ref={contentRef}
+            style={{
+              animationDuration: `${contentWidth/50}s`,
+              animationTimingFunction: 'linear',
+              animationIterationCount: 'infinite',
+            }}
+          >
+            {[...words, ...words].map((word, index) => (
+              <div key={`${word}-${index}`} className="inline-flex gap-4 items-center">
+                <span className="text-text font-extrabold text-sm whitespace-nowrap">
+                  {word}
+                </span>
+                <span className="size-6 text-text -rotate-12">🏆</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    );
-  };
-  
+    </div>
+  );
+};
