@@ -6,13 +6,9 @@ import { TagsTape } from "./TagsTape";
 export default function Skills() {
 
   return (
-    <div id="skills" className="h-screen">
+    <div id="skills" className="lg:h-screen">
       <TagsTape />
-
-      {/* <BentoSkills /> */}
-
       <SkillIcons />
-
     </div>
   )
 }

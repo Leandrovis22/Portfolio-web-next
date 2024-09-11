@@ -10,6 +10,8 @@ export function SkillIcons() {
   );
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
+  const [contentWidth, setContentWidth] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -28,7 +30,15 @@ export function SkillIcons() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentWidth(contentRef.current.offsetWidth);
+    }
+  }, []);
+
   useOutsideClick(ref, () => setActive(null));
+
+  const animationDuration = `${contentWidth / 50}s`;
 
   return (
     <>
@@ -77,7 +87,7 @@ export function SkillIcons() {
                   height={200}
                   src={active.src}
                   alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg"
+                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-contain"
                 />
               </motion.div>
 
@@ -111,37 +121,95 @@ export function SkillIcons() {
         ) : null}
       </AnimatePresence>
 
-      
-      <ul className="card">
-        {cards.map((card, index) => (
-          <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={`card-${card.title}-${id}`}
-            onClick={() => setActive(card)}
-            className="card cursor-pointer inline-block"
-          >
-            <div className="flex gap-4 flex-col md:flex-row ">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
-                <Image
-                  width={100}
-                  height={100}
-                  src={card.src}
-                  alt={card.title}
-                  className="h-40 w-40 md:h-14 md:w-14 rounded-lg object-cover object-top"
-                />
-              </motion.div>
-              <div className="content-center">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-center md:text-left"
-                >
-                  {card.title}
-                </motion.h3>
+      <div className="px-3 pb-8">
+        
+      <h3 className="mt-0 lg:mt-[-1%] pt-8 lg:pt-0 text-accent text-center pb-8 text-3xl">Mis tecnologías favoritas</h3>
+        <div className="hover:bg-ui overflow-hidden mx-auto max-w-[900px] card">
+          <div className="mb-8">
+            <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+              <div
+                className="flex flex-none animate-scroll-right"
+                ref={contentRef}
+                style={{
+                  animationDuration,
+                  animationTimingFunction: 'linear',
+                  animationIterationCount: 'infinite',
+                }}
+              >
+                {[...cards, ...cards].map((card, index) => (
+                  <motion.div
+                    layoutId={`card-${card.title}-${id}-${index}`}
+                    key={`card-${card.title}-${id}-${index}`}
+                    onClick={() => setActive(card)}
+                    className="card cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]"
+                  >
+                    <div className="flex gap-4 flex-col items-center">
+                      <motion.div layoutId={`image-${card.title}-${id}-${index}`}>
+                        <Image
+                          width={100}
+                          height={100}
+                          src={card.src}
+                          alt={card.title}
+                          className="h-20 w-20 rounded-lg object-contain"
+                        />
+                      </motion.div>
+                      <div className="content-center">
+                        <motion.h3
+                          layoutId={`title-${card.title}-${id}-${index}`}
+                          className="font-medium text-center"
+                        >
+                          {card.title}
+                        </motion.h3>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </motion.div>
-        ))}
-      </ul>
+          </div>
+          <div>
+            <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+              <div
+                className="flex flex-none animate-scroll-left"
+                style={{
+                  animationDuration,
+                  animationTimingFunction: 'linear',
+                  animationIterationCount: 'infinite',
+                }}
+              >
+                {[...cards, ...cards].reverse().map((card, index) => (
+                  <motion.div
+                    layoutId={`card-${card.title}-${id}-reverse-${index}`}
+                    key={`card-${card.title}-${id}-reverse-${index}`}
+                    onClick={() => setActive(card)}
+                    className="card cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]"
+                  >
+                    <div className="flex gap-4 flex-col items-center">
+                      <motion.div layoutId={`image-${card.title}-${id}-reverse-${index}`}>
+                        <Image
+                          width={100}
+                          height={100}
+                          src={card.src}
+                          alt={card.title}
+                          className="h-20 w-20 rounded-lg object-contain"
+                        />
+                      </motion.div>
+                      <div className="content-center">
+                        <motion.h3
+                          layoutId={`title-${card.title}-${id}-reverse-${index}`}
+                          className="font-medium text-center"
+                        >
+                          {card.title}
+                        </motion.h3>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -33,9 +33,27 @@ html::-webkit-scrollbar {
     --text: #d5d6fd;
     --background: #010118;
     --primary: #07006b;
-    --secondary: #b13e0c;
+    --secondary: #e24d0d;
     --accent: #fbcb6a;
     --ui: #0e0e0e;
     --uihover: #000000;
   }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
 }
