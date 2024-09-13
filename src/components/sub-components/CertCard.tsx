@@ -141,7 +141,7 @@ export const CertCard = ({
               ease: "easeOut",
             }}
             className={cn(
-              "text-white absolute inset-0 z-40 flex flex-col justify-center items-center p-4",
+              "text-white absolute inset-0 z-40 flex flex-col items-center p-4 top-[3rem]",
               childrenClassName
             )}
           >
