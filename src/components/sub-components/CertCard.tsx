@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -23,15 +23,26 @@ export const CertCard = ({
   className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-
   const [direction, setDirection] = useState<
     "top" | "bottom" | "left" | "right" | string
   >("left");
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const handleMouseEnter = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return;
 
     const direction = getDirection(event, ref.current);
     switch (direction) {
@@ -51,6 +62,13 @@ export const CertCard = ({
         setDirection("left");
         break;
     }
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovered(false);
+    }
   };
 
   const getDirection = (
@@ -64,9 +82,19 @@ export const CertCard = ({
     return d;
   };
 
+  const handleClick = () => {
+    if (isMobile) {
+      setIsClicked(!isClicked);
+    }
+  };
+
+  const showOverlay = isMobile ? isClicked : isHovered;
+
   return (
     <motion.div
       onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       ref={ref}
       className={cn(
         "md:h-96 w-60 h-60 md:w-96 bg-transparent rounded-lg overflow-hidden group/card relative",
@@ -77,10 +105,16 @@ export const CertCard = ({
         <motion.div
           className="relative h-full w-full"
           initial="initial"
-          whileHover={direction}
+          animate={showOverlay ? "show" : "initial"}
+          whileHover={!isMobile ? direction : undefined}
           exit="exit"
         >
-          <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
+          <motion.div
+            className="absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showOverlay ? 1 : 0 }}
+            exit={{ opacity: 0 }}
+          />
           <motion.div
             variants={variants}
             className="h-full w-full relative bg-gray-50 dark:bg-black"
@@ -125,6 +159,10 @@ const variants = {
   initial: {
     x: 0,
   },
+  show: {
+    x: 0,
+    opacity: 1,
+  },
   exit: {
     x: 0,
     y: 0,
@@ -153,6 +191,11 @@ const textVariants = {
     y: 0,
     x: 0,
     opacity: 0,
+  },
+  show: {
+    y: 0,
+    x: 0,
+    opacity: 1,
   },
   top: {
     y: -20,
