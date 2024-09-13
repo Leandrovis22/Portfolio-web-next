@@ -1,4 +1,4 @@
-import { BentoSkills } from "./BentoSkills";
+// src\components\Skills.tsx
 import { SkillIcons } from "./SkillIcons";
 import { TagsTape } from "./TagsTape";
 

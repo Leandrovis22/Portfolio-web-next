@@ -50,7 +50,7 @@ const ThemeButton = () => {
             strokeWidth="1.5"
             stroke=""
             className="h-10"
-            style={{ fill: "#14004a" }}
+            style={{ fill: "#0d2576" }}
           >
             <path
               strokeLinecap="round"

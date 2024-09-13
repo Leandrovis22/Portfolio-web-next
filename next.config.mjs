@@ -6,7 +6,8 @@ const nextConfig = {
             'webimages.mongodb.com',
             'www.docker.com',
             'www.google.com',
-            'w7.pngwing.com'
+            'w7.pngwing.com',
+            'images.unsplash.com'
         ],
     },
 };

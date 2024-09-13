@@ -123,7 +123,7 @@ export function SkillIcons() {
 
       <div className="px-3 pb-8">
         
-      <h3 className="mt-0 lg:mt-[-1%] pt-8 lg:pt-0 text-accent text-center pb-8 text-3xl">Mis tecnologías favoritas</h3>
+      <h3 className="mt-0 lg:mt-[-1%] pt-8 lg:pt-0 text-accent text-center pb-8 text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
         <div className="hover:bg-ui overflow-hidden mx-auto max-w-[900px] card">
           <div className="mb-8">
             <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">

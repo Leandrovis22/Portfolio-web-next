@@ -8,7 +8,9 @@ import Image from "next/image";
 const Photo = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 2, duration: 0.4, ease: "easeIn" } }}>
-      <div className="relative w-[298px] h-[298px] lg:w-full lg:pb-[100%] bg-primary rounded-full">
+      <div className="relative w-[298px] h-[298px] lg:w-full lg:pb-[100%] dark:bg-primary rounded-full">
+        
+      <div className="h-full w-full circle"></div>
         <Image
           src="/perfil.png" // Cambia a la ruta de tu imagen
           alt="foto de perfil"
@@ -17,7 +19,6 @@ const Photo = () => {
           className="rounded-full"
           priority={true}
         />
-        <div className="h-full w-full circle"></div>
       </div>
     </motion.div>
   );
