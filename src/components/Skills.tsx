@@ -6,7 +6,7 @@ import { TagsTape } from "./TagsTape";
 export default function Skills() {
 
   return (
-    <div id="skills" className="lg:h-screen">
+    <div id="skills" className="">
       <TagsTape />
       <SkillIcons />
     </div>

@@ -97,7 +97,7 @@ export const CertCard = ({
       onClick={handleClick}
       ref={ref}
       className={cn(
-        "md:h-96 w-60 h-60 md:w-96 bg-transparent rounded-lg overflow-hidden group/card relative",
+        "size-64 xs-436:size-96 bg-transparent rounded-lg overflow-hidden group/card relative",
         className
       )}
     >
@@ -110,7 +110,7 @@ export const CertCard = ({
           exit="exit"
         >
           <motion.div
-            className="absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500"
+            className="absolute inset-0 w-full h-full bg-black/65 z-10 transition duration-500"
             initial={{ opacity: 0 }}
             animate={{ opacity: showOverlay ? 1 : 0 }}
             exit={{ opacity: 0 }}

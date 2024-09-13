@@ -4,9 +4,9 @@ import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
 
 const defaultTheme = require("tailwindcss/defaultTheme");
- 
+
 const svgToDataUri = require("mini-svg-data-uri");
- 
+
 const colors = require("tailwindcss/colors");
 
 const {
@@ -33,7 +33,13 @@ const config: Config = {
         'accent': 'var(--accent)',
         'ui': 'var(--ui)',
         'uihover': 'var(--uihover)',
-       },       
+      },
+      screens: {
+        'xs-436': '436px',
+        'sm-590': '590px',
+        'md-830': '830px',
+        'lg-1242': '1242px',
+      },
       animation: {
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",
@@ -43,10 +49,10 @@ const config: Config = {
         scroll: 'scroll 60s linear infinite',
       },
       keyframes: {
-          scroll: {
-            '0%': { transform: 'translateX(0)' },
-            '100%': { transform: 'translateX(-50%)' },
-          },
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         moveHorizontal: {
           "0%": {
             transform: "translateX(-50%) translateY(-10%)",
