@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
           <Navbarcomponent />
-          {/* <Secondabout /> */}
+          <Secondabout />
           <Skills />
           <Certifications />
           <Card />

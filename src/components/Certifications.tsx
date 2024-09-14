@@ -1,7 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CertCard } from "./sub-components/CertCard";
+import { Button } from "@nextui-org/react";
 
 export default function Certifications() {
   // Array con 7 objetos que contienen la información de cada CertCard
@@ -50,23 +52,56 @@ export default function Certifications() {
     },
   ];
 
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  const handleShowMore = () => {
+    setVisibleCount(prevCount => Math.min(prevCount + 3, certifications.length));
+  };
+
   return (
     <div id="certifications" className="">
       <h4 className="py-8 text-accent text-center text-3xl">
         Formación & Certificaciones
       </h4>
 
-      <div className="grid grid-cols-1 md-830:grid-cols-2 lg-1242:grid-cols-3 gap-4 justify-items-center max-w-[17rem] md-830:max-w-[49rem] lg-1242:max-w-[75rem] mx-auto">
-        {certifications.map((cert, index) => (
-          <CertCard
-            key={index}
-            imageUrl={cert.imageUrl}
-            title={cert.title}
-            date={cert.date}
-            description={cert.description}
-          />
-        ))}
+      <div className="pb-10 max-w-[17rem] md-830:max-w-[49rem] lg-1242:max-w-[75rem] mx-auto">
+        <div className="grid grid-cols-1 md-830:grid-cols-2 lg-1242:grid-cols-3 gap-4 justify-items-center">
+          <AnimatePresence>
+            {certifications.slice(0, visibleCount).map((cert, index) => (
+              <motion.div
+                key={cert.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }} // Add delay for staggered effect
+              >
+                <CertCard
+                  imageUrl={cert.imageUrl}
+                  title={cert.title}
+                  date={cert.date}
+                  description={cert.description}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+        {visibleCount < certifications.length && (
+        <div className="text-center flex justify-center pt-10">
+          <Button
+                  color="primary"
+                  variant="shadow"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                
+            onClick={handleShowMore}
+          >
+            Mostrar más
+          </Button>
+        </div>
+      )}
       </div>
+
+      
     </div>
   );
 }

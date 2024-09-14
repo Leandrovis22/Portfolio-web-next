@@ -28,7 +28,6 @@ export default function RootLayout({
           <div className="relative bg-background text-text bg-[length:61px] dark:bg-grid-white/[0.02] bg-grid-black/[0.02]">
             {children}
           </div>
-          {/* La capa está fija en el fondo para efectos visuales */}
           <div
             className="fixed inset-0 w-full h-full bg-repeat pointer-events-none z-[9999] opacity-[0.13]"
             style={{
