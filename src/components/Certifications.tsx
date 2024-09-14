@@ -1,66 +1,99 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CertCard } from "./sub-components/CertCard";
 import { Button } from "@nextui-org/react";
 
 export default function Certifications() {
-  // Array con 7 objetos que contienen la información de cada CertCard
   const certifications = [
     {
       imageUrl: "/map.png",
       title: "Certificación 1",
       date: "Enero 2023 - Mayo 2023, 250 horas",
-      description: "Descripción de la certificación 1",
+      description: "Descripción de la certificación 1...",
+      link: "https://certificado1.com", // Agrega el link aquí
     },
     {
       imageUrl: "/map.png",
       title: "Certificación 2",
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
+      link: "https://certificado2.com", // Y aquí
+    },{
+      imageUrl: "/map.png",
+      title: "Certificación 1",
+      date: "Enero 2023 - Mayo 2023, 250 horas",
+      description: "Descripción de la certificación 1...",
+      link: "https://certificado1.com", // Agrega el link aquí
     },
     {
       imageUrl: "/map.png",
-      title: "Certificación 3",
-      date: "Marzo 2023 - Julio 2023, 180 horas",
-      description: "Descripción de la certificación 3",
+      title: "Certificación 2",
+      date: "Febrero 2023 - Junio 2023, 200 horas",
+      description: "Descripción de la certificación 2",
+      link: "https://certificado2.com", // Y aquí
+    },{
+      imageUrl: "/map.png",
+      title: "Certificación 1",
+      date: "Enero 2023 - Mayo 2023, 250 horas",
+      description: "Descripción de la certificación 1...",
+      link: "https://certificado1.com", // Agrega el link aquí
     },
     {
       imageUrl: "/map.png",
-      title: "Certificación 4",
-      date: "Abril 2023 - Agosto 2023, 220 horas",
-      description: "Descripción de la certificación 4",
+      title: "Certificación 2",
+      date: "Febrero 2023 - Junio 2023, 200 horas",
+      description: "Descripción de la certificación 2",
+      link: "https://certificado2.com", // Y aquí
+    },{
+      imageUrl: "/map.png",
+      title: "Certificación 1",
+      date: "Enero 2023 - Mayo 2023, 250 horas",
+      description: "Descripción de la certificación 1...",
+      link: "https://certificado1.com", // Agrega el link aquí
     },
     {
       imageUrl: "/map.png",
-      title: "Certificación 5",
-      date: "Mayo 2023 - Septiembre 2023, 240 horas",
-      description: "Descripción de la certificación 5",
-    },
-    {
-      imageUrl: "/map.png",
-      title: "Certificación 6",
-      date: "Junio 2023 - Octubre 2023, 210 horas",
-      description: "Descripción de la certificación 6",
-    },
-    {
-      imageUrl: "/map.png",
-      title: "Certificación 7",
-      date: "Julio 2023 - Noviembre 2023, 230 horas",
-      description: "Descripción de la certificación 7",
-    },
-  ];
+      title: "Certificación 2",
+      date: "Febrero 2023 - Junio 2023, 200 horas",
+      description: "Descripción de la certificación 2",
+      link: "https://certificado2.com", // Y aquí
+    },];
 
   const [visibleCount, setVisibleCount] = useState(3);
 
+  useEffect(() => {
+    // Función que ajusta la cantidad de CertCards visibles dependiendo del ancho de la pantalla
+    const handleResize = () => {
+      if (window.innerWidth < 1242 && window.innerWidth >= 830) {
+        setVisibleCount(4); // Mostrar 4 CertCards
+      } else {
+        setVisibleCount(3); // Por defecto mostrar 3 CertCards
+      }
+    };
+
+    // Llama a la función al cargar el componente
+    handleResize();
+
+    // Añade un event listener para ajustar el número de CertCards cuando se cambia el tamaño de la ventana
+    window.addEventListener("resize", handleResize);
+
+    // Limpia el event listener cuando se desmonta el componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleShowMore = () => {
-    setVisibleCount(prevCount => Math.min(prevCount + 3, certifications.length));
+    setVisibleCount((prevCount) =>
+      Math.min(prevCount + 3, certifications.length)
+    );
   };
 
   return (
     <div id="certifications" className="">
-      <h4 className="py-8 text-accent text-center text-3xl">
+      <h4 className="pt-8 pb-12 text-accent text-center text-3xl">
         Formación & Certificaciones
       </h4>
 
@@ -80,28 +113,26 @@ export default function Certifications() {
                   title={cert.title}
                   date={cert.date}
                   description={cert.description}
+                  link={cert.link} // Pasamos el link aquí
                 />
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
         {visibleCount < certifications.length && (
-        <div className="text-center flex justify-center pt-10">
-          <Button
-                  color="primary"
-                  variant="shadow"
-                  size="lg"
-                  className="uppercase flex items-center gap-2"
-                
-            onClick={handleShowMore}
-          >
-            Mostrar más
-          </Button>
-        </div>
-      )}
+          <div className="text-center flex justify-center pt-10">
+            <Button
+              color="primary"
+              variant="shadow"
+              size="lg"
+              className="uppercase flex items-center gap-2"
+              onClick={handleShowMore}
+            >
+              Mostrar más
+            </Button>
+          </div>
+        )}
       </div>
-
-      
     </div>
   );
 }

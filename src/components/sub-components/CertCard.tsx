@@ -4,12 +4,14 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { BiLinkExternal } from "react-icons/bi";
 
 export const CertCard = ({
   imageUrl,
   title,
   date,
   description,
+  link, // Recibimos el link aquí
   childrenClassName,
   imageClassName,
   className,
@@ -18,6 +20,7 @@ export const CertCard = ({
   title: string;
   date: string;
   description: string;
+  link: string; // Aceptamos el tipo string para el link
   childrenClassName?: string;
   imageClassName?: string;
   className?: string;
@@ -141,13 +144,23 @@ export const CertCard = ({
               ease: "easeOut",
             }}
             className={cn(
-              "text-white absolute inset-0 z-40 flex flex-col items-center p-4 top-[3rem]",
+              "text-white absolute inset-0 z-40 flex flex-col items-center p-4 top-[1rem]",
               childrenClassName
             )}
           >
-            <p className="font-bold text-xl">{title}</p>
-            <p className="font-normal text-sm">{date}</p>
-            <p className="font-normal text-sm text-center pt-2">{description}</p>
+            <p className="font-bold text-2xl">{title}</p>
+            <p className="font-normal text-base">{date}</p>
+            <p className="font-normal text-base text-center pt-2">{description}</p>
+            
+            {/* Aquí agregamos el link */}
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-blue-500 hover:underline mt-2"
+            >
+              Ver certificado <BiLinkExternal />
+            </a>
           </motion.div>
         </motion.div>
       </AnimatePresence>
@@ -198,19 +211,19 @@ const textVariants = {
     opacity: 1,
   },
   top: {
-    y: -20,
+    y: -5,
     opacity: 1,
   },
   bottom: {
-    y: 2,
+    y: 5,
     opacity: 1,
   },
   left: {
-    x: -2,
+    x: -5,
     opacity: 1,
   },
   right: {
-    x: 2,
+    x: 5,
     opacity: 1,
   },
 };

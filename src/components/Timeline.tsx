@@ -74,7 +74,7 @@ const TimelineTitle = React.forwardRef<
 	HTMLHeadingElement,
 	React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, children, ...props }, ref) => (
-	<h3
+	<div
 		ref={ref}
 		className={cn(
 			"font-semibold leading-none tracking-tight text-secondary-foreground",
@@ -82,7 +82,7 @@ const TimelineTitle = React.forwardRef<
 		)}
 		{...props}>
 		{children}
-	</h3>
+	</div>
 ));
 TimelineTitle.displayName = "CardTitle";
 

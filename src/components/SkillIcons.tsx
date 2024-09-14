@@ -94,12 +94,12 @@ export function SkillIcons() {
               <div>
                 <div className="flex justify-between items-start p-4">
                   <div className="">
-                    <motion.h3
+                    <motion.div
                       layoutId={`title-${active.title}-${id}`}
                       className="font-bold text-neutral-700 dark:text-neutral-200"
                     >
                       {active.title}
-                    </motion.h3>
+                    </motion.div>
                   </div>
                 </div>
                 <div className="pt-4 relative px-4">
@@ -121,9 +121,9 @@ export function SkillIcons() {
         ) : null}
       </AnimatePresence>
 
-      <div className="px-3 py-8">
+      <div className="px-3 pb-8">
         
-      <h3 className="pt-8 text-accent text-center pb-8 text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
+      <h3 className="pt-8 lg:pt-0 pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
         <div className="hover:bg-ui overflow-hidden mx-auto max-w-[900px] card">
           <div className="mb-8">
             <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
@@ -154,12 +154,12 @@ export function SkillIcons() {
                         />
                       </motion.div>
                       <div className="content-center">
-                        <motion.h3
+                        <motion.div
                           layoutId={`title-${card.title}-${id}-${index}`}
                           className="font-medium text-center"
                         >
                           {card.title}
-                        </motion.h3>
+                        </motion.div>
                       </div>
                     </div>
                   </motion.div>
@@ -195,12 +195,12 @@ export function SkillIcons() {
                         />
                       </motion.div>
                       <div className="content-center">
-                        <motion.h3
+                        <motion.div
                           layoutId={`title-${card.title}-${id}-reverse-${index}`}
                           className="font-medium text-center"
                         >
                           {card.title}
-                        </motion.h3>
+                        </motion.div>
                       </div>
                     </div>
                   </motion.div>
