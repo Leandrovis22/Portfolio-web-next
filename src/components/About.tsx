@@ -1,11 +1,11 @@
 // src/components/Secondabout.tsx
 
-import Gradient from './Gradient'; // Asegúrate de que la ruta sea correcta
+import Gradient from './sub-components/Gradient'; // Asegúrate de que la ruta sea correcta
 import { Button } from '@nextui-org/react';
 import { FiDownload } from 'react-icons/fi';
-import Photo from './Photo'; // Asegúrate de tener este componente
+import Photo from './sub-components/Photo'; // Asegúrate de tener este componente
 
-export default function Secondabout() {
+export default function About() {
   return (
     <Gradient
       // gradientBackgroundStart="rgb(0, 0, 0)"

@@ -1,5 +1,5 @@
 // src\components\Skills.tsx
-import { SkillIcons } from "./SkillIcons";
+import { SkillIcons } from "./sub-components/SkillIcons";
 import { TagsTape } from "./TagsTape";
 
 

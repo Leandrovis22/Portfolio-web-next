@@ -1,5 +1,3 @@
-// src/components/sub-components/Bento-grid.tsx
-
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
@@ -16,7 +14,7 @@ export const BentoGrid = ({
     return (
         <div
             className={cn(
-                "grid auto-rows-[20rem] gap-8 max-w-7xl mx-auto",
+                "px-3 grid md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4    lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto",
                 className
             )}
         >
@@ -53,28 +51,33 @@ export const BentoGridItem = ({
     externalLink?: string;
     githubLink?: string;
 }) => {
+    const descriptionText = typeof description === 'string' ? description : '';
+    const isLongDescription = descriptionText.length > 371;
+
     return (
         <div
             className={cn(
-                "card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex gap-4 justify-between w-[87%]",
-                reverse ? "flex-row-reverse" : "flex-row"
+                "w-full grid gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent lg-1242:flex flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
+                reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
             )}
         >
+           
             <Image
                 alt="image"
-                className="rounded-2xl"
+                className="rounded-2xl max-h-[239px]" // Añadir esta clase para establecer la altura máxima
                 objectFit="cover"
                 width={500}
                 height={500}
                 objectPosition="center"
                 src={header || "/map.png"}
             />
-            <div className="w-[65%]">
+
+            <div className="w-full lg-1242:w-[65%] relative">
                 {icon}
                 <p className="font-bold text-2xl mt-2">{title}</p>
                 <p className="font-normal text-base pb-3 text-sm">{date}</p>
-                <p className="font-normal text-base">{description}</p>
-                <div className="flex gap-2 mt-4">
+                <p className={cn("font-normal text-base pb-8 lg-1242:pb-0 w-full", isLongDescription && "text-sm")}>{description}</p>
+                <div className="absolute flex gap-4 bottom-[-8px] right-0">
                     {externalLink && (
                         <a
                             href={externalLink}
@@ -82,7 +85,8 @@ export const BentoGridItem = ({
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 text-blue-500 hover:underline"
                         >
-                            <BiLinkExternal /> Ver en sitio
+                            <div className="inline-flex gap-2">
+                                <BiLinkExternal /> Ver en sitio</div>
                         </a>
                     )}
                     {githubLink && (
@@ -90,9 +94,10 @@ export const BentoGridItem = ({
                             href={githubLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-gray-800 hover:underline"
+                            className="flex items-center gap-2 text-gray-800 hover:underline dark:text-blue-500"
                         >
-                            <FaGithub /> Ver en GitHub
+                            <div className="inline-flex gap-2">
+                                <FaGithub /> Ver en GitHub</div>
                         </a>
                     )}
                 </div>

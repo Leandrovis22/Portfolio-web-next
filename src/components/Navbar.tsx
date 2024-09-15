@@ -1,8 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
-import { Link as ReactScrollLink } from 'react-scroll';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
+import { Link as ReactScrollLink } from "react-scroll";
 import ThemeButton from "./ThemeButton";
 import Image from "next/image";
 
@@ -13,17 +21,16 @@ export default function Navbarcomponent() {
   const menuItems = [
     { name: "Sobre mí", id: "about" },
     { name: "Habilidades", id: "skills" },
-    { name: "Certificaciones", id: "certifications" },
-    { name: "Proyectos", id: "projects" },
+    { name: "Certificaciones", id: "certifications", offset: -39 }, // 4rem offset
+    { name: "Proyectos", id: "projects", offset: -39 }, // 4rem offset
     { name: "Contacto", id: "contact" },
   ];
 
-  // Función para detectar la sección activa basándose en el scroll
   const handleScroll = () => {
-    const sections = menuItems.map(item => document.getElementById(item.id));
+    const sections = menuItems.map((item) => document.getElementById(item.id));
     const scrollY = window.scrollY + window.innerHeight / 2;
 
-    const currentSection = sections.find(section => {
+    const currentSection = sections.find((section) => {
       if (section) {
         const { offsetTop, offsetHeight } = section;
         return scrollY >= offsetTop && scrollY < offsetTop + offsetHeight;
@@ -60,8 +67,13 @@ export default function Navbarcomponent() {
               to={item.id}
               spy={true}
               smooth={true}
+              offset={item.offset || 0} // Aplica el offset si está definido
               duration={50}
-              className={`${activeSection === item.id ? "text-accent border-b-2 border-accent" : ""} capitalize font-medium hover:text-accent transition-all cursor-pointer`}
+              className={`${
+                activeSection === item.id
+                  ? "text-accent border-b-2 border-accent"
+                  : ""
+              } capitalize font-medium hover:text-accent transition-all cursor-pointer`}
             >
               {item.name}
             </ReactScrollLink>
@@ -86,9 +98,13 @@ export default function Navbarcomponent() {
               to={item.id}
               spy={true}
               smooth={true}
-              offset={-125}
+              offset={item.offset || 0} // Aplica el offset si está definido
               duration={500}
-              className={`${activeSection === item.id ? "text-accent border-b-2 border-accent" : ""} w-full justify-end flex cursor-pointer`}
+              className={`${
+                activeSection === item.id
+                  ? "text-accent border-b-2 border-accent"
+                  : ""
+              } w-full justify-end flex cursor-pointer`}
               onClick={() => setIsMenuOpen(false)} // Close menu after click
             >
               {item.name}

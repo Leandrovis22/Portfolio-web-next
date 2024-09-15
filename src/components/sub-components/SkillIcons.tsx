@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useOutsideClick } from "../lib/use-outside-click";
+import { useOutsideClick } from "../../lib/use-outside-click";
 
 export function SkillIcons() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(

@@ -13,8 +13,8 @@ import {
 	TimelineDescription,
 	TimelineContent,
 	TimelineTime,
-} from "@/components/Timeline";
-import { TimelineElement } from "@/components/Timeline";
+} from "@/components/sub-components/Timeline";
+import { TimelineElement } from "@/components/sub-components/Timeline";
 
 interface TimelineLayoutProps {
 	items: TimelineElement[]; // Replace any[] with the actual type of items.

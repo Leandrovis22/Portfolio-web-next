@@ -100,7 +100,7 @@ export const CertCard = ({
       onClick={handleClick}
       ref={ref}
       className={cn(
-        "size-64 xs-436:size-96 bg-transparent rounded-lg overflow-hidden group/card relative",
+        "size-[19rem] xs-436:size-96 bg-transparent rounded-lg overflow-hidden group/card relative",
         className
       )}
     >
