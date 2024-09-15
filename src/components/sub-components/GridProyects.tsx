@@ -14,14 +14,14 @@ export const BentoGrid = ({
     return (
         <div
             className={cn(
-                "px-3 grid md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4    lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto",
+                "max-w-[509px] md-830:max-w-fit px-3 grid mx-auto md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4    lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto",
                 className
             )}
         >
             {React.Children.map(children, (child, index) => (
                 <div
                     className={cn(
-                        "flex",
+                        "flex relative lg-1242:flex",
                         index % 2 === 0 ? "justify-start" : "justify-end"
                     )}
                 >
@@ -57,27 +57,25 @@ export const BentoGridItem = ({
     return (
         <div
             className={cn(
-                "w-full grid gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent lg-1242:flex flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
+                "flex items-center lg-1242:items-stretch w-full gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
                 reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
             )}
         >
-           
             <Image
                 alt="image"
-                className="rounded-2xl max-h-[239px]" // Añadir esta clase para establecer la altura máxima
+                className="rounded-2xl max-h-[239px] lg-1242:max-h-fit" // Añadir esta clase para establecer la altura máxima
                 objectFit="cover"
                 width={500}
                 height={500}
                 objectPosition="center"
                 src={header || "/map.png"}
             />
-
-            <div className="w-full lg-1242:w-[65%] relative">
+            <div className="lg-1242:relative w-full lg-1242:w-[65%]">
                 {icon}
                 <p className="font-bold text-2xl mt-2">{title}</p>
                 <p className="font-normal text-base pb-3 text-sm">{date}</p>
-                <p className={cn("font-normal text-base pb-8 lg-1242:pb-0 w-full", isLongDescription && "text-sm")}>{description}</p>
-                <div className="absolute flex gap-4 bottom-[-8px] right-0">
+                <p className={cn("font-normal text-base pb-8 lg-1242:pb-0 w-full", isLongDescription && "md-830:text-sm")}>{description}</p>
+                <div className="absolute flex gap-4 bottom-[14px] right-[22px] lg-1242:bottom-[-8px] lg-1242:right-0">
                     {externalLink && (
                         <a
                             href={externalLink}

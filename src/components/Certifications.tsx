@@ -20,7 +20,7 @@ export default function Certifications() {
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
-    },{
+    }, {
       imageUrl: "/map.png",
       title: "Certificación 1",
       date: "Enero 2023 - Mayo 2023, 250 horas",
@@ -33,7 +33,7 @@ export default function Certifications() {
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
-    },{
+    }, {
       imageUrl: "/map.png",
       title: "Certificación 1",
       date: "Enero 2023 - Mayo 2023, 250 horas",
@@ -46,7 +46,7 @@ export default function Certifications() {
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
-    },{
+    }, {
       imageUrl: "/map.png",
       title: "Certificación 1",
       date: "Enero 2023 - Mayo 2023, 250 horas",
