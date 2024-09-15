@@ -1,10 +1,10 @@
+// Proyects.tsx
 "use client";
 
-// src/components/Proyects.tsx
-
 import React, { useEffect, useState } from "react";
-import { BentoGrid, BentoGridItem } from "./sub-components/GridProyects";
 import { Button } from "@nextui-org/react";
+import ProyectGrid from "./sub-components/ProyectGrid";
+
 
 export default function Proyects() {
   const [visibleCount, setVisibleCount] = useState(2);
@@ -12,7 +12,6 @@ export default function Proyects() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-
       if (width >= 1242) {
         setVisibleCount(3);
       } else if (width >= 830) {
@@ -23,50 +22,28 @@ export default function Proyects() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <>
-      <div id="projects" className="pb-10">
-        <h5 className="pt-8 pb-12 text-accent text-center text-3xl">
-          Proyectos
-        </h5>
-        <BentoGrid>
-          {items.slice(0, visibleCount).map((item, i) => (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              date={item.date}
-              description={item.description}
-              header={item.header}
-              reverse={i % 2 !== 0}
-              externalLink={item.externalLink}
-              githubLink={item.githubLink}
-            />
-          ))}
-        </BentoGrid>
-
-        {visibleCount < items.length && (
-          <div className="text-center flex justify-center">
-            <Button
-              color="primary"
-              variant="shadow"
-              size="lg"
-              className="uppercase flex items-center gap-2"
-              onClick={() => setVisibleCount(prev => Math.min(prev + 2, items.length))}
-            >
-              Mostrar más
-            </Button>
-          </div>
-        )}
-      </div>
-    </>
+    <div id="projects" className="pb-10">
+      <h5 className="pt-8 pb-12 text-accent text-center text-3xl">Proyectos</h5>
+      <ProyectGrid items={items} visibleCount={visibleCount} />
+      {visibleCount < items.length && (
+        <div className="text-center flex justify-center">
+          <Button
+            color="primary"
+            variant="shadow"
+            size="lg"
+            className="uppercase flex items-center gap-2"
+            onClick={() => setVisibleCount(prev => Math.min(prev + 2, items.length))}
+          >
+            Mostrar más
+          </Button>
+        </div>
+      )}
+    </div>
   );
 }
 
