@@ -1,9 +1,9 @@
-// ProyectGrid.tsx
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FaGithub } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 export interface ProjectItem {
   title: string;
@@ -19,7 +19,7 @@ interface ProyectoGridProps {
   visibleCount: number;
 }
 
-const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean }> = ({
+const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number }> = ({
   title,
   date,
   description,
@@ -27,11 +27,16 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean }> = ({
   reverse,
   externalLink,
   githubLink,
+  index,
 }) => {
   const isLongDescription = description.length > 371;
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
         "flex items-center lg-1242:items-stretch w-full gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
         reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
@@ -77,7 +82,7 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean }> = ({
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -91,7 +96,7 @@ const ProyectGrid: React.FC<ProyectoGridProps> = ({ items, visibleCount }) => {
           "flex relative lg-1242:flex",
           i % 2 === 0 ? "justify-start" : "justify-end"
         )}>
-          <ProjectGridItem {...item} reverse={i % 2 !== 0} />
+          <ProjectGridItem {...item} reverse={i % 2 !== 0} index={i} />
         </div>
       ))}
     </div>
