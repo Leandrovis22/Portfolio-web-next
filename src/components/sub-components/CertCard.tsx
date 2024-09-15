@@ -33,10 +33,13 @@ export const CertCard = ({
   const [isClicked, setIsClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Detectar si el dispositivo es táctil usando window.matchMedia
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+      setIsMobile(isTouchDevice);
     };
+    
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
     return () => window.removeEventListener('resize', checkIfMobile);
