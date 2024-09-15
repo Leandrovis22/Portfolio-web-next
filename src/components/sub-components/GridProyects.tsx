@@ -5,17 +5,14 @@ import { FaGithub } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
 
 export const BentoGrid = ({
-    className,
     children,
 }: {
-    className?: string;
     children?: React.ReactNode;
 }) => {
     return (
         <div
             className={cn(
-                "max-w-[509px] md-830:max-w-fit px-3 grid mx-auto md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4    lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto",
-                className
+                "lg-1242:max-w-[75rem] mx-auto pb-10   max-w-[509px] md-830:max-w-fit px-3 grid mx-auto md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4    lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto"
             )}
         >
             {React.Children.map(children, (child, index) => (
