@@ -144,23 +144,25 @@ export const CertCard = ({
               ease: "easeOut",
             }}
             className={cn(
-              "text-white absolute inset-0 z-40 flex flex-col items-center p-4 top-[1rem]",
+              "text-white absolute inset-0 z-20 flex flex-col items-center p-4 top-[1rem]",
               childrenClassName
             )}
           >
             <p className="font-bold text-2xl">{title}</p>
             <p className="font-normal text-base">{date}</p>
             <p className="font-normal text-base text-center pt-2">{description}</p>
-            
-            {/* Aquí agregamos el link */}
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-blue-500 hover:underline mt-2"
-            >
-              Ver certificado <BiLinkExternal />
-            </a>
+
+            {showOverlay && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-500 hover:underline mt-2"
+              >
+                Ver certificado <BiLinkExternal />
+              </a>
+            )}
+
           </motion.div>
         </motion.div>
       </AnimatePresence>
