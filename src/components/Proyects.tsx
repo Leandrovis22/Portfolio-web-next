@@ -27,11 +27,12 @@ export default function Proyects() {
   }, []);
 
   return (
-    <div id="projects" className="pb-10">
+    <div id="projects" className="">
       <h5 className="pt-8 pb-12 text-accent text-center text-3xl">Proyectos</h5>
       <ProyectGrid items={items} visibleCount={visibleCount} />
+
       {visibleCount < items.length && (
-        <div className="text-center flex justify-center">
+        <div className="text-center flex justify-center py-10">
           <Button
             color="primary"
             variant="shadow"
@@ -43,6 +44,7 @@ export default function Proyects() {
           </Button>
         </div>
       )}
+      
     </div>
   );
 }

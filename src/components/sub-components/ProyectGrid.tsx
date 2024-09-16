@@ -3,7 +3,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FaGithub } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card } from "@nextui-org/react";
 
 export interface ProjectItem {
   title: string;
@@ -38,10 +39,17 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
-        "flex items-center lg-1242:items-stretch w-full gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
-        reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
+        "flex relative lg-1242:flex h-full",
+        index % 2 === 0 ? "justify-start" : "justify-end"
       )}
     >
+      <Card
+        className={cn(
+          "flex items-center lg-1242:items-stretch w-full gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
+          reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
+        )}>
+        
+      
       <Image
         alt="image"
         className="rounded-2xl max-h-[239px] lg-1242:max-h-fit"
@@ -82,6 +90,7 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
           )}
         </div>
       </div>
+      </Card>
     </motion.div>
   );
 };
@@ -89,16 +98,22 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
 const ProyectGrid: React.FC<ProyectoGridProps> = ({ items, visibleCount }) => {
   return (
     <div className={cn(
-      "lg-1242:max-w-[75rem] mx-auto pb-10 max-w-[509px] md-830:max-w-fit px-3 grid mx-auto md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4 lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto"
+      "lg-1242:max-w-[75rem] mx-auto max-w-[509px] md-830:max-w-fit px-3 grid mx-auto md-830:grid-cols-2 lg-1242:grid-cols-1 md-830:gap-4 lg-1242:max-w-[535px] lg-1242:auto-rows-[20rem] gap-8 lg-1242:max-w-7xl mx-auto"
     )}>
-      {items.slice(0, visibleCount).map((item, i) => (
-        <div key={i} className={cn(
-          "flex relative lg-1242:flex",
-          i % 2 === 0 ? "justify-start" : "justify-end"
-        )}>
-          <ProjectGridItem {...item} reverse={i % 2 !== 0} index={i} />
-        </div>
-      ))}
+      <AnimatePresence>
+        {items.slice(0, visibleCount).map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className=""
+          >
+            <ProjectGridItem {...item} reverse={i % 2 !== 0} index={i} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   );
 };

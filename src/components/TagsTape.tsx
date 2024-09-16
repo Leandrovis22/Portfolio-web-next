@@ -2,6 +2,7 @@
 
 'use client'
 
+import { Card } from '@nextui-org/react';
 import { useEffect, useRef, useState } from 'react'
 
 const words = ["Responsive", "Funcional", "Seguro", "Interactivo", "Mantenible", "Escalable", "Moderno", "De Vanguardia", "Al Instante", "Creativo", "Innovador", "UX/UI", "English", "Debugged", "Automatizado", "Desarrollo Constante"];
@@ -18,13 +19,15 @@ export const TagsTape = () => {
 
   return (
     <div className="py-8 lg:py-16 overflow-hidden">
-      <div className="card -rotate-3 -mx-1" style={{ borderRadius: 0 }}>
+
+      <Card className="card -rotate-3 -mx-1" style={{ borderRadius: 0 }}>
+
         <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div 
-            className="flex flex-none gap-4 py-3 animate-scroll" 
+          <div
+            className="flex flex-none gap-4 py-3 animate-scroll"
             ref={contentRef}
             style={{
-              animationDuration: `${contentWidth/50}s`,
+              animationDuration: `${contentWidth / 50}s`,
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite',
             }}
@@ -39,7 +42,7 @@ export const TagsTape = () => {
             ))}
           </div>
         </div>
-      </div>
+        </Card>
     </div>
   );
 };

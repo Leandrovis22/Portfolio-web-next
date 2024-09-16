@@ -5,14 +5,16 @@ import Certifications from '@/components/Certifications';
 import Navbarcomponent from '@/components/Navbar';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
+import Contact from '@/components/Contact';
 function Home() {
   return (
     <>
           <Navbarcomponent />
-          {/* <About /> */}
+          <About />
           <Skills />
           <Certifications />
           <Proyects />
+          <Contact />
       </>
   );
 }

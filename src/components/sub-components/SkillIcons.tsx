@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../lib/use-outside-click";
+import { Card } from "@nextui-org/react";
 
 export function SkillIcons() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
@@ -102,7 +103,7 @@ export function SkillIcons() {
                     </motion.div>
                   </div>
                 </div>
-                <div className="pt-4 relative px-4">
+                <div className="relative px-4">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
@@ -122,9 +123,10 @@ export function SkillIcons() {
       </AnimatePresence>
 
       <div className="px-3 pb-8">
-        
-      <h3 className="pt-8 lg:pt-0 pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
-        <div className="hover:bg-ui overflow-hidden mx-auto max-w-[900px] card">
+
+        <h3 className="pt-8 lg:pt-0 pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
+        <Card className="card hover:bg-ui overflow-hidden mx-auto max-w-[900px]">
+
           <div className="mb-8">
             <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div
@@ -141,27 +143,30 @@ export function SkillIcons() {
                     layoutId={`card-${card.title}-${id}-${index}`}
                     key={`card-${card.title}-${id}-${index}`}
                     onClick={() => setActive(card)}
-                    className="card cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]"
+                    className=""
                   >
-                    <div className="flex gap-4 flex-col items-center">
-                      <motion.div layoutId={`image-${card.title}-${id}-${index}`}>
-                        <Image
-                          width={100}
-                          height={100}
-                          src={card.src}
-                          alt={card.title}
-                          className="h-20 w-20 rounded-lg object-contain"
-                        />
-                      </motion.div>
-                      <div className="content-center">
-                        <motion.div
-                          layoutId={`title-${card.title}-${id}-${index}`}
-                          className="font-medium text-center"
-                        >
-                          {card.title}
+                    <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
+
+                      <div className="flex gap-4 flex-col items-center">
+                        <motion.div layoutId={`image-${card.title}-${id}-${index}`}>
+                          <Image
+                            width={100}
+                            height={100}
+                            src={card.src}
+                            alt={card.title}
+                            className="h-20 w-20 rounded-lg object-contain"
+                          />
                         </motion.div>
+                        <div className="content-center">
+                          <motion.div
+                            layoutId={`title-${card.title}-${id}-${index}`}
+                            className="font-medium text-center"
+                          >
+                            {card.title}
+                          </motion.div>
+                        </div>
                       </div>
-                    </div>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
@@ -182,33 +187,35 @@ export function SkillIcons() {
                     layoutId={`card-${card.title}-${id}-reverse-${index}`}
                     key={`card-${card.title}-${id}-reverse-${index}`}
                     onClick={() => setActive(card)}
-                    className="card cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]"
+
                   >
-                    <div className="flex gap-4 flex-col items-center">
-                      <motion.div layoutId={`image-${card.title}-${id}-reverse-${index}`}>
-                        <Image
-                          width={100}
-                          height={100}
-                          src={card.src}
-                          alt={card.title}
-                          className="h-20 w-20 rounded-lg object-contain"
-                        />
-                      </motion.div>
-                      <div className="content-center">
-                        <motion.div
-                          layoutId={`title-${card.title}-${id}-reverse-${index}`}
-                          className="font-medium text-center"
-                        >
-                          {card.title}
+                    <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
+                      <div className="flex gap-4 flex-col items-center">
+                        <motion.div layoutId={`image-${card.title}-${id}-reverse-${index}`}>
+                          <Image
+                            width={100}
+                            height={100}
+                            src={card.src}
+                            alt={card.title}
+                            className="h-20 w-20 rounded-lg object-contain"
+                          />
                         </motion.div>
+                        <div className="content-center">
+                          <motion.div
+                            layoutId={`title-${card.title}-${id}-reverse-${index}`}
+                            className="font-medium text-center"
+                          >
+                            {card.title}
+                          </motion.div>
+                        </div>
                       </div>
-                    </div>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </>
   );

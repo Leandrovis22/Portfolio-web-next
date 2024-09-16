@@ -99,7 +99,7 @@ export default function Navbarcomponent() {
               spy={true}
               smooth={true}
               offset={item.offset || 0} // Aplica el offset si está definido
-              duration={500}
+              duration={50}
               className={`${
                 activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
