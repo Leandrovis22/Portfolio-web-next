@@ -25,6 +25,9 @@ const config: Config = {
       primary: 'var(--font-nunitoSans)',
     },
     extend: {
+      height: {
+        'screen-footer': 'calc(100vh - 6.5rem)',
+      },
       colors: {
         'text': 'var(--text)',
         'background': 'var(--background)',
