@@ -26,7 +26,7 @@ const config: Config = {
     },
     extend: {
       height: {
-        'screen-footer': 'calc(100vh - 6.5rem)',
+        'screen-footer': 'calc(100vh - 7.5rem)',
       },
       colors: {
         'text': 'var(--text)',
