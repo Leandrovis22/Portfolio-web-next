@@ -7,8 +7,14 @@ import { FiDownload } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
 import { useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { useTheme } from "next-themes";
 
 export default function Contact() {
+
+    const { theme } = useTheme(); // Obtiene el tema actual
+
+    const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
+    
     const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
 
     const [nombre, setNombre] = useState('');
@@ -85,10 +91,10 @@ export default function Contact() {
 
             <div className="md:flex-row flex-col flex h-fit lg:gap-0 gap-5 lg:h-full z-10 px-4 lg:px-[5%] 2xl-1800:mx-[10%]">
 
-                {/* Imagen */}
-                <div className="flex-1 flex flex-col h-full justify-center items-center">
+                 {/* Imagen */}
+                 <div className="flex-1 flex flex-col h-full justify-center items-center">
                     <Card className="h-fit w-fit card mx-auto">
-                        <Image src="/mapdark.png" className="rounded-2xl" alt="map image" width={430} height={430} />
+                        <Image src={imageSrc} className="rounded-2xl" alt="map image" width={430} height={430} />
                         <p className="text-text pt-[0.75rem] text-center flex justify-center">
                             <FaLocationDot className="text-text size-[1.3rem] align-middle justify-center" />
                             &nbsp;Santa Fe, La Capital, Argentina
@@ -125,8 +131,8 @@ export default function Contact() {
 
                 {/* Formulario de contacto */}
                 <div className="flex-1 flex flex-col h-full justify-center items-center">
-                    <div className="w-full max-w-[455.6px] mx-auto h-full">
-                        <div className="relative w-full pb-[108%] h-full"> {/* 491.6 / 455.6 ≈ 108% */}
+                    <div className="w-full max-w-[455.6px] max-h-[491.6px] mx-auto h-full">
+                        <div className="relative w-full pb-[108%] h-full">
                             <div className="absolute inset-0 card rounded-3xl shadow-lg p-4 flex flex-col">
                                 <h2 className="text-2xl font-bold mb-4 text-center">Enviar un Mensaje</h2>
 
@@ -166,7 +172,7 @@ export default function Contact() {
                                         />
                                         {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
                                     </div>
-                                   
+
                                     <Input
                                         type="text"
                                         className="hidden"
@@ -198,9 +204,9 @@ export default function Contact() {
 
 
 
-            <div className="h-full content-center">
+            <div className="h-full content-center lg:hidden">
                 {/* Botones de contacto para pantalla menor a lg */}
-                <div className=" px-4 flex lg:hidden">
+                <div className=" px-4 flex">
                     <div className="flex justify-center flex-wrap flex-row gap-5 w-fit">
                         <div className="flex gap-4">
                             <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
