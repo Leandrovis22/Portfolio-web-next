@@ -14,7 +14,7 @@ export default function Contact() {
     const { theme } = useTheme(); // Obtiene el tema actual
 
     const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
-    
+
     const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
 
     const [nombre, setNombre] = useState('');
@@ -91,18 +91,23 @@ export default function Contact() {
 
             <div className="md:flex-row flex-col flex h-fit lg:gap-0 gap-5 lg:h-full z-10 px-4 lg:px-[5%] 2xl-1800:mx-[10%]">
 
-                 {/* Imagen */}
-                 <div className="flex-1 flex flex-col h-full justify-center items-center">
-                    <Card className="h-fit w-fit card mx-auto">
-                        <Image src={imageSrc} className="rounded-2xl" alt="map image" width={430} height={430} />
-                        <p className="text-text pt-[0.75rem] text-center flex justify-center">
+
+                
+                 <div className="flex-1 flex flex-col justify-center items-center">
+                    
+                    <Card className="w-fit h-fit card">
+                        <div className="max-w-[279px]">
+                        <Image src={imageSrc} className="rounded-3xl" alt="map image" width={1726} height={1726} />
+                        </div>
+                        <p className="text-text text-sm pt-[0.75rem] text-center flex justify-center">
                             <FaLocationDot className="text-text size-[1.3rem] align-middle justify-center" />
                             &nbsp;Santa Fe, La Capital, Argentina
                         </p>
                     </Card>
-                </div>
+                    
+                </div> 
 
-                {/* Botones de contacto */}
+                {/* 
                 <div className="flex-1 px-4 items-center justify-center hidden lg:flex">
                     <div className="flex items-center flex-col gap-5 w-fit">
                         <div className="flex gap-4">
@@ -128,76 +133,76 @@ export default function Contact() {
                         </Button>
                     </div>
                 </div>
-
-                {/* Formulario de contacto */}
+                */}
+                
                 <div className="flex-1 flex flex-col h-full justify-center items-center">
-                    <div className="w-full max-w-[455.6px] max-h-[491.6px] mx-auto h-full">
-                        <div className="relative w-full pb-[108%] h-full">
-                            <div className="absolute inset-0 card rounded-3xl shadow-lg p-4 flex flex-col">
-                                <h2 className="text-2xl font-bold mb-4 text-center">Enviar un Mensaje</h2>
+                    <div className="max-w-[304.6px] max-h-[337.4px] w-full h-auto aspect-[0.9] mx-auto">
 
-                                {/* Contenedor flexible para inputs y textarea */}
-                                <div className="flex-grow flex flex-col space-y-4 overflow-auto min-h-0">
-                                    <div>
-                                        <Input
-                                            type="text"
-                                            placeholder="Nombre"
-                                            value={nombre}
-                                            onChange={(e) => setNombre(e.target.value)}
-                                            required
-                                        />
-                                        {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
-                                    </div>
-                                    <div>
-                                        <Input
-                                            type="email"
-                                            placeholder="Correo Electrónico"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                        />
-                                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                                    </div>
-                                    <div className="flex-1 h-full">
-                                        <Textarea
-                                            placeholder="Mensaje"
-                                            value={mensaje}
-                                            onChange={(e) => setMensaje(e.target.value)}
-                                            required
-                                            disableAutosize
-                                            className="h-full"
-                                            classNames={{
-                                                inputWrapper: "!h-full",  // Aplica la altura directamente al input-wrapper
-                                            }}
-                                        />
-                                        {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
-                                    </div>
+                        <div className="h-full card rounded-3xl shadow-lg p-4 flex flex-col">
+                            <h2 className="text-2xl font-bold mb-4 text-center">Enviar un Mensaje</h2>
 
+                            
+                            <div className="flex-grow flex flex-col space-y-4 overflow-auto min-h-0">
+                                <div>
                                     <Input
                                         type="text"
-                                        className="hidden"
-                                        value={botField}
-                                        onChange={(e) => setBotField(e.target.value)}
-                                        placeholder="Dejar vacío"
+                                        placeholder="Nombre"
+                                        value={nombre}
+                                        onChange={(e) => setNombre(e.target.value)}
+                                        required
                                     />
+                                    {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
+                                </div>
+                                <div>
+                                    <Input
+                                        type="email"
+                                        placeholder="Correo Electrónico"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                                </div>
+                                <div className="flex-1 h-full">
+                                    <Textarea
+                                        placeholder="Mensaje"
+                                        value={mensaje}
+                                        onChange={(e) => setMensaje(e.target.value)}
+                                        required
+                                        disableAutosize
+                                        className="h-full"
+                                        classNames={{
+                                            inputWrapper: "!h-full",  // Aplica la altura directamente al input-wrapper
+                                        }}
+                                    />
+                                    {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
                                 </div>
 
-                                {/* Botón al final */}
-                                <div className="mt-4 flex justify-center">
-                                    <Button
-                                        type="submit"
-                                        color="primary"
-                                        variant="shadow"
-                                        size="lg"
-                                        className="uppercase flex items-center gap-2 w-1/2"
-                                    >
-                                        Enviar
-                                    </Button>
-                                </div>
+                                <Input
+                                    type="text"
+                                    className="hidden"
+                                    value={botField}
+                                    onChange={(e) => setBotField(e.target.value)}
+                                    placeholder="Dejar vacío"
+                                />
+                            </div>
+
+                            
+                            <div className="mt-4 flex justify-center">
+                                <Button
+                                    type="submit"
+                                    color="primary"
+                                    variant="shadow"
+                                    size="lg"
+                                    className="uppercase flex items-center gap-2 w-1/2"
+                                >
+                                    Enviar
+                                </Button>
                             </div>
                         </div>
+
                     </div>
-                </div>
+                </div> 
 
 
             </div>

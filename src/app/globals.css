@@ -15,7 +15,7 @@ html::-webkit-scrollbar {
 }
 
 .card {
-  @apply p-3 subpixel-antialiased backdrop-blur-sm bg-ui border-1 dark:border-[#3e3e3e] hover:bg-uihover shadow-sm transition-all duration-500;
+  @apply rounded-3xl p-3 subpixel-antialiased backdrop-blur-sm bg-ui border-1 dark:border-[#3e3e3e] hover:bg-uihover shadow-sm transition-all duration-500;
 }
 
 @layer base {
