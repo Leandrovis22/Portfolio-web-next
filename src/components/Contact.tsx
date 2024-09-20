@@ -81,15 +81,15 @@ export default function Contact() {
     };
 
     return (
-        <div id="contact" className=" lg:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
+        <div id="contact" className="md-930:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
 
             <div className="absolute h-[400px] w-[1600px] bottom-[-4rem] left-1/2 -translate-x-1/2 dark:bg-secondary [mask-image:radial-gradient(64%_78%_at_bottom_center,black,transparent)] z-0"></div>
 
-            <h6 className="pt-8 pb-12 text-accent text-center text-3xl">
+            <h6 className="pt-8 pb-12 md-930:pb-0 text-accent text-center text-3xl">
                 Contacto
             </h6>
 
-            <div className="md:flex-row flex-col flex h-fit lg:gap-0 gap-5 lg:h-full z-10 px-4 lg:px-[5%] 2xl-1800:mx-[10%]">
+            <div className="md-930:flex-row flex-col flex h-fit gap-5 md-930:h-full z-10 px-4 md-930:px-1 px-[5%] mx-auto">
 
 
                 
@@ -107,8 +107,8 @@ export default function Contact() {
                     
                 </div> 
 
-                {/* 
-                <div className="flex-1 px-4 items-center justify-center hidden lg:flex">
+            
+                <div className="flex-1 px-4 md-930:px-0 items-center justify-center hidden md-930:flex">
                     <div className="flex items-center flex-col gap-5 w-fit">
                         <div className="flex gap-4">
                             <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
@@ -133,7 +133,7 @@ export default function Contact() {
                         </Button>
                     </div>
                 </div>
-                */}
+                
                 
                 <div className="flex-1 flex flex-col h-full justify-center items-center">
                     <div className="max-w-[304.6px] max-h-[337.4px] w-full h-auto aspect-[0.9] mx-auto">
@@ -209,7 +209,7 @@ export default function Contact() {
 
 
 
-            <div className="h-full content-center lg:hidden">
+            <div className="h-full content-center md-930:hidden">
                 {/* Botones de contacto para pantalla menor a lg */}
                 <div className=" px-4 flex">
                     <div className="flex justify-center flex-wrap flex-row gap-5 w-fit">

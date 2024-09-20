@@ -23,7 +23,7 @@ export default function Navbarcomponent() {
     { name: "Habilidades", id: "skills" },
     { name: "Certificaciones", id: "certifications", offset: -39 }, // 4rem offset
     { name: "Proyectos", id: "projects", offset: -39 }, // 4rem offset
-    { name: "Contacto", id: "contact" },
+    { name: "Contacto", id: "contact", offset: -39 },
   ];
 
   const handleScroll = () => {
