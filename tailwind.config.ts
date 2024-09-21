@@ -27,6 +27,7 @@ const config: Config = {
     extend: {
       height: {
         'screen-footer': 'calc(100vh - 6.5rem)',
+        'screen-custom': 'calc(100vh - 4.5rem)',
       },
       colors: {
         'text': 'var(--text)',
@@ -42,6 +43,8 @@ const config: Config = {
         'sm-590': '590px',
         'md-830': '830px',
         'md-930': '930px',
+        'md-954': '954px',
+        'lg-1007': '1007px',
         'lg-1080': '1080px',
         'lg-1242': '1242px',
         '2xl-1800': '1800px',

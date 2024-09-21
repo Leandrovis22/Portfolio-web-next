@@ -48,48 +48,49 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
           "flex items-center lg-1242:items-stretch w-full gap-4 justify-items-center card hover:shadow-xl shadow-input dark:shadow-none p-4 border border-transparent flex-col lg-1242:flex-row gap-4 lg-1242:justify-between lg-1242:w-[87%]",
           reverse ? "lg-1242:flex-row-reverse" : "lg-1242:flex-row"
         )}>
-        
-      
-      <Image
-        alt="image"
-        className="rounded-2xl max-h-[239px] lg-1242:max-h-fit"
-        objectFit="cover"
-        width={500}
-        height={500}
-        objectPosition="center"
-        src={header || "/map.png"}
-      />
-      <div className="lg-1242:relative w-full lg-1242:w-[65%]">
-        <p className="font-bold text-2xl mt-2">{title}</p>
-        <p className="font-normal text-base pb-3 text-sm">{date}</p>
-        <p className={cn("font-normal text-base pb-8 lg-1242:pb-0 w-full", isLongDescription && "md-830:text-sm")}>{description}</p>
-        <div className="absolute flex gap-4 bottom-[14px] right-[22px] lg-1242:bottom-[-8px] lg-1242:right-0">
-          {externalLink && (
-            <a
-              href={externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-blue-500 hover:underline"
-            >
-              <div className="inline-flex gap-2">
-                <BiLinkExternal /> Ver en sitio
-              </div>
-            </a>
-          )}
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-800 hover:underline dark:text-blue-500"
-            >
-              <div className="inline-flex gap-2">
-                <FaGithub /> Ver en GitHub
-              </div>
-            </a>
-          )}
+
+
+        <Image
+          alt="image"
+          className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
+          objectFit="contain" // O usa 'cover' si prefieres que la imagen cubra todo el espacio
+          width={500}
+          height={500}
+          objectPosition="center"
+          src={header || "/map.png"}
+        />
+
+        <div className="lg-1242:relative w-full lg-1242:w-[65%]">
+          <p className="font-bold text-2xl mt-2">{title}</p>
+          <p className="font-normal text-base pb-3 text-sm">{date}</p>
+          <p className={cn("font-normal text-base pb-8 lg-1242:pb-0 w-full", isLongDescription && "md-830:text-sm")}>{description}</p>
+          <div className="absolute flex gap-4 bottom-[14px] right-[22px] lg-1242:bottom-[-8px] lg-1242:right-0">
+            {externalLink && (
+              <a
+                href={externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-500 hover:underline"
+              >
+                <div className="inline-flex gap-2">
+                  <BiLinkExternal /> Ver en sitio
+                </div>
+              </a>
+            )}
+            {githubLink && (
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-800 hover:underline dark:text-blue-500"
+              >
+                <div className="inline-flex gap-2">
+                  <FaGithub /> Ver en GitHub
+                </div>
+              </a>
+            )}
+          </div>
         </div>
-      </div>
       </Card>
     </motion.div>
   );

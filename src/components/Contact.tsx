@@ -8,6 +8,7 @@ import { IoIosMail } from "react-icons/io";
 import { useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { useTheme } from "next-themes";
+import EmailCopyButton from "./sub-components/EmailButton";
 
 export default function Contact() {
 
@@ -81,34 +82,39 @@ export default function Contact() {
     };
 
     return (
-        <div id="contact" className="md-930:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
+        <div id="contact" className="md-954:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
 
-            <div className="absolute h-[400px] w-[1600px] bottom-[-4rem] left-1/2 -translate-x-1/2 dark:bg-secondary [mask-image:radial-gradient(64%_78%_at_bottom_center,black,transparent)] z-0"></div>
+            {/* <div className="absolute h-[400px] w-[1600px] bottom-[-4rem] left-1/2 -translate-x-1/2 dark:bg-secondary [mask-image:radial-gradient(64%_78%_at_bottom_center,black,transparent)] z-0"></div>
+ */}
 
-            <h6 className="pt-8 pb-12 md-930:pb-0 text-accent text-center text-3xl">
-                Contacto
-            </h6>
+            <div className="h-full flex flex-col">
+                <h6 className="pt-8 pb-12 md-954:pb-0 text-accent text-center text-3xl flex-shrink-0">
+                    Contacto
+                </h6>
 
-            <div className="md-930:flex-row flex-col flex h-fit gap-5 md-930:h-full z-10 px-4 md-930:px-1 px-[5%] mx-auto">
+                <div className="bg-secondary flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 md-954:px-[5%]">
 
-
-                
-                 <div className="flex-1 flex flex-col justify-center items-center">
-                    
-                    <Card className="w-fit h-fit card">
-                        <div className="max-w-[279px]">
-                        <Image src={imageSrc} className="rounded-3xl" alt="map image" width={1726} height={1726} />
+                    {/* <div className="flex-1 flex sm-590:justify-end justify-center items-center min-w-0">
+                        <div className="w-full max-w-[346px] 2xl:max-w-[470px] aspect-[0.9]">
+                            <Card className="card w-full h-full flex flex-col justify-center items-center p-4">
+                                <div className="relative w-full h-0 pb-[100%] overflow-hidden rounded-3xl">
+                                    <Image
+                                        src={imageSrc}
+                                        alt="map image"
+                                        layout="fill"
+                                        objectFit="cover"
+                                        className="rounded-3xl"
+                                    />
+                                </div>
+                                <p className="text-text text-sm pt-4 text-center flex items-center justify-center">
+                                    <FaLocationDot className="text-text text-xl mr-1" />
+                                    Santa Fe, La Capital, Argentina
+                                </p>
+                            </Card>
                         </div>
-                        <p className="text-text text-sm pt-[0.75rem] text-center flex justify-center">
-                            <FaLocationDot className="text-text size-[1.3rem] align-middle justify-center" />
-                            &nbsp;Santa Fe, La Capital, Argentina
-                        </p>
-                    </Card>
-                    
-                </div> 
+                    </div> */}
 
-            
-                <div className="flex-1 px-4 md-930:px-0 items-center justify-center hidden md-930:flex">
+                    {/*  <div className="px-4 md-954:px-0 items-center justify-center hidden md-954:flex">
                     <div className="flex items-center flex-col gap-5 w-fit">
                         <div className="flex gap-4">
                             <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
@@ -133,51 +139,45 @@ export default function Contact() {
                         </Button>
                     </div>
                 </div>
-                
-                
-                <div className="flex-1 flex flex-col h-full justify-center items-center">
-                    <div className="max-w-[304.6px] max-h-[337.4px] w-full h-auto aspect-[0.9] mx-auto">
 
-                        <div className="h-full card rounded-3xl shadow-lg p-4 flex flex-col">
-                            <h2 className="text-2xl font-bold mb-4 text-center">Enviar un Mensaje</h2>
-
-                            
-                            <div className="flex-grow flex flex-col space-y-4 overflow-auto min-h-0">
-                                <div>
-                                    <Input
-                                        type="text"
-                                        placeholder="Nombre"
-                                        value={nombre}
-                                        onChange={(e) => setNombre(e.target.value)}
-                                        required
-                                    />
-                                    {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
-                                </div>
-                                <div>
-                                    <Input
-                                        type="email"
-                                        placeholder="Correo Electrónico"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                    />
-                                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                                </div>
-                                <div className="flex-1 h-full">
-                                    <Textarea
-                                        placeholder="Mensaje"
-                                        value={mensaje}
-                                        onChange={(e) => setMensaje(e.target.value)}
-                                        required
-                                        disableAutosize
-                                        className="h-full"
-                                        classNames={{
-                                            inputWrapper: "!h-full",  // Aplica la altura directamente al input-wrapper
-                                        }}
-                                    />
-                                    {errors.mensaje && <p className="text-red-500 text-sm mt-1">{errors.mensaje}</p>}
-                                </div>
-
+                <div className="flex-1 flex sm-590:justify-start justify-center items-center min-w-0">
+                    <div className="w-full max-w-[346px] 2xl:max-w-[470px] aspect-[0.9]">
+                        <Card className="card w-full h-full flex flex-col p-4">
+                            <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
+                            <div className="flex-grow flex flex-col space-y-4 overflow-auto">
+                                <Input
+                                    type="text"
+                                    placeholder="Nombre"
+                                    value={nombre}
+                                    onChange={(e) => setNombre(e.target.value)}
+                                    required
+                                />
+                                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
+                                <Input
+                                    type="email"
+                                    placeholder="Correo Electrónico"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    classNames={{
+                                        base: "!mt-[16px] md-954:!mt-2 lg:!mt-[16px]",
+                                    }}
+                                />
+                                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                                <Textarea
+                                    placeholder="Mensaje"
+                                    value={mensaje}
+                                    onChange={(e) => setMensaje(e.target.value)}
+                                    required
+                                    disableAutosize
+                                    className="!h-full md-954:!h-[2.5rem] lg-1007:!h-full"
+                                    classNames={{
+                                        inputWrapper: "!h-full md-954:!h-[2.5rem] lg:!h-full",
+                                        base: "md-954:!mt-2 lg:!mt-[16px]",
+                                        input: "!h-full md-954:!h-[1.5rem] lg-1007:!h-full",
+                                    }}
+                                />
+                                {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
                                 <Input
                                     type="text"
                                     className="hidden"
@@ -186,57 +186,42 @@ export default function Contact() {
                                     placeholder="Dejar vacío"
                                 />
                             </div>
-
-                            
-                            <div className="mt-4 flex justify-center">
+                            <div className="mt-4 md-954:mt-0 lg-1007:mt-4 flex justify-center">
                                 <Button
                                     type="submit"
                                     color="primary"
                                     variant="shadow"
                                     size="lg"
-                                    className="uppercase flex items-center gap-2 w-1/2"
+                                    className="uppercase w-1/2"
                                 >
                                     Enviar
                                 </Button>
                             </div>
-                        </div>
-
+                        </Card>
                     </div>
-                </div> 
-
-
-            </div>
-
-
-
-            <div className="h-full content-center md-930:hidden">
-                {/* Botones de contacto para pantalla menor a lg */}
-                <div className=" px-4 flex">
-                    <div className="flex justify-center flex-wrap flex-row gap-5 w-fit">
-                        <div className="flex gap-4">
-                            <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
-                                <div className="size-[2.6rem] items-center content-center justify-center flex">
-                                    <FiDownload className="size-[2.2rem]" /></div> <p className="text-lg">Descargar CV</p>
-                            </Button>
-                        </div>
-                        <Button
-                            variant="ghost"
-                            className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]"
-                            radius="full"
-                            aria-label="Correo"
-                            onClick={copyToClipboard}
-                        >
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><IoIosMail className="size-[2.4rem]" /></div> <p className="text-lg">{buttonText}</p>
-                        </Button>
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-lg">leandroviscolungo</p>
-                        </Button>
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-lg">Leandrovis22</p>
-                        </Button>
-                    </div>
+                </div> */}
                 </div>
+
+
+                <div className=" md-954:hidden py-[1.25rem] flex justify-center flex-wrap flex-row gap-5 w-fit">
+                    <div className="flex gap-4">
+                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
+                            <div className="size-[2.6rem] items-center content-center justify-center flex">
+                                <FiDownload className="size-[2.2rem]" /></div> <p className="text-lg">Descargar CV</p>
+                        </Button>
+                    </div>
+                    <EmailCopyButton emailId="myEmailId" />
+                    <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
+                        <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-lg">leandroviscolungo</p>
+                    </Button>
+                    <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
+                        <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-lg">Leandrovis22</p>
+                    </Button>
+                </div>
+
+
             </div>
         </div>
+
     );
 }
