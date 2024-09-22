@@ -92,7 +92,7 @@ export default function Contact() {
 
                 <div className="flex flex-col h-full">
 
-                    <h6 className="pt-8 pb-12 md-954:pb-0 text-accent text-center text-3xl flex-shrink-0">
+                    <h6 className="pt-8 pb-12 md-954:pb-0 text-accent text-center text-fluid-3xl flex-shrink-0">
                         Contacto
                     </h6>
 

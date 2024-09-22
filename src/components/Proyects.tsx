@@ -28,7 +28,7 @@ export default function Proyects() {
 
   return (
     <div id="projects" className="">
-      <h5 className="pt-8 pb-12 text-accent text-center text-3xl">Proyectos</h5>
+      <h5 className="pt-8 pb-12 text-accent text-center text-fluid-3xl">Proyectos</h5>
       <ProyectGrid items={items} visibleCount={visibleCount} />
 
       {visibleCount < items.length && (
