@@ -98,9 +98,9 @@ export default function Contact() {
 
                     <div className="bg-secondary flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 md-954:px-[5%]">
 
-                        <div className="flex sm-590:justify-end justify-center items-center aspect-[346/400]">
+                        <div className="flex sm-590:justify-end justify-center items-center">
 
-                            <div className="comienzocarta w-full h-full max-w-[346px] max-h-[400px]">
+                            <div className="comienzocarta h-[80%] aspect-[346/400]">
 
                                 <Card className="card w-full h-full flex flex-col justify-center items-center p-4">
                                     <div className="relative w-full h-full overflow-hidden rounded-3xl">
