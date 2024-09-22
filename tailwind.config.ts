@@ -25,6 +25,17 @@ const config: Config = {
       primary: 'var(--font-nunitoSans)',
     },
     extend: {
+      fontSize: {
+        'xs': ['clamp(.72rem, .13vw + .69rem, .84rem)', { lineHeight: '1rem' }],
+        'sm': ['clamp( 0.9rem, calc(1.03125vw + 0.09375rem), 1.6rem );', { lineHeight: '1.25rem' }],
+        'base': ['clamp(1.13rem, .39vw + 1.03rem, 1.5rem)', { lineHeight: '1.1' }],
+        'lg': ['clamp(1.41rem, .61vw + 1.26rem, 2rem)', { lineHeight: '1.3' }],
+        'xl': ['clamp( 1.2rem, calc(1.5vw), 3rem );', { lineHeight: '1.5' }],
+        '2xl': ['clamp( 1.7rem, calc(2.5vw), 5rem );', { lineHeight: '1.1' }],
+        '3xl': ['clamp( 2.7rem, calc(3.5vw), 7rem );', { lineHeight: '1.1' }],
+        '4xl': ['clamp(4.29rem, 4.27vw + 3.29rem, 5.42rem)', { lineHeight: '1.1' }],
+        '5xl': ['clamp(5rem, 5vw + 4rem, 6rem)', { lineHeight: '1.1' }],
+      },
       height: {
         'screen-footer': 'calc(100vh - 6.5rem)',
         'screen-custom': 'calc(100vh - 4.5rem)',
