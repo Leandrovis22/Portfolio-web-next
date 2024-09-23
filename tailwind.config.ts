@@ -31,7 +31,7 @@ const config: Config = {
       fontSize: {
         'fluid-sm': ['clamp( 0.9rem, calc(1.1vw), 4rem );', { lineHeight: '1.25rem' }],
         'fluid-xl': ['clamp( 1.178rem, calc(1.5vw), 2.3rem ); ', { lineHeight: '1.4' }],
-        'fluid-lg': ['clamp( 1.5rem, calc(2.5vw), 4rem );', { lineHeight: '1.35' }],
+        'fluid-lg': ['clamp( 1.5rem, calc(2vw), 3rem );', { lineHeight: '1.35' }],
         'fluid-2xl': ['clamp( 2rem, calc(2.5vw), 5.778rem );', { lineHeight: '1.1' }],
         'fluid-3xl': ['clamp( 2.678rem, calc(3.2vw), 6.778rem );', { lineHeight: '1.1' }],
       },

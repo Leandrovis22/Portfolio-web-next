@@ -7,16 +7,18 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Component from '@/components/componenttest';
 function Home() {
   return (
     <>
           <Navbarcomponent />
-          <About />
+          {/* <About />
           <Skills />
-          <Certifications />
+          <Certifications /> */}
           <Proyects />
-          <Contact />
-          <Footer />
+          {/* <Contact />
+          <Footer /> */}
+          <Component />
       </>
   );
 }

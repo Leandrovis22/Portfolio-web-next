@@ -83,7 +83,7 @@ export default function Contact() {
     };
 
     return (
-        <div id="contact" className="md-954:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
+        <div id="contact" className="lg-1080:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
 
             {/* <div className="absolute h-[400px] w-[1600px] bottom-[-4rem] left-1/2 -translate-x-1/2 dark:bg-secondary [mask-image:radial-gradient(64%_78%_at_bottom_center,black,transparent)] z-0"></div>
  */}
@@ -92,11 +92,11 @@ export default function Contact() {
 
                 <div className="flex flex-col h-full">
 
-                    <h6 className="pt-8 pb-12 md-954:pb-0 text-accent text-center text-fluid-3xl flex-shrink-0">
+                    <h6 className="pt-8 pb-12 lg-1080:pb-0 text-accent text-center text-fluid-3xl flex-shrink-0">
                         Contacto
                     </h6>
 
-                    <div className="items-center justify-center bg-secondary flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 md-954:px-[5%]">
+                    <div className="bg-secondary  items-center justify-center flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 lg-1080:px-[5%]">
 
                         <div className="flex sm-590:justify-end justify-center items-center h-[80%]">
 
@@ -123,7 +123,8 @@ export default function Contact() {
 
                         </div>
 
-                        <div className="px-4 md-954:px-0 items-center justify-center hidden md-954:flex">
+
+                        <div className="px-4 lg-1080:px-0 items-center justify-center hidden lg-1080:flex">
                             <div className="flex items-center flex-col gap-5 w-fit">
                                 <div className="flex gap-4">
                                     <Button variant="ghost" className="flex items-center gap-2 w-fit h-full min-h-[60px]" radius="full" aria-label="Linkedin">
@@ -150,9 +151,12 @@ export default function Contact() {
                         </div>
 
 
+{/* <div className="flex-1 flex sm-590:justify-start justify-center items-center min-w-0">
+                    <div className="w-full max-w-[346px] 2xl:max-w-[470px] aspect-[0.9]"> */}
 
-                        <div className="flex sm-590:justify-start justify-center items-center h-[80%]">
-                            <div className="w-full h-full aspect-[346/400] max-h-[600px]">
+                        <div className="flex-1 lg-1080:flex-none flex sm-590:justify-start justify-center items-center min-w-0 lg-1080:h-[80%]">
+                            <div className="w-full lg-1080:h-full max-w-[346px] lg-1080:max-w-none aspect-[346/400] lg-1080:max-h-[600px]">
+
                                 <Card className="card w-full h-full flex flex-col p-4 justify-center items-center">
                                     <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
                                     <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
@@ -171,7 +175,7 @@ export default function Contact() {
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
                                             classNames={{
-                                                base: "!mt-[16px] md-954:!mt-2 lg:!mt-[16px]",
+                                                base: "!mt-[16px]",
                                             }}
                                         />
                                         {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
@@ -181,11 +185,11 @@ export default function Contact() {
                                             onChange={(e) => setMensaje(e.target.value)}
                                             required
                                             disableAutosize
-                                            className="!h-full md-954:!h-[2.5rem] lg-1007:!h-full"
+                                            className="!h-full"
                                             classNames={{
-                                                inputWrapper: "!h-full md-954:!h-[2.5rem] lg:!h-full",
-                                                base: "md-954:!mt-2 lg:!mt-[16px]",
-                                                input: "!h-full md-954:!h-[1.5rem] lg-1007:!h-full",
+                                                inputWrapper: "!h-full",
+                                                base: "!mt-[16px]",
+                                                input: "!h-full",
                                             }}
                                         />
                                         {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
@@ -197,7 +201,7 @@ export default function Contact() {
                                             placeholder="Dejar vacío"
                                         />
                                     </div>
-                                    <div className="mt-4 md-954:mt-0 lg-1007:mt-4 flex justify-center w-full">
+                                    <div className="mt-4 flex justify-center w-full">
                                         <Button
                                             type="submit"
                                             color="primary"
@@ -210,13 +214,15 @@ export default function Contact() {
                                     </div>
                                 </Card>
                             </div>
+
                         </div>
 
 
                     </div>
 
+                    {/* botones en small */}
 
-                    <div className=" md-954:hidden py-[1.25rem] flex justify-center flex-wrap flex-row gap-5 w-fit">
+                    <div className=" lg-1080:hidden py-[1.25rem] flex justify-center flex-wrap flex-row gap-5 w-fit">
                         <div className="flex gap-4">
                             <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
                                 <div className="size-[2.6rem] items-center content-center justify-center flex">
@@ -233,6 +239,8 @@ export default function Contact() {
                     </div>
 
                 </div>
+
+
             </div>
 
 
