@@ -96,11 +96,12 @@ export default function Contact() {
                         Contacto
                     </h6>
 
-                    <div className="bg-secondary flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 md-954:px-[5%]">
+                    <div className="items-center justify-center bg-secondary flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 md-954:px-[5%]">
 
-                        <div className="flex sm-590:justify-end justify-center items-center">
+                        <div className="flex sm-590:justify-end justify-center items-center h-[80%]">
 
-                            <div className="comienzocarta h-[80%] aspect-[346/400]">
+                            <div className="w-full h-full max-h-[600px] aspect-[346/400]">
+
 
                                 <Card className="card w-full h-full flex flex-col justify-center items-center p-4">
                                     <div className="relative w-full h-full overflow-hidden rounded-3xl">
@@ -119,95 +120,99 @@ export default function Contact() {
                                     </p>
                                 </Card>
                             </div>
-                            
+
                         </div>
 
-                        {/*  <div className="px-4 md-954:px-0 items-center justify-center hidden md-954:flex">
-                    <div className="flex items-center flex-col gap-5 w-fit">
-                        <div className="flex gap-4">
-                            <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
-                                <div className="size-[2.6rem] items-center content-center justify-center flex">
-                                    <FiDownload className="size-[2.2rem]" /></div> <p className="text-lg">Descargar CV</p>
-                            </Button>
-                        </div>
-                        <Button
-                            variant="ghost"
-                            className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]"
-                            radius="full"
-                            aria-label="Correo"
-                            onClick={copyToClipboard}
-                        >
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><IoIosMail className="size-[2.4rem]" /></div> <p className="text-lg">{buttonText}</p>
-                        </Button>
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-lg">leandroviscolungo</p>
-                        </Button>
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-lg">Leandrovis22</p>
-                        </Button>
-                    </div>
-                </div>
-
-                <div className="flex-1 flex sm-590:justify-start justify-center items-center min-w-0">
-                    <div className="w-full max-w-[346px] 2xl:max-w-[470px] aspect-[0.9]">
-                        <Card className="card w-full h-full flex flex-col p-4">
-                            <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
-                            <div className="flex-grow flex flex-col space-y-4 overflow-auto">
-                                <Input
-                                    type="text"
-                                    placeholder="Nombre"
-                                    value={nombre}
-                                    onChange={(e) => setNombre(e.target.value)}
-                                    required
-                                />
-                                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
-                                <Input
-                                    type="email"
-                                    placeholder="Correo Electrónico"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    classNames={{
-                                        base: "!mt-[16px] md-954:!mt-2 lg:!mt-[16px]",
-                                    }}
-                                />
-                                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                                <Textarea
-                                    placeholder="Mensaje"
-                                    value={mensaje}
-                                    onChange={(e) => setMensaje(e.target.value)}
-                                    required
-                                    disableAutosize
-                                    className="!h-full md-954:!h-[2.5rem] lg-1007:!h-full"
-                                    classNames={{
-                                        inputWrapper: "!h-full md-954:!h-[2.5rem] lg:!h-full",
-                                        base: "md-954:!mt-2 lg:!mt-[16px]",
-                                        input: "!h-full md-954:!h-[1.5rem] lg-1007:!h-full",
-                                    }}
-                                />
-                                {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
-                                <Input
-                                    type="text"
-                                    className="hidden"
-                                    value={botField}
-                                    onChange={(e) => setBotField(e.target.value)}
-                                    placeholder="Dejar vacío"
-                                />
-                            </div>
-                            <div className="mt-4 md-954:mt-0 lg-1007:mt-4 flex justify-center">
+                        <div className="px-4 md-954:px-0 items-center justify-center hidden md-954:flex">
+                            <div className="flex items-center flex-col gap-5 w-fit">
+                                <div className="flex gap-4">
+                                    <Button variant="ghost" className="flex items-center gap-2 w-fit h-full min-h-[60px]" radius="full" aria-label="Linkedin">
+                                        <div className="size-[2.6rem] items-center content-center justify-center flex">
+                                            <FiDownload className="size-[2.2rem]" /></div> <p className="text-fluid-lg">Descargar CV</p>
+                                    </Button>
+                                </div>
                                 <Button
-                                    type="submit"
-                                    color="primary"
-                                    variant="shadow"
-                                    size="lg"
-                                    className="uppercase w-1/2"
+                                    variant="ghost"
+                                    className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]"
+                                    radius="full"
+                                    aria-label="Correo"
+                                    onClick={copyToClipboard}
                                 >
-                                    Enviar
+                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><IoIosMail className="size-[2.4rem]" /></div> <p className="text-fluid-lg">{buttonText}</p>
+                                </Button>
+                                <Button variant="ghost" className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
+                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-fluid-lg">leandroviscolungo</p>
+                                </Button>
+                                <Button variant="ghost" className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
+                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-fluid-lg">Leandrovis22</p>
                                 </Button>
                             </div>
-                        </Card>
-                    </div>
-                </div> */}
+                        </div>
+
+
+
+                        <div className="flex sm-590:justify-start justify-center items-center h-[80%]">
+                            <div className="w-full h-full aspect-[346/400] max-h-[600px]">
+                                <Card className="card w-full h-full flex flex-col p-4 justify-center items-center">
+                                    <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
+                                    <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
+                                        <Input
+                                            type="text"
+                                            placeholder="Nombre"
+                                            value={nombre}
+                                            onChange={(e) => setNombre(e.target.value)}
+                                            required
+                                        />
+                                        {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
+                                        <Input
+                                            type="email"
+                                            placeholder="Correo Electrónico"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required
+                                            classNames={{
+                                                base: "!mt-[16px] md-954:!mt-2 lg:!mt-[16px]",
+                                            }}
+                                        />
+                                        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                                        <Textarea
+                                            placeholder="Mensaje"
+                                            value={mensaje}
+                                            onChange={(e) => setMensaje(e.target.value)}
+                                            required
+                                            disableAutosize
+                                            className="!h-full md-954:!h-[2.5rem] lg-1007:!h-full"
+                                            classNames={{
+                                                inputWrapper: "!h-full md-954:!h-[2.5rem] lg:!h-full",
+                                                base: "md-954:!mt-2 lg:!mt-[16px]",
+                                                input: "!h-full md-954:!h-[1.5rem] lg-1007:!h-full",
+                                            }}
+                                        />
+                                        {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
+                                        <Input
+                                            type="text"
+                                            className="hidden"
+                                            value={botField}
+                                            onChange={(e) => setBotField(e.target.value)}
+                                            placeholder="Dejar vacío"
+                                        />
+                                    </div>
+                                    <div className="mt-4 md-954:mt-0 lg-1007:mt-4 flex justify-center w-full">
+                                        <Button
+                                            type="submit"
+                                            color="primary"
+                                            variant="shadow"
+                                            size="lg"
+                                            className="uppercase w-1/2"
+                                        >
+                                            Enviar
+                                        </Button>
+                                    </div>
+                                </Card>
+                            </div>
+                        </div>
+
+
                     </div>
 
 
@@ -230,7 +235,7 @@ export default function Contact() {
                 </div>
             </div>
 
-            
+
 
         </div>
 
