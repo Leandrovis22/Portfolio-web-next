@@ -17,8 +17,9 @@ function Home() {
           <Certifications /> */}
           <Proyects />
           {/* <Contact />
-          <Footer /> */}
+          */}
           <Component />
+          <Footer /> 
       </>
   );
 }

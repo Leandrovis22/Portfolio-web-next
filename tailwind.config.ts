@@ -34,6 +34,7 @@ const config: Config = {
         'fluid-lg': ['clamp( 1.5rem, calc(2vw), 3rem );', { lineHeight: '1.35' }],
         'fluid-2xl': ['clamp( 2rem, calc(2.5vw), 5.778rem );', { lineHeight: '1.1' }],
         'fluid-3xl': ['clamp( 2.678rem, calc(3.2vw), 6.778rem );', { lineHeight: '1.1' }],
+        '3xl': '2.675rem',
       },
       height: {
         'screen-footer': 'calc(100vh - 6.5rem)',

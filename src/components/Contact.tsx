@@ -29,6 +29,20 @@ export default function Contact() {
         mensaje: ''
     });
 
+    const copyToClipboard = () => {
+        const email = "leandroviscolungo@gmail.com";
+        navigator.clipboard.writeText(email)
+            .then(() => {
+                setButtonText("¡Correo copiado!");
+                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
+            })
+            .catch(() => {
+                setButtonText("Error al copiar");
+                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
+            });
+    };
+
+
     const validateEmail = (email: string) => {
         const re = /\S+@\S+\.\S+/;
         return re.test(email);
@@ -69,19 +83,6 @@ export default function Contact() {
         console.log('Formulario enviado:', { nombre, email, mensaje });
     };
 
-    const copyToClipboard = () => {
-        const email = "leandroviscolungo@gmail.com";
-        navigator.clipboard.writeText(email)
-            .then(() => {
-                setButtonText("¡Correo copiado!");
-                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-            })
-            .catch(() => {
-                setButtonText("Error al copiar");
-                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-            });
-    };
-
     return (
         <div id="contact" className="lg-1080:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
 
@@ -92,7 +93,7 @@ export default function Contact() {
 
                 <div className="flex flex-col h-full">
 
-                    <h6 className="pt-8 pb-12 lg-1080:pb-0 text-accent text-center text-fluid-3xl flex-shrink-0">
+                    <h6 className="pt-8 pb-12 lg-1080:pb-0 text-accent text-center text-3xl flex-shrink-0">
                         Contacto
                     </h6>
 
