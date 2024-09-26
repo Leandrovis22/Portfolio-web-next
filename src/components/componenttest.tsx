@@ -12,17 +12,16 @@ import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
 
 
-const ResponsiveButton = ({ icon: Icon, text, onClick, ariaLabel }) => (
+const ResponsiveButton = ({ icon: Icon, text, onClick, ariaLabel, isSmallScreen }) => (
   <Button
     variant="ghost"
-    className="flex items-center justify-start gap-2 w-fit h-full min-h-[60px] px-3"
+    className={`flex items-center justify-start gap-2 w-fit h-full min-h-[60px] px-3 ${isSmallScreen ? 'min-w-[5rem]' : ''}`}
     radius="full"
     aria-label={ariaLabel}
     onClick={onClick}
-    startContent={<Icon size={50} />}
+    startContent={<Icon size={isSmallScreen ? 34 : 50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
   >
-
-    <p className="text-sm sm:text-base lg:text-lg xl:text-xl truncate">{text}</p>
+    <p className={`text-sm sm:text-base lg:text-lg xl:text-xl md-840:truncate ${isSmallScreen ? 'text-lg' : ''}`}>{text}</p>
   </Button>
 );
 
@@ -122,24 +121,28 @@ const ThreeColumnLayout = () => {
                   text="Descargar CV"
                   onClick={null}
                   ariaLabel="Descargar CV"
+                  isSmallScreen={false}
                 />
                 <ResponsiveButton
                   icon={IoIosMail}
                   text={buttonText}
                   onClick={copyToClipboard}
                   ariaLabel="Correo"
+                  isSmallScreen={false}
                 />
                 <ResponsiveButton
                   icon={BsLinkedin}
                   text="leandroviscolungo"
                   onClick={null}
                   ariaLabel="Linkedin"
+                  isSmallScreen={false}
                 />
                 <ResponsiveButton
                   icon={BsGithub}
                   text="Leandrovis22"
                   onClick={null}
                   ariaLabel="Github"
+                  isSmallScreen={false}
                 />
               </div>
             </div>
@@ -213,6 +216,42 @@ const ThreeColumnLayout = () => {
           </AspectRatioBox>
         </div>
       </div>
+
+
+      <div className="px-4 pb-4 w-full h-full flex items-center md-840:hidden">
+        <div className="flex-wrap justify-center flex flex-col sm-570:flex-row gap-3 w-full items-center">
+          <ResponsiveButton
+            icon={FiDownload}
+            text="Descargar CV"
+            onClick={null}
+            ariaLabel="Descargar CV"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={IoIosMail}
+            text={buttonText}
+            onClick={copyToClipboard}
+            ariaLabel="Correo"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={BsLinkedin}
+            text="leandroviscolungo"
+            onClick={null}
+            ariaLabel="Linkedin"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={BsGithub}
+            text="Leandrovis22"
+            onClick={null}
+            ariaLabel="Github"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+        </div>
+      </div>
+
+
     </div>
   );
 };
