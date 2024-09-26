@@ -1,3 +1,5 @@
+// src/components/componenttest.tsx
+
 "use client"
 
 import { Button, Card, Input, Textarea } from '@nextui-org/react';
@@ -19,23 +21,21 @@ const ResponsiveButton = ({ icon: Icon, text, onClick, ariaLabel }) => (
     onClick={onClick}
     startContent={<Icon size={50} />}
   >
-    
+
     <p className="text-sm sm:text-base lg:text-lg xl:text-xl truncate">{text}</p>
   </Button>
 );
 
 const AspectRatioBox = ({ children, className, justifyClass }) => (
   <div className={`relative w-full h-full ${className}`}>
-    <div className="absolute inset-0">
+    <div className="md-840:absolute inset-0">
       <div className={`w-full h-full flex items-center ${justifyClass}`}>
         <div
-          className="flex items-center justify-center"
-          style={{
-            width: '100%',
-            height: '100%',
-            maxWidth: 'calc((100vh - 6.5rem - 96.2px - 2rem) * 346 / 400)',
-            maxHeight: 'calc((100vw - 4rem) * 400 / 346 / 3)',
-          }}
+          className={`
+            flex items-center justify-center w-full
+            h-[414px] max-h-[calc((100vw-4rem)*400/346/2)] max-w-[calc((100vh)*346/400)]
+            md-840:h-full md-840:max-h-[calc((100vw-4rem)*400/346/3)] md-840:max-w-[calc((100vh-6.5rem-96.2px-2rem)*346/400)]
+          `}
         >
           {children}
         </div>
@@ -79,12 +79,12 @@ const ThreeColumnLayout = () => {
 
   return (
 
-    <div>
-      <h6 className="pt-8 pb-0 text-accent text-center text-3xl flex-shrink-0">
+    <div className=''>
+      <h6 className="pt-8 pb-12 md-840:pb-0 text-accent text-center text-3xl flex-shrink-0">
         Contacto
       </h6>
 
-      <div className="w-full p-4" style={{ height: 'calc(100vh - 6.5rem - 96.2px)' }}>
+      <div className="w-full h-full p-4 md-840:h-[calc(100vh-6.5rem-96.2px)]">
         <div className="h-full w-full flex gap-4">
           <AspectRatioBox className="flex-1" justifyClass="justify-end">
 
@@ -111,38 +111,38 @@ const ThreeColumnLayout = () => {
 
 
           </AspectRatioBox>
-          <AspectRatioBox className="flex-1" justifyClass="justify-center">
+          <AspectRatioBox className="flex-1 hidden md-840:block" justifyClass="justify-center">
 
 
 
-          <div className="w-full h-full flex items-center justify-center">
-        <div className="flex flex-col gap-3 w-full max-w-md items-center">
-          <ResponsiveButton
-            icon={FiDownload}
-            text="Descargar CV"
-            onClick={null}
-            ariaLabel="Descargar CV"
-          />
-          <ResponsiveButton
-            icon={IoIosMail}
-            text={buttonText}
-            onClick={copyToClipboard}
-            ariaLabel="Correo"
-          />
-          <ResponsiveButton
-            icon={BsLinkedin}
-            text="leandroviscolungo"
-            onClick={null}
-            ariaLabel="Linkedin"
-          />
-          <ResponsiveButton
-            icon={BsGithub}
-            text="Leandrovis22"
-            onClick={null}
-            ariaLabel="Github"
-          />
-        </div>
-      </div>
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="flex flex-col gap-3 w-full max-w-md items-center">
+                <ResponsiveButton
+                  icon={FiDownload}
+                  text="Descargar CV"
+                  onClick={null}
+                  ariaLabel="Descargar CV"
+                />
+                <ResponsiveButton
+                  icon={IoIosMail}
+                  text={buttonText}
+                  onClick={copyToClipboard}
+                  ariaLabel="Correo"
+                />
+                <ResponsiveButton
+                  icon={BsLinkedin}
+                  text="leandroviscolungo"
+                  onClick={null}
+                  ariaLabel="Linkedin"
+                />
+                <ResponsiveButton
+                  icon={BsGithub}
+                  text="Leandrovis22"
+                  onClick={null}
+                  ariaLabel="Github"
+                />
+              </div>
+            </div>
 
 
           </AspectRatioBox>
