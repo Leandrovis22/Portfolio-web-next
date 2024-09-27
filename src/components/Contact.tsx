@@ -48,7 +48,13 @@ const AspectRatioBox = ({ children, className, justifyClass }) => (
   </div>
 );
 
-const Contact = () => {
+interface ContactProps {
+  data: {
+    // Define la estructura de tus datos aquí
+  }
+}
+
+const Contact = ( {data} : ContactProps ) => {
 
 
   const { theme } = useTheme(); // Obtiene el tema actual

@@ -5,8 +5,13 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import ProyectGrid from "./sub-components/ProyectGrid";
 
+interface ProyectsProps {
+  data: {
+    // Define la estructura de tus datos aquí
+  }
+}
 
-export default function Proyects() {
+export default function Proyects( {data}: ProyectsProps ) {
   const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
@@ -29,16 +34,16 @@ export default function Proyects() {
   return (
     <div id="projects" className="">
       <h5 className="md-840:pt-8 pb-6 md-840:pb-12 text-accent text-center text-3xl">Proyectos</h5>
-      <ProyectGrid items={items} visibleCount={visibleCount} />
+      <ProyectGrid items={proyects} visibleCount={visibleCount} />
 
-      {visibleCount < items.length && (
+      {visibleCount < proyects.length && (
         <div className="text-center flex justify-center py-10">
           <Button
             color="primary"
             variant="shadow"
             size="lg"
             className="uppercase flex items-center gap-2"
-            onClick={() => setVisibleCount(prev => Math.min(prev + 2, items.length))}
+            onClick={() => setVisibleCount(prev => Math.min(prev + 2, proyects.length))}
           >
             Mostrar más
           </Button>
@@ -49,7 +54,7 @@ export default function Proyects() {
   );
 }
 
-const items = [
+const proyects = [
   {
     title: "Tecnologías que adoro",
     date: "Enero 2023 - Mayo 2023, 250 horas",

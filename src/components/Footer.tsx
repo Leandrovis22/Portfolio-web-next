@@ -3,7 +3,7 @@
 // src/components/Footer.tsx
 
 import { Card } from "@nextui-org/react";
-import { onLoop } from './FooterTextAnimation';
+import { onLoop } from './sub-components/FooterTextAnimation';
 
 const AnimatedText = onLoop(({ text, textClass }) => (
     <span className={`inline-block w-[3rem] text-start whitespace-nowrap ${textClass}`}>

@@ -1,17 +1,24 @@
 // src/components/Secondabout.tsx
 
-import Gradient from './sub-components/Gradient'; // Asegúrate de que la ruta sea correcta
+import Gradient from './sub-components/Gradient';
 import { Button } from '@nextui-org/react';
 import { FiDownload } from 'react-icons/fi';
-import Photo from './sub-components/Photo'; // Asegúrate de tener este componente
-import Image from 'next/image';
+import Photo from './sub-components/Photo';
 
-export default function About() {
+interface AboutProps {
+  data: {
+    // Define la estructura de tus datos aquí
+  }
+}
+
+export default function About({ data }: AboutProps) {
+
+
   return (
     <Gradient
     >
       <section id="about" className="text-base lg:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
-        <div className="h-full w-full max-w-full"> 
+        <div className="h-full w-full max-w-full">
 
           <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 px-[3%] pt-[3%] lg:pt-0">
 
@@ -40,8 +47,8 @@ export default function About() {
               </div>
             </div>
 
-            <div className="contenedorimagen w-[298px] content-center mb-8  lg:mb-0 h-full lg:w-[50%]"> 
-             <Photo />
+            <div className="contenedorimagen w-[298px] content-center mb-8  lg:mb-0 h-full lg:w-[50%]">
+              <Photo />
             </div>
 
           </div>

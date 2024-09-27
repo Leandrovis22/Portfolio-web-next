@@ -7,7 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CertCard } from "./sub-components/CertCard";
 import { Button } from "@nextui-org/react";
 
-export default function Certifications() {
+interface CertificationsProps {
+  data: {
+    // Define la estructura de tus datos aquí
+    }
+}
+export default function Certifications( { data }: CertificationsProps ) {
   const certifications = [
     {
       imageUrl: "/maplight.png",
