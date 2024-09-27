@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import {
   Navbar,
@@ -17,19 +16,19 @@ import Image from "next/image";
 export default function Navbarcomponent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const menuItems = [
     { name: "Sobre mí", id: "about" },
-    { name: "Habilidades", id: "skills" }, // 4rem offset
-    { name: "Certificaciones", id: "certifications", offset: -39 }, // 4rem offset
-    { name: "Proyectos", id: "projects", offset: -39 }, // 4rem offset
-    { name: "Contacto", id: "contact", offset: -39 },
+    { name: "Habilidades", id: "skills" },
+    { name: "Certificaciones", id: "certifications", needsOffset: true },
+    { name: "Proyectos", id: "projects", needsOffset: true },
+    { name: "Contacto", id: "contact", needsOffset: true },
   ];
 
   const handleScroll = () => {
     const sections = menuItems.map((item) => document.getElementById(item.id));
     const scrollY = window.scrollY + window.innerHeight / 2;
-
     const currentSection = sections.find((section) => {
       if (section) {
         const { offsetTop, offsetHeight } = section;
@@ -37,20 +36,34 @@ export default function Navbarcomponent() {
       }
       return false;
     });
-
     if (currentSection) {
       setActiveSection(currentSection.id);
     }
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
+    
+    handleResize();
     handleScroll();
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [menuItems]);
+  }, []);
+
+  const getOffset = (item: typeof menuItems[0]) => {
+    if (item.needsOffset) {
+      return windowWidth > 839 ? -39 : -60;
+    }
+    return 0;
+  };
 
   return (
     <Navbar isBlurred={true} onMenuOpenChange={setIsMenuOpen}>
@@ -59,7 +72,6 @@ export default function Navbarcomponent() {
           <Image src="/LV logo.png" alt="Logo" width={40} height={40} />
         </NavbarBrand>
       </NavbarContent>
-
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={index}>
@@ -67,7 +79,7 @@ export default function Navbarcomponent() {
               to={item.id}
               spy={true}
               smooth={true}
-              offset={item.offset || 0} // Aplica el offset si está definido
+              offset={getOffset(item)}
               duration={50}
               className={`${
                 activeSection === item.id
@@ -80,7 +92,6 @@ export default function Navbarcomponent() {
           </NavbarItem>
         ))}
       </NavbarContent>
-
       <NavbarContent justify="end">
         <NavbarItem className="hidden sm:flex">
           <ThemeButton />
@@ -90,7 +101,6 @@ export default function Navbarcomponent() {
           className="sm:hidden"
         />
       </NavbarContent>
-
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.name}-${index}`}>
@@ -98,14 +108,14 @@ export default function Navbarcomponent() {
               to={item.id}
               spy={true}
               smooth={true}
-              offset={item.offset || 0} // Aplica el offset si está definido
+              offset={getOffset(item)}
               duration={50}
               className={`${
                 activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
                   : ""
               } w-full justify-end flex cursor-pointer`}
-              onClick={() => setIsMenuOpen(false)} // Close menu after click
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
             </ReactScrollLink>
