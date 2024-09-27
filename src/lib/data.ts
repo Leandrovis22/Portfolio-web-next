@@ -9,5 +9,6 @@ export async function getData() {
       certifications: [ /* datos para Certifications */ ],
       projects: [ /* datos para Projects */ ],
       contact: { /* datos para Contact */ },
+      footer: { /* datos para Footer */ },
     };
   }

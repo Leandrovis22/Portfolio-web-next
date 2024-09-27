@@ -1,36 +1,24 @@
 "use client"
 
-// src/components/FooterTextAnimation.tsx
-
+import React, { useEffect, useState, useRef, forwardRef } from "react"
 import type { ComponentType } from "react"
-import { useEffect, useState, useRef } from "react"
 
-const WORD_DISPLAY_TIME = 4000; // 5 seconds
-const ANIMATION_SPEED = 100; // 50ms between each letter reveal
+const WORD_DISPLAY_TIME = 4000; // 4 seconds
+const ANIMATION_SPEED = 100; // 100ms between each letter reveal
 const letters = "abcdefghijklmnopqrstuvwxyz-.,+*!?@&%/="
 
-export function onLoop(Component): ComponentType {
-    return (props) => {
-        const words = props.words;
+export function onLoop<P extends object>(Component: ComponentType<P>) {
+    return forwardRef<HTMLElement, P & { words: string[] }>((props, ref) => {
+        const { words, ...rest } = props;
         const [currentWordIndex, setCurrentWordIndex] = useState(0);
         const [iteration, setIteration] = useState(0);
         const [isFullyRevealed, setIsFullyRevealed] = useState(false);
-        const intersectionRef = useRef(null);
+        const intersectionRef = useRef<HTMLElement | null>(null);
 
         const encrypt = (iteration: number, word: string) => {
-            const length = word.length;
-            let result = "";
-
-            for (let i = 0; i < length; i++) {
-                const letter = word[i];
-                if (i < iteration) {
-                    result += letter;
-                } else {
-                    result += letters[Math.floor(Math.random() * letters.length)];
-                }
-            }
-
-            return result;
+            return word.split('').map((char, index) =>
+                index < iteration ? char : letters[Math.floor(Math.random() * letters.length)]
+            ).join('');
         };
 
         useEffect(() => {
@@ -40,7 +28,6 @@ export function onLoop(Component): ComponentType {
             const animate = () => {
                 setIteration((prev) => {
                     if (prev >= words[currentWordIndex].length) {
-                        // Word is fully revealed
                         setIsFullyRevealed(true);
                         if (animationInterval) clearInterval(animationInterval);
                         return prev;
@@ -55,13 +42,8 @@ export function onLoop(Component): ComponentType {
                 setIsFullyRevealed(false);
             };
 
-            // Start the animation
             animationInterval = setInterval(animate, ANIMATION_SPEED);
-
-            // Set up the timeout for moving to the next word
-            displayTimeout = setTimeout(() => {
-                moveToNextWord();
-            }, WORD_DISPLAY_TIME + (words[currentWordIndex].length * ANIMATION_SPEED));
+            displayTimeout = setTimeout(moveToNextWord, WORD_DISPLAY_TIME + (words[currentWordIndex].length * ANIMATION_SPEED));
 
             return () => {
                 if (animationInterval) clearInterval(animationInterval);
@@ -70,15 +52,23 @@ export function onLoop(Component): ComponentType {
         }, [currentWordIndex, words]);
 
         const encryptedText = encrypt(iteration, words[currentWordIndex]);
-        const textClass = !isFullyRevealed ? "text-accent" : ""; // Aplica la clase si no está completamente revelado
+        const textClass = !isFullyRevealed ? "text-accent" : "";
 
         return (
             <Component
-                ref={intersectionRef}
-                {...props}
+                ref={(node: HTMLElement | null) => {
+                    // Forward the ref to both the internal ref and the one passed from the parent
+                    intersectionRef.current = node;
+                    if (typeof ref === 'function') {
+                        ref(node);
+                    } else if (ref) {
+                        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+                    }
+                }}
+                {...rest as P}
                 text={isFullyRevealed ? words[currentWordIndex] : encryptedText}
-                textClass={textClass} // Pasa la clase como prop
+                textClass={textClass}
             />
         );
-    };
+    });
 }

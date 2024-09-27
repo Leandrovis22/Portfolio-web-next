@@ -23,7 +23,7 @@ export default async function Home() {
         <Proyects data={data.projects} />
         <Contact data={data.contact} />
       </Suspense>
-      <Footer />
+      <Footer data={data.footer} />
     </>
   );
 }
