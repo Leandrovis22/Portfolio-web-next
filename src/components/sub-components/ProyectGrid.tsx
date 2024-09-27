@@ -57,7 +57,7 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
           width={500}
           height={500}
           objectPosition="center"
-          src={header || "/map.png"}
+          src={header || "/maplight.png"}
         />
 
         <div className="lg-1242:relative w-full lg-1242:w-[65%]">

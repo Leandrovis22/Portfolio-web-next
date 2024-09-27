@@ -83,7 +83,7 @@ const Contact = () => {
 
   return (
 
-    <div className=''>
+    <div id='contact' className=''>
       <h6 className="pt-8 pb-12 md-840:pb-0 text-accent text-center text-3xl flex-shrink-0">
         Contacto
       </h6>

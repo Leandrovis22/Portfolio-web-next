@@ -127,7 +127,7 @@ export function SkillIcons() {
         <h3 className="pt-8 lg:pt-0 pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
         <Card className="card hover:bg-ui overflow-hidden mx-auto max-w-[900px]">
 
-          <div className="mb-8">
+          <div className="">
             <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div
                 className="flex flex-none animate-scroll-right"

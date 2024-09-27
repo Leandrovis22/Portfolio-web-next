@@ -11,14 +11,12 @@ function Home() {
   return (
     <>
           <Navbarcomponent />
-          {/* <About />
+          <About />
           <Skills />
-          <Certifications /> */}
+          <Certifications />
           <Proyects />
-          {/* <Contact />
-          */}
           <Contact />
-          <Footer /> 
+          <Footer />
       </>
   );
 }

@@ -10,53 +10,53 @@ import { Button } from "@nextui-org/react";
 export default function Certifications() {
   const certifications = [
     {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 1",
       date: "Enero 2023 - Mayo 2023, 250 horas",
       description: "Descripción de la certificación 1...",
       link: "https://certificado1.com", // Agrega el link aquí
     },
     {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 2",
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
     }, {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 3",
       date: "Enero 2023 - Mayo 2023, 250 horas",
       description: "Descripción de la certificación 1...",
       link: "https://certificado1.com", // Agrega el link aquí
     },
     {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 4",
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
     }, {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 5",
       date: "Enero 2023 - Mayo 2023, 250 horas",
       description: "Descripción de la certificación 1...",
       link: "https://certificado1.com", // Agrega el link aquí
     },
     {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 6",
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
       link: "https://certificado2.com", // Y aquí
     }, {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 7",
       date: "Enero 2023 - Mayo 2023, 250 horas",
       description: "Descripción de la certificación 1...",
       link: "https://certificado1.com", // Agrega el link aquí
     },
     {
-      imageUrl: "/map.png",
+      imageUrl: "/maplight.png",
       title: "Certificación 8",
       date: "Febrero 2023 - Junio 2023, 200 horas",
       description: "Descripción de la certificación 2",
