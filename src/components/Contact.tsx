@@ -32,7 +32,7 @@ const AspectRatioBox = ({ children, className, justifyClass }) => (
         <div
           className={`
 
-
+            ${justifyClass}
 
             flex items-center justify-center w-full h-full max-h max-w aspect-[346/400] sm-570:aspect-auto
 
@@ -94,14 +94,14 @@ const Contact = ( {data} : ContactProps ) => {
         Contacto
       </h6>
 
-      <div className="w-full h-full py-4 px-8 sm-570:px-4 md-840:h-[calc(100vh-6.5rem-96.2px)] ">
-        <div className="h-full w-full flex gap-4 sm-570:flex-row flex-col">
+      <div className="w-full h-full py-4 px-8 sm-570:px-4 md-840:h-[calc(100vh-6.5rem-96.2px)] flex justify-center">
+        <div className="h-full w-full flex gap-4 sm-570:flex-row flex-col xl:w-[1160px]">
           <AspectRatioBox className="flex-1" justifyClass="justify-end">
 
 
 
 
-            <Card className="card w-full h-full sm-570:max-w-[445px] sm-570:max-h-[514px] flex flex-col justify-center items-center p-4">
+            <Card className="card w-full h-full sm-570:max-w-[373px] sm-570:max-h-[431px] flex flex-col justify-center items-center p-4">
               <div className="relative w-full h-full overflow-hidden rounded-3xl">
                 <Image
                   src={imageSrc}
@@ -170,7 +170,7 @@ const Contact = ( {data} : ContactProps ) => {
 
 
 
-            <Card className="card w-full h-full sm-570:max-w-[445px] sm-570:max-h-[514px] flex flex-col p-4 justify-center items-center">
+            <Card className="card w-full h-full sm-570:max-w-[373px] sm-570:max-h-[431px] flex flex-col p-4 justify-center items-center">
               <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
               <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
                 <Input

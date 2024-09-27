@@ -20,7 +20,7 @@ export default function About({ data }: AboutProps) {
       <section id="about" className="text-base lg:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
         <div className="h-full w-full max-w-full">
 
-          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 px-[3%] pt-[3%] lg:pt-0">
+          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 px-[3%] lg:px-[9%] pt-[3%] lg:pt-0">
 
             <div className="content-center h-full text-center lg:text-left lg:w-full order-2 lg:order-none">
               <h1 className="text-fluid-3xl mb-[0.9rem]">
