@@ -1,5 +1,5 @@
-"use client"
 // src/components/Footer.tsx
+"use client"
 import React from 'react';
 import { Card } from "@nextui-org/react";
 import { onLoop } from './sub-components/FooterTextAnimation';
@@ -20,7 +20,15 @@ const AnimatedText = onLoop<AnimatedTextProps>(React.forwardRef<HTMLSpanElement,
     )
 ));
 
-const Footer: React.FC = ( ) => {
+// Define the structure for the FooterProps
+interface FooterProps {
+    data: {
+        // Define la estructura de data.footer según lo necesites
+    };
+}
+
+// Update the Footer component to accept props
+const Footer: React.FC<FooterProps> = ({ data }) => {
     const words = ["Framer Motion.", "Next.js.", "❤️", "Pasión.", "Dedicación."];
     return (
         <footer>

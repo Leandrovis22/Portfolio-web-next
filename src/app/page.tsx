@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { getData } from '@/lib/data';
 import Proyects from '@/components/Proyects';
 import Certifications from '@/components/Certifications';
@@ -16,13 +15,11 @@ export default async function Home() {
   return (
     <>
       <Navbarcomponent />
-      <Suspense fallback={<div>Loading...</div>}>
-        <About data={data.about} />
-        <Skills data={data.skills} />
-        <Certifications data={data.certifications} />
-        <Proyects data={data.projects} />
-        <Contact data={data.contact} />
-      </Suspense>
+      <About data={data.about} />
+      <Skills data={data.skills} />
+      <Certifications data={data.certifications} />
+      <Proyects data={data.projects} />
+      <Contact data={data.contact} />
       <Footer data={data.footer} />
     </>
   );
