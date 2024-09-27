@@ -128,13 +128,18 @@ const Contact = () => {
                   ariaLabel="Descargar CV"
                   isSmallScreen={false}
                 />
-                <ResponsiveButton
-                  icon={IoIosMail}
-                  text={buttonText}
+
+                <Button
+                  variant="ghost"
+                  className={`flex items-center justify-start gap-2 h-full min-h-[60px] px-3`}
+                  radius="full"
+                  aria-label="Correo"
                   onClick={copyToClipboard}
-                  ariaLabel="Correo"
-                  isSmallScreen={false}
-                />
+                  startContent={<IoIosMail size={50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
+                >
+                  <p className={`w-[219.78px] text-[1rem] lg:w-[247.25px] sm:text-base lg:text-lg xl:text-xl md-840:truncate`}>{buttonText}</p>
+                </Button>
+
                 <ResponsiveButton
                   icon={BsLinkedin}
                   text="leandroviscolungo"
@@ -232,13 +237,20 @@ const Contact = () => {
             ariaLabel="Descargar CV"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
-          <ResponsiveButton
-            icon={IoIosMail}
-            text={buttonText}
+
+          <Button
+            variant="ghost"
+            className="flex items-center justify-start gap-2 h-full min-h-[60px] px-3"
+            radius="full"
+            aria-label="Correo"
             onClick={copyToClipboard}
-            ariaLabel="Correo"
-            isSmallScreen={true} // Cambia según el tamaño de pantalla real
-          />
+            startContent={<IoIosMail size={34} />}
+          >
+            <p className="w-[219.78px] text-[1rem] sm:text-base lg:text-lg xl:text-xl overflow-hidden whitespace-nowrap text-ellipsis">
+              {buttonText}
+            </p>
+          </Button>
+
           <ResponsiveButton
             icon={BsLinkedin}
             text="leandroviscolungo"

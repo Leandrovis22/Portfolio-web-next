@@ -5,19 +5,16 @@
 import type { ComponentType } from "react"
 import { useEffect, useState, useRef } from "react"
 
-// Loop only
-const loopDelay = 700
-const initDelay = 100
-
-// Do not configure
+const WORD_DISPLAY_TIME = 4000; // 5 seconds
+const ANIMATION_SPEED = 100; // 50ms between each letter reveal
 const letters = "abcdefghijklmnopqrstuvwxyz-.,+*!?@&%/="
 
 export function onLoop(Component): ComponentType {
     return (props) => {
-        const words = props.words;  // Añadimos las palabras desde las props
+        const words = props.words;
         const [currentWordIndex, setCurrentWordIndex] = useState(0);
         const [iteration, setIteration] = useState(0);
-        const [delayTime, setDelayTime] = useState(loopDelay);
+        const [isFullyRevealed, setIsFullyRevealed] = useState(false);
         const intersectionRef = useRef(null);
 
         const encrypt = (iteration: number, word: string) => {
@@ -26,7 +23,6 @@ export function onLoop(Component): ComponentType {
 
             for (let i = 0; i < length; i++) {
                 const letter = word[i];
-
                 if (i < iteration) {
                     result += letter;
                 } else {
@@ -34,34 +30,54 @@ export function onLoop(Component): ComponentType {
                 }
             }
 
-            if (iteration >= length) {
-                setTimeout(() => {
-                    setIteration(0);
-                    setCurrentWordIndex((prev) => (prev + 1) % words.length);  // Cambiamos a la siguiente palabra
-                }, delayTime);
-            }
-
             return result;
         };
 
         useEffect(() => {
-            let interval = null;
+            let animationInterval: NodeJS.Timeout | null = null;
+            let displayTimeout: NodeJS.Timeout | null = null;
 
-            interval = setTimeout(() => {
-                setIteration((prev) => prev + 1);
-                interval = setInterval(() => {
-                    setIteration((prev) => prev + 1);
-                }, 50);
-            }, initDelay);
+            const animate = () => {
+                setIteration((prev) => {
+                    if (prev >= words[currentWordIndex].length) {
+                        // Word is fully revealed
+                        setIsFullyRevealed(true);
+                        if (animationInterval) clearInterval(animationInterval);
+                        return prev;
+                    }
+                    return prev + 1;
+                });
+            };
 
-            return () => clearInterval(interval);
-        }, [currentWordIndex]);
+            const moveToNextWord = () => {
+                setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+                setIteration(0);
+                setIsFullyRevealed(false);
+            };
+
+            // Start the animation
+            animationInterval = setInterval(animate, ANIMATION_SPEED);
+
+            // Set up the timeout for moving to the next word
+            displayTimeout = setTimeout(() => {
+                moveToNextWord();
+            }, WORD_DISPLAY_TIME + (words[currentWordIndex].length * ANIMATION_SPEED));
+
+            return () => {
+                if (animationInterval) clearInterval(animationInterval);
+                if (displayTimeout) clearTimeout(displayTimeout);
+            };
+        }, [currentWordIndex, words]);
+
+        const encryptedText = encrypt(iteration, words[currentWordIndex]);
+        const textClass = !isFullyRevealed ? "text-accent" : ""; // Aplica la clase si no está completamente revelado
 
         return (
             <Component
                 ref={intersectionRef}
                 {...props}
-                text={encrypt(iteration, words[currentWordIndex])}  // Pasamos la palabra actual
+                text={isFullyRevealed ? words[currentWordIndex] : encryptedText}
+                textClass={textClass} // Pasa la clase como prop
             />
         );
     };
