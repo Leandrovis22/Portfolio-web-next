@@ -20,7 +20,7 @@ export default function Navbarcomponent() {
 
   const menuItems = [
     { name: "Sobre mí", id: "about" },
-    { name: "Habilidades", id: "skills" },
+    { name: "Habilidades", id: "skills" }, // 4rem offset
     { name: "Certificaciones", id: "certifications", offset: -39 }, // 4rem offset
     { name: "Proyectos", id: "projects", offset: -39 }, // 4rem offset
     { name: "Contacto", id: "contact", offset: -39 },

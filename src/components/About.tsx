@@ -8,14 +8,12 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    //<Gradient
-    // gradientBackgroundStart="rgb(0, 0, 0)"
-    // gradientBackgroundEnd="rgb(0, 11, 50)"
-    //>
+    <Gradient
+    >
       <section id="about" className="text-base lg:h-screen font-primary relative pt-[4rem] -mt-[4rem] content-center" style={{ zIndex: '1' }}>
         <div className="h-full w-full max-w-full"> 
 
-          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 px-[3%]">
+          <div className="h-full flex flex-col lg:flex-row items-center justify-center lg:gap-16 px-[3%] pt-[3%] lg:pt-0">
 
             <div className="content-center h-full text-center lg:text-left lg:w-full order-2 lg:order-none">
               <h1 className="text-fluid-3xl mb-[0.9rem]">
@@ -39,9 +37,6 @@ export default function About() {
                   Descargar CV
                   <FiDownload className="text-xl" />
                 </Button>
-                <div className="mb-8 lg:mb-0">
-                  {/* Social component can go here */}
-                </div>
               </div>
             </div>
 
@@ -54,6 +49,6 @@ export default function About() {
 
         </div>
       </section>
-    //</Gradient>
+    </Gradient>
   );
 }

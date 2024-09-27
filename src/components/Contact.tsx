@@ -84,7 +84,7 @@ const Contact = () => {
   return (
 
     <div id='contact' className=''>
-      <h6 className="pt-8 pb-12 md-840:pb-0 text-accent text-center text-3xl flex-shrink-0">
+      <h6 className="md-840:pt-8 pb-6 md-840:pb-0 text-accent text-center text-3xl flex-shrink-0">
         Contacto
       </h6>
 
@@ -137,7 +137,7 @@ const Contact = () => {
                   onClick={copyToClipboard}
                   startContent={<IoIosMail size={50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
                 >
-                  <p className={`w-[219.78px] text-[1rem] lg:w-[247.25px] sm:text-base lg:text-lg xl:text-xl md-840:truncate`}>{buttonText}</p>
+                  <p className={`w-[219.78px] text-[1rem] lg:w-[247.25px] sm:text-base lg:text-lg xl:text-xl xl:w-[274.78px] md-840:truncate`}>{buttonText}</p>
                 </Button>
 
                 <ResponsiveButton
@@ -192,12 +192,17 @@ const Contact = () => {
                   onChange={(e) => setMensaje(e.target.value)}
                   required
                   disableAutosize
-                  className="!h-full"
+                  className="!h-[2.5rem] xs-328:!h-full"
                   classNames={{
-                    inputWrapper: "!h-full",
+                    inputWrapper: "!h-[2.5rem] xs-328:!h-full",
                     base: "!mt-[16px]",
-                    input: "!h-full",
+                    input: "!h-[2.5rem] xs-328:!h-full",
                   }}
+
+
+                 
+
+
                 />
                 {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
                 <Input
@@ -208,7 +213,7 @@ const Contact = () => {
                   placeholder="Dejar vacío"
                 />
               </div>
-              <div className="mt-4 flex justify-center w-full">
+              <div className="mt-2 xs-328:mt-4 flex justify-center w-full">
                 <Button
                   type="submit"
                   color="primary"
@@ -246,7 +251,7 @@ const Contact = () => {
             onClick={copyToClipboard}
             startContent={<IoIosMail size={34} />}
           >
-            <p className="w-[219.78px] text-[1rem] sm:text-base lg:text-lg xl:text-xl overflow-hidden whitespace-nowrap text-ellipsis">
+            <p className="w-[219.78px] text-[1rem] sm:text-base lg:text-lg xl:text-xl xl:w-[274.78px] overflow-hidden whitespace-nowrap text-ellipsis">
               {buttonText}
             </p>
           </Button>

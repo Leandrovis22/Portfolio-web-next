@@ -95,7 +95,7 @@ export default function Certifications() {
 
   return (
     <div id="certifications" className="">
-      <h4 className="pt-8 pb-12 text-accent text-center text-3xl">
+      <h4 className="md-840:pt-8 pb-6 md-840:pb-12 text-accent text-center text-3xl">
         Formación & Certificaciones
       </h4>
 

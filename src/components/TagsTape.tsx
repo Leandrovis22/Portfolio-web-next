@@ -18,9 +18,9 @@ export const TagsTape = () => {
   }, []);
 
   return (
-    <div className="py-8 lg:py-16 overflow-hidden">
+    <div className="py-8 xl:py-16 overflow-hidden">
 
-      <Card className="card !p-clamp-tagtape -rotate-3 -mx-1" style={{ borderRadius: 0 }}>
+      <Card className="card -rotate-3 -mx-1" style={{ borderRadius: 0 }}>
 
         <div className="flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div
@@ -34,10 +34,10 @@ export const TagsTape = () => {
           >
             {[...words, ...words].map((word, index) => (
               <div key={`${word}-${index}`} className="inline-flex gap-4 items-center">
-                <span className="text-text font-extrabold text-fluid-sm whitespace-nowrap">
+                <span className="text-text font-extrabold text-sm whitespace-nowrap">
                   {word}
                 </span>
-                <span className="text-fluid-sm text-text -rotate-12">🏆</span>
+                <span className="size-6 text-text -rotate-12">🏆</span>
               </div>
             ))}
           </div>
