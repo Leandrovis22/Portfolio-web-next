@@ -5,9 +5,8 @@ import Certifications from '@/components/Certifications';
 import Navbarcomponent from '@/components/Navbar';
 import About from '@/components/About';
 import Skills from '@/components/Skills';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Component from '@/components/componenttest';
+import Contact from '@/components/Contact';
 function Home() {
   return (
     <>
@@ -18,7 +17,7 @@ function Home() {
           <Proyects />
           {/* <Contact />
           */}
-          <Component />
+          <Contact />
           <Footer /> 
       </>
   );

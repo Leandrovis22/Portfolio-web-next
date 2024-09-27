@@ -1,252 +1,264 @@
-"use client";
+// src/components/componenttest.tsx
 
-import { Button, Card, Input, Textarea } from "@nextui-org/react";
-import Image from "next/image";
-import { FaLocationDot } from "react-icons/fa6";
-import { FiDownload } from "react-icons/fi";
-import { IoIosMail } from "react-icons/io";
-import { useState } from "react";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { useTheme } from "next-themes";
-import EmailCopyButton from "./sub-components/EmailButton";
-import Footer from "./Footer";
+"use client"
 
-export default function Contact() {
-
-    const { theme } = useTheme(); // Obtiene el tema actual
-
-    const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
-
-    const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
-
-    const [nombre, setNombre] = useState('');
-    const [email, setEmail] = useState('');
-    const [mensaje, setMensaje] = useState('');
-    const [botField, setBotField] = useState(''); // Honeypot field
-    const [errors, setErrors] = useState({
-        nombre: '',
-        email: '',
-        mensaje: ''
-    });
-
-    const copyToClipboard = () => {
-        const email = "leandroviscolungo@gmail.com";
-        navigator.clipboard.writeText(email)
-            .then(() => {
-                setButtonText("¡Correo copiado!");
-                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-            })
-            .catch(() => {
-                setButtonText("Error al copiar");
-                setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-            });
-    };
+import { Button, Card, Input, Textarea } from '@nextui-org/react';
+import { useTheme } from 'next-themes';
+import React, { useState } from 'react';
+import { FaLocationDot } from 'react-icons/fa6';
+import Image from 'next/image';
+import { FiDownload } from 'react-icons/fi';
+import { BsLinkedin, BsGithub } from 'react-icons/bs';
+import { IoIosMail } from 'react-icons/io';
 
 
-    const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(email);
-    };
+const ResponsiveButton = ({ icon: Icon, text, onClick, ariaLabel, isSmallScreen }) => (
+  <Button
+    variant="ghost"
+    className={`flex items-center justify-start gap-2 w-fit h-full min-h-[60px] px-3 ${isSmallScreen ? 'min-w-[5rem]' : ''}`}
+    radius="full"
+    aria-label={ariaLabel}
+    onClick={onClick}
+    startContent={<Icon size={isSmallScreen ? 34 : 50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
+  >
+    <p className={`text-[1rem] sm:text-base lg:text-lg xl:text-xl md-840:truncate ${isSmallScreen ? 'text-lg' : ''}`}>{text}</p>
+  </Button>
+);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-
-        let valid = true;
-        let newErrors = { nombre: '', email: '', mensaje: '' };
-
-        if (botField) {
-            console.log('Bot detectado');
-            return;
-        }
-
-        if (!nombre) {
-            newErrors.nombre = 'El nombre es obligatorio';
-            valid = false;
-        }
-        if (!email) {
-            newErrors.email = 'El correo es obligatorio';
-            valid = false;
-        } else if (!validateEmail(email)) {
-            newErrors.email = 'El correo no es válido';
-            valid = false;
-        }
-        if (!mensaje) {
-            newErrors.mensaje = 'El mensaje es obligatorio';
-            valid = false;
-        }
-
-        if (!valid) {
-            setErrors(newErrors);
-            return;
-        }
-
-        console.log('Formulario enviado:', { nombre, email, mensaje });
-    };
-
-    return (
-        <div id="contact" className="lg-1080:h-screen-footer relative overflow-x-clip flex flex-col flex-grow">
-
-            {/* <div className="absolute h-[400px] w-[1600px] bottom-[-4rem] left-1/2 -translate-x-1/2 dark:bg-secondary [mask-image:radial-gradient(64%_78%_at_bottom_center,black,transparent)] z-0"></div>
- */}
-
-            <div className="flex-1">
-
-                <div className="flex flex-col h-full">
-
-                    <h6 className="pt-8 pb-12 lg-1080:pb-0 text-accent text-center text-3xl flex-shrink-0">
-                        Contacto
-                    </h6>
-
-                    <div className="bg-secondary  items-center justify-center flex flex-col sm-590:flex-row flex-grow h-full w-full gap-5 z-10 px-4 lg-1080:px-[5%]">
-
-                        <div className="flex sm-590:justify-end justify-center items-center h-[80%]">
-
-                            <div className="w-full h-full max-h-[600px] aspect-[346/400]">
+const AspectRatioBox = ({ children, className, justifyClass }) => (
+  <div className={`relative w-full h-full ${className}`}>
+    <div className="md-840:absolute inset-0">
+      <div className={`w-full h-full flex items-center ${justifyClass}`}>
+        <div
+          className={`
 
 
-                                <Card className="card w-full h-full flex flex-col justify-center items-center p-4">
-                                    <div className="relative w-full h-full overflow-hidden rounded-3xl">
-                                        <Image
-                                            src={imageSrc}
-                                            alt="map image"
-                                            layout="fill"
-                                            objectFit="cover"
-                                            className="rounded-3xl"
-                                        />
-                                    </div>
 
-                                    <p className="text-text text-sm pt-4 text-center flex items-center justify-center">
-                                        <FaLocationDot className="text-text text-xl mr-1" />
-                                        Santa Fe, La Capital, Argentina
-                                    </p>
-                                </Card>
-                            </div>
-
-                        </div>
+            flex items-center justify-center w-full h-full max-h max-w aspect-[346/400] sm-570:aspect-auto
 
 
-                        <div className="px-4 lg-1080:px-0 items-center justify-center hidden lg-1080:flex">
-                            <div className="flex items-center flex-col gap-5 w-fit">
-                                <div className="flex gap-4">
-                                    <Button variant="ghost" className="flex items-center gap-2 w-fit h-full min-h-[60px]" radius="full" aria-label="Linkedin">
-                                        <div className="size-[2.6rem] items-center content-center justify-center flex">
-                                            <FiDownload className="size-[2.2rem]" /></div> <p className="text-fluid-lg">Descargar CV</p>
-                                    </Button>
-                                </div>
-                                <Button
-                                    variant="ghost"
-                                    className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]"
-                                    radius="full"
-                                    aria-label="Correo"
-                                    onClick={copyToClipboard}
-                                >
-                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><IoIosMail className="size-[2.4rem]" /></div> <p className="text-fluid-lg">{buttonText}</p>
-                                </Button>
-                                <Button variant="ghost" className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
-                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-fluid-lg">leandroviscolungo</p>
-                                </Button>
-                                <Button variant="ghost" className="h-full flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
-                                    <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-fluid-lg">Leandrovis22</p>
-                                </Button>
-                            </div>
-                        </div>
+            sm-570:h-[414px] sm-570:max-h-[calc((100vw-4rem)*400/346/2)] sm-570:max-w-[calc((100vh)*346/400)]
+            md-840:h-full md-840:max-h-[calc((100vw-4rem)*400/346/3)] md-840:max-w-[calc((100vh-6.5rem-96.2px-2rem)*346/400)]
+          `}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const Contact = () => {
 
 
-{/* <div className="flex-1 flex sm-590:justify-start justify-center items-center min-w-0">
-                    <div className="w-full max-w-[346px] 2xl:max-w-[470px] aspect-[0.9]"> */}
+  const { theme } = useTheme(); // Obtiene el tema actual
 
-                        <div className="flex-1 lg-1080:flex-none flex sm-590:justify-start justify-center items-center min-w-0 lg-1080:h-[80%]">
-                            <div className="w-full lg-1080:h-full max-w-[346px] lg-1080:max-w-none aspect-[346/400] lg-1080:max-h-[600px]">
+  const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
 
-                                <Card className="card w-full h-full flex flex-col p-4 justify-center items-center">
-                                    <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
-                                    <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
-                                        <Input
-                                            type="text"
-                                            placeholder="Nombre"
-                                            value={nombre}
-                                            onChange={(e) => setNombre(e.target.value)}
-                                            required
-                                        />
-                                        {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
-                                        <Input
-                                            type="email"
-                                            placeholder="Correo Electrónico"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                            classNames={{
-                                                base: "!mt-[16px]",
-                                            }}
-                                        />
-                                        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                                        <Textarea
-                                            placeholder="Mensaje"
-                                            value={mensaje}
-                                            onChange={(e) => setMensaje(e.target.value)}
-                                            required
-                                            disableAutosize
-                                            className="!h-full"
-                                            classNames={{
-                                                inputWrapper: "!h-full",
-                                                base: "!mt-[16px]",
-                                                input: "!h-full",
-                                            }}
-                                        />
-                                        {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
-                                        <Input
-                                            type="text"
-                                            className="hidden"
-                                            value={botField}
-                                            onChange={(e) => setBotField(e.target.value)}
-                                            placeholder="Dejar vacío"
-                                        />
-                                    </div>
-                                    <div className="mt-4 flex justify-center w-full">
-                                        <Button
-                                            type="submit"
-                                            color="primary"
-                                            variant="shadow"
-                                            size="lg"
-                                            className="uppercase w-1/2"
-                                        >
-                                            Enviar
-                                        </Button>
-                                    </div>
-                                </Card>
-                            </div>
+  const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
 
-                        </div>
+  const [nombre, setNombre] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const [botField, setBotField] = useState(''); // Honeypot field
+  const [errors, setErrors] = useState({
+    nombre: '',
+    email: '',
+    mensaje: ''
+  });
+
+  const copyToClipboard = () => {
+    const email = "leandroviscolungo@gmail.com";
+    navigator.clipboard.writeText(email)
+      .then(() => {
+        setButtonText("¡Correo copiado!");
+        setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
+      })
+      .catch(() => {
+        setButtonText("Error al copiar");
+        setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
+      });
+  };
 
 
-                    </div>
+  return (
 
-                    {/* botones en small */}
+    <div className=''>
+      <h6 className="pt-8 pb-12 md-840:pb-0 text-accent text-center text-3xl flex-shrink-0">
+        Contacto
+      </h6>
 
-                    <div className=" lg-1080:hidden py-[1.25rem] flex justify-center flex-wrap flex-row gap-5 w-fit">
-                        <div className="flex gap-4">
-                            <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-h-[60px]" radius="full" aria-label="Linkedin">
-                                <div className="size-[2.6rem] items-center content-center justify-center flex">
-                                    <FiDownload className="size-[2.2rem]" /></div> <p className="text-lg">Descargar CV</p>
-                            </Button>
-                        </div>
-                        <EmailCopyButton emailId="myEmailId" />
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Linkedin">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsLinkedin className="size-[1.9rem]" /> </div> <p className="text-lg">leandroviscolungo</p>
-                        </Button>
-                        <Button variant="ghost" className="size-[5rem] flex items-center gap-2 w-fit min-w-[60px] min-h-[60px]" radius="full" aria-label="Github">
-                            <div className="size-[2.6rem] items-center content-center justify-center flex"><BsGithub className="size-[2.2rem]" /> </div> <p className="text-lg">Leandrovis22</p>
-                        </Button>
-                    </div>
-
-                </div>
+      <div className="w-full h-full py-4 px-8 sm-570:px-4 md-840:h-[calc(100vh-6.5rem-96.2px)] ">
+        <div className="h-full w-full flex gap-4 sm-570:flex-row flex-col">
+          <AspectRatioBox className="flex-1" justifyClass="justify-end">
 
 
+
+
+            <Card className="card w-full h-full sm-570:max-w-[445px] sm-570:max-h-[514px] flex flex-col justify-center items-center p-4">
+              <div className="relative w-full h-full overflow-hidden rounded-3xl">
+                <Image
+                  src={imageSrc}
+                  alt="map image"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-3xl"
+                />
+              </div>
+
+              <p className="text-text text-sm pt-4 text-center flex items-center justify-center">
+                <FaLocationDot className="text-text text-xl mr-1" />
+                Santa Fe, La Capital, Argentina
+              </p>
+            </Card>
+
+
+
+          </AspectRatioBox>
+          <AspectRatioBox className="flex-1 hidden md-840:block" justifyClass="justify-center">
+
+
+
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="flex flex-col gap-3 w-full max-w-md items-center">
+                <ResponsiveButton
+                  icon={FiDownload}
+                  text="Descargar CV"
+                  onClick={null}
+                  ariaLabel="Descargar CV"
+                  isSmallScreen={false}
+                />
+                <ResponsiveButton
+                  icon={IoIosMail}
+                  text={buttonText}
+                  onClick={copyToClipboard}
+                  ariaLabel="Correo"
+                  isSmallScreen={false}
+                />
+                <ResponsiveButton
+                  icon={BsLinkedin}
+                  text="leandroviscolungo"
+                  onClick={null}
+                  ariaLabel="Linkedin"
+                  isSmallScreen={false}
+                />
+                <ResponsiveButton
+                  icon={BsGithub}
+                  text="Leandrovis22"
+                  onClick={null}
+                  ariaLabel="Github"
+                  isSmallScreen={false}
+                />
+              </div>
             </div>
 
 
+          </AspectRatioBox>
+          <AspectRatioBox className="flex-1" justifyClass="justify-start">
+
+
+
+
+            <Card className="card w-full h-full sm-570:max-w-[445px] sm-570:max-h-[514px] flex flex-col p-4 justify-center items-center">
+              <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
+              <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
+                <Input
+                  type="text"
+                  placeholder="Nombre"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  required
+                />
+                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
+                <Input
+                  type="email"
+                  placeholder="Correo Electrónico"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  classNames={{
+                    base: "!mt-[16px]",
+                  }}
+                />
+                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                <Textarea
+                  placeholder="Mensaje"
+                  value={mensaje}
+                  onChange={(e) => setMensaje(e.target.value)}
+                  required
+                  disableAutosize
+                  className="!h-full"
+                  classNames={{
+                    inputWrapper: "!h-full",
+                    base: "!mt-[16px]",
+                    input: "!h-full",
+                  }}
+                />
+                {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
+                <Input
+                  type="text"
+                  className="hidden"
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                  placeholder="Dejar vacío"
+                />
+              </div>
+              <div className="mt-4 flex justify-center w-full">
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="shadow"
+                  size="lg"
+                  className="uppercase w-1/2"
+                >
+                  Enviar
+                </Button>
+              </div>
+            </Card>
+
+
+
+          </AspectRatioBox>
+        </div>
+      </div>
+
+      <div className="sm-570:px-4 pb-4 w-full h-full flex items-center md-840:hidden">
+        <div className="flex-wrap justify-center flex flex-col sm-570:flex-row gap-3 w-full items-center">
+
+          <ResponsiveButton
+            icon={FiDownload}
+            text="Descargar CV"
+            onClick={null}
+            ariaLabel="Descargar CV"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={IoIosMail}
+            text={buttonText}
+            onClick={copyToClipboard}
+            ariaLabel="Correo"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={BsLinkedin}
+            text="leandroviscolungo"
+            onClick={null}
+            ariaLabel="Linkedin"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
+          <ResponsiveButton
+            icon={BsGithub}
+            text="Leandrovis22"
+            onClick={null}
+            ariaLabel="Github"
+            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+          />
 
         </div>
+      </div>
 
-    );
-}
+    </div>
+  );
+};
+
+export default Contact;
