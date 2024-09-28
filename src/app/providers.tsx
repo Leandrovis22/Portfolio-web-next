@@ -4,20 +4,34 @@ import { useEffect, useState } from "react";
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export default function Providers({children}: { children: React.ReactNode }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [theme, setTheme] = useState<string | undefined>(undefined);
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // 'dark' como tema predeterminado
+    setTheme(savedTheme);
+    document.documentElement.classList.add(savedTheme); // Aplica el tema al HTML
     setIsMounted(true);
   }, []);
 
   if (!isMounted) {
-    return null; // Evita renderizar hasta que el componente esté montado
+    return <div className="">
+
+      <div className="h-screen relative bg-background text-text bg-[length:61px] dark:bg-grid-white/[0.02] bg-grid-black/[0.02]"></div>
+      <div
+        className="fixed inset-0 w-full h-full bg-repeat pointer-events-none z-[9999] opacity-[0.13] bg-[url('/Static.png')] bg-[length:64px]"
+        style={{
+          backgroundImage: 'url(/Static.png)',
+          backgroundSize: '64px',
+        }} />
+
+    </div>;
   }
 
   return (
     <NextUIProvider>
-      <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+      <NextThemesProvider attribute="class" defaultTheme={theme} enableSystem={false} disableTransitionOnChange>
         {children}
       </NextThemesProvider>
     </NextUIProvider>

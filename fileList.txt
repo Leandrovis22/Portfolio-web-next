@@ -1,9 +1,4 @@
 
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.git\ORIG_HEAD
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.git\refs\heads\fontsizes
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.git\refs\heads\master
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.git\refs\remotes\origin\fontsizes
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.git\refs\remotes\origin\master
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.gitignore
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.vscode\settings.json
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\generatetxt.js
@@ -45,8 +40,10 @@ C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\Photo.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\ProyectGrid.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\SkillIcons.tsx
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\TypingEffect.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\TagsTape.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\ThemeButton.tsx
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\data.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\use-outside-click.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\utils.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\tailwind.config.ts

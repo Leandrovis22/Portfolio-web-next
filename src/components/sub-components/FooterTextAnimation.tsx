@@ -2,76 +2,76 @@
 
 "use client"
 
-import React, { useEffect, useState, useRef, forwardRef } from "react"
-import type { ComponentType } from "react"
+import React, { useEffect, useState, useRef, forwardRef } from "react";
+import type { ComponentType } from "react";
 
 const WORD_DISPLAY_TIME = 4000; // 4 seconds
 const ANIMATION_SPEED = 100; // 100ms between each letter reveal
-const letters = "abcdefghijklmnopqrstuvwxyz-.,+*!?@&%/="
+const letters = "abcdefghijklmnopqrstuvwxyz-.,+*!?@&%/=";
 
 export function onLoop<P extends object>(Component: ComponentType<P>) {
   return forwardRef<HTMLElement, P & { words: string[] }>((props, ref) => {
-    const { words, ...rest } = props;
-    const [currentWordIndex, setCurrentWordIndex] = useState(0);
-    const [iteration, setIteration] = useState(0);
-    const [isFullyRevealed, setIsFullyRevealed] = useState(false);
-    const intersectionRef = useRef<HTMLElement | null>(null);
+      const { words, ...rest } = props;
+      const [currentWordIndex, setCurrentWordIndex] = useState(0);
+      const [iteration, setIteration] = useState(0);
+      const [isFullyRevealed, setIsFullyRevealed] = useState(false);
+      const intersectionRef = useRef<HTMLElement | null>(null);
 
-    const encrypt = (iteration: number, word: string) => {
-      return word.split('').map((char, index) =>
-        index < iteration ? char : letters[Math.floor(Math.random() * letters.length)]
-      ).join('');
-    };
-
-    useEffect(() => {
-      let animationInterval: NodeJS.Timeout | null = null;
-      let displayTimeout: NodeJS.Timeout | null = null;
-
-      const animate = () => {
-        setIteration((prev) => {
-          if (prev >= words[currentWordIndex].length) {
-            setIsFullyRevealed(true);
-            if (animationInterval) clearInterval(animationInterval);
-            return prev;
-          }
-          return prev + 1;
-        });
+      const encrypt = (iteration: number, word: string) => {
+          return word.split('').map((char, index) =>
+              index < iteration ? char : letters[Math.floor(Math.random() * letters.length)]
+          ).join('');
       };
 
-      const moveToNextWord = () => {
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-        setIteration(0);
-        setIsFullyRevealed(false);
-      };
+      useEffect(() => {
+          let animationInterval: NodeJS.Timeout | null = null;
+          let displayTimeout: NodeJS.Timeout | null = null;
 
-      animationInterval = setInterval(animate, ANIMATION_SPEED);
-      displayTimeout = setTimeout(moveToNextWord, WORD_DISPLAY_TIME + (words[currentWordIndex].length * ANIMATION_SPEED));
+          const animate = () => {
+              setIteration((prev) => {
+                  if (prev >= words[currentWordIndex].length) {
+                      setIsFullyRevealed(true);
+                      if (animationInterval) clearInterval(animationInterval);
+                      return prev;
+                  }
+                  return prev + 1;
+              });
+          };
 
-      return () => {
-        if (animationInterval) clearInterval(animationInterval);
-        if (displayTimeout) clearTimeout(displayTimeout);
-      };
-    }, [currentWordIndex, words]);
+          const moveToNextWord = () => {
+              setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+              setIteration(0);
+              setIsFullyRevealed(false);
+          };
 
-    const encryptedText = encrypt(iteration, words[currentWordIndex]);
-    const textClass = !isFullyRevealed ? "text-accent" : "";
+          animationInterval = setInterval(animate, ANIMATION_SPEED);
+          displayTimeout = setTimeout(moveToNextWord, WORD_DISPLAY_TIME + (words[currentWordIndex].length * ANIMATION_SPEED));
 
-    return (
-      <Component
-        ref={(node: HTMLElement | null) => {
-          // Forward the ref to both the internal ref and the one passed from the parent
-          intersectionRef.current = node;
-          if (typeof ref === 'function') {
-            ref(node);
-          } else if (ref) {
-            (ref as React.MutableRefObject<HTMLElement | null>).current = node;
-          }
-        }}
-        {...rest as P}
-        text={isFullyRevealed ? words[currentWordIndex] : encryptedText}
-        textClass={textClass}
-      />
-    );
+          return () => {
+              if (animationInterval) clearInterval(animationInterval);
+              if (displayTimeout) clearTimeout(displayTimeout);
+          };
+      }, [currentWordIndex, words]);
+
+      const encryptedText = encrypt(iteration, words[currentWordIndex]);
+      const textClass = !isFullyRevealed ? "text-accent" : "";
+
+      return (
+          <Component
+              ref={(node: HTMLElement | null) => {
+                  // Forward the ref to both the internal ref and the one passed from the parent
+                  intersectionRef.current = node;
+                  if (typeof ref === 'function') {
+                      ref(node);
+                  } else if (ref) {
+                      (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+                  }
+              }}
+              {...rest as P}
+              text={isFullyRevealed ? words[currentWordIndex] : encryptedText}
+              textClass={textClass}
+          />
+      );
   });
 }
 
@@ -122,12 +122,14 @@ export const OnAppear: React.FC<OnAppearProps> = ({
     if (!isVisible || !hasStarted) return;
 
     const timer = setTimeout(() => {
-      const interval = setInterval(() => {
+      const animateText = () => {
         setIteration((prev) => {
-          const newIteration = prev + 5 / 6;
+          const newIteration = prev + 1.3;
           return newIteration >= texto.length ? texto.length : newIteration;
         });
-      }, 20);
+      };
+
+      const interval = setInterval(animateText, 200);
 
       return () => clearInterval(interval);
     }, delaySegundos * 1000);
