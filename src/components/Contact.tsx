@@ -2,41 +2,50 @@
 
 "use client"
 
+import React, { useState } from 'react';
 import { Button, Card, Input, Textarea } from '@nextui-org/react';
 import { useTheme } from 'next-themes';
-import React, { useState } from 'react';
-import { FaLocationDot } from 'react-icons/fa6';
 import Image from 'next/image';
+import { FaLocationDot } from 'react-icons/fa6';
 import { FiDownload } from 'react-icons/fi';
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
 
+interface ResponsiveButtonProps {
+  icon: React.ElementType;
+  text: string;
+  onClick: () => void;
+  ariaLabel: string;
+  isSmallScreen: boolean;
+}
 
-const ResponsiveButton = ({ icon: Icon, text, onClick, ariaLabel, isSmallScreen }) => (
+const ResponsiveButton: React.FC<ResponsiveButtonProps> = ({ icon: Icon, text, onClick, ariaLabel, isSmallScreen }) => (
   <Button
     variant="ghost"
     className={`flex items-center justify-start gap-2 w-fit h-full min-h-[60px] px-3 ${isSmallScreen ? 'min-w-[5rem]' : ''}`}
     radius="full"
     aria-label={ariaLabel}
     onClick={onClick}
-    startContent={<Icon size={isSmallScreen ? 34 : 50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
+    startContent={<Icon size={isSmallScreen ? 34 : 50} />}
   >
     <p className={`text-[1rem] sm:text-base lg:text-lg xl:text-xl md-840:truncate ${isSmallScreen ? 'text-lg' : ''}`}>{text}</p>
   </Button>
 );
 
-const AspectRatioBox = ({ children, className, justifyClass }) => (
+interface AspectRatioBoxProps {
+  children: React.ReactNode;
+  className?: string;
+  justifyClass: string;
+}
+
+const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({ children, className, justifyClass }) => (
   <div className={`relative w-full h-full ${className}`}>
     <div className="md-840:absolute inset-0">
       <div className={`w-full h-full flex items-center ${justifyClass}`}>
         <div
           className={`
-
             ${justifyClass}
-
             flex items-center justify-center w-full h-full max-h max-w aspect-[346/400] sm-570:aspect-auto
-
-
             sm-570:h-[414px] sm-570:max-h-[calc((100vw-4rem)*400/346/2)] sm-570:max-w-[calc((100vh)*346/400)]
             md-840:h-full md-840:max-h-[calc((100vw-4rem)*400/346/3)] md-840:max-w-[calc((100vh-6.5rem-96.2px-2rem)*346/400)]
           `}
@@ -50,23 +59,19 @@ const AspectRatioBox = ({ children, className, justifyClass }) => (
 
 interface ContactProps {
   data: {
-    // Define la estructura de tus datos aquí
+    // Define the structure of your data here
   }
 }
 
-const Contact = ( {data} : ContactProps ) => {
-
-
-  const { theme } = useTheme(); // Obtiene el tema actual
-
+const Contact: React.FC<ContactProps> = ({ data }) => {
+  const { theme } = useTheme();
   const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
 
   const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
-
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [mensaje, setMensaje] = useState('');
-  const [botField, setBotField] = useState(''); // Honeypot field
+  const [botField, setBotField] = useState('');
   const [errors, setErrors] = useState({
     nombre: '',
     email: '',
@@ -86,6 +91,10 @@ const Contact = ( {data} : ContactProps ) => {
       });
   };
 
+
+  function handleDownloadCV(): void {
+    throw new Error('Function not implemented.');
+  }
 
   return (
 
@@ -130,7 +139,7 @@ const Contact = ( {data} : ContactProps ) => {
                 <ResponsiveButton
                   icon={FiDownload}
                   text="Descargar CV"
-                  onClick={null}
+                  onClick={handleDownloadCV}
                   ariaLabel="Descargar CV"
                   isSmallScreen={false}
                 />
@@ -149,14 +158,14 @@ const Contact = ( {data} : ContactProps ) => {
                 <ResponsiveButton
                   icon={BsLinkedin}
                   text="leandroviscolungo"
-                  onClick={null}
+                  onClick={() => window.open('https://www.linkedin.com/in/leandroviscolungo', '_blank', 'noopener,noreferrer')}
                   ariaLabel="Linkedin"
                   isSmallScreen={false}
                 />
                 <ResponsiveButton
                   icon={BsGithub}
                   text="Leandrovis22"
-                  onClick={null}
+                  onClick={() => window.open('https://github.com/Leandrovis22', '_blank', 'noopener,noreferrer')}
                   ariaLabel="Github"
                   isSmallScreen={false}
                 />
@@ -204,11 +213,6 @@ const Contact = ( {data} : ContactProps ) => {
                     base: "!mt-[16px]",
                     input: "!h-[2.5rem] xs-328:!h-full",
                   }}
-
-
-                 
-
-
                 />
                 {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
                 <Input
@@ -244,7 +248,7 @@ const Contact = ( {data} : ContactProps ) => {
           <ResponsiveButton
             icon={FiDownload}
             text="Descargar CV"
-            onClick={null}
+            onClick={handleDownloadCV}
             ariaLabel="Descargar CV"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
@@ -265,14 +269,14 @@ const Contact = ( {data} : ContactProps ) => {
           <ResponsiveButton
             icon={BsLinkedin}
             text="leandroviscolungo"
-            onClick={null}
+            onClick={() => window.open('https://www.linkedin.com/in/leandroviscolungo', '_blank', 'noopener,noreferrer')}
             ariaLabel="Linkedin"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
           <ResponsiveButton
             icon={BsGithub}
             text="Leandrovis22"
-            onClick={null}
+            onClick={() => window.open('https://github.com/Leandrovis22', '_blank', 'noopener,noreferrer')}
             ariaLabel="Github"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />

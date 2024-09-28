@@ -30,6 +30,7 @@ export const TagsTape = () => {
               animationDuration: `${contentWidth / 50}s`,
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite',
+              animationDirection: 'reverse',
             }}
           >
             {[...words, ...words].map((word, index) => (
