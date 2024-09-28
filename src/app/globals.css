@@ -22,11 +22,11 @@ html::-webkit-scrollbar {
   :root {
     --text: #02032c;
     --background: #e0dfe3;
-    --primary: #0d2576;
+    --primary: #003f8d;
     --secondary: #e24d0d75;
     --accent: #c38b1b;
     --ui: #e9e9e9;
-    --uihover: #ffffffcc;
+    --uihover: #dcdcdc;
   }
 
   .dark {

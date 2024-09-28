@@ -180,7 +180,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
 
 
             <Card className="card w-full h-full sm-570:max-w-[373px] sm-570:max-h-[431px] flex flex-col p-4 justify-center items-center">
-              <h2 className="text-2xl font-bold mb-4 text-center">Envia un Mensaje</h2>
+              <h2 className="text-2xl font-bold mb-4 text-center text-text">Envia un Mensaje</h2>
               <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
                 <Input
                   type="text"
@@ -229,7 +229,8 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
                   color="primary"
                   variant="shadow"
                   size="lg"
-                  className="uppercase w-1/2"
+                  radius='full'
+                  className="flex items-center gap-2 w-1/2"
                 >
                   Enviar
                 </Button>

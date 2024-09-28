@@ -11,7 +11,7 @@ interface ProyectsProps {
   }
 }
 
-export default function Proyects( {data}: ProyectsProps ) {
+export default function Proyects({ data }: ProyectsProps) {
   const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
@@ -42,14 +42,15 @@ export default function Proyects( {data}: ProyectsProps ) {
             color="primary"
             variant="shadow"
             size="lg"
-            className="uppercase flex items-center gap-2"
+            radius='full'
+            className="flex items-center gap-2"
             onClick={() => setVisibleCount(prev => Math.min(prev + 2, proyects.length))}
           >
             Mostrar más
           </Button>
         </div>
       )}
-      
+
     </div>
   );
 }
@@ -78,21 +79,21 @@ const proyects = [
     header: "/img3.png",
     externalLink: "https://example.com",
     githubLink: "https://github.com/example"
-  },{
+  }, {
     title: "Otro Proyecto",
     date: "Junio 2023 - Diciembre 2023, 300 horas",
     description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
     header: "/img5.png",
     externalLink: "https://anotherexample.com",
     githubLink: "https://github.com/anotherexample"
-  },{
+  }, {
     title: "Otro Proyecto",
     date: "Junio 2023 - Diciembre 2023, 300 horas",
     description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
     header: "/img5.png",
     externalLink: "https://anotherexample.com",
     githubLink: "https://github.com/anotherexample"
-  },{
+  }, {
     title: "Otro Proyecto",
     date: "Junio 2023 - Diciembre 2023, 300 horas",
     description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",

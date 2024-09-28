@@ -15,7 +15,6 @@ interface AboutProps {
 
 export default function About({ data }: AboutProps) {
 
-
   return (
     <Gradient
     >
@@ -42,7 +41,8 @@ export default function About({ data }: AboutProps) {
                   color="primary"
                   variant="shadow"
                   size="lg"
-                  className="uppercase flex items-center gap-2"
+                  radius='full'
+                  className="flex items-center gap-2"
                 >
                   Descargar CV
                   <FiDownload className="text-xl" />

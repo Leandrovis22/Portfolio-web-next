@@ -10,9 +10,9 @@ import { Button } from "@nextui-org/react";
 interface CertificationsProps {
   data: {
     // Define la estructura de tus datos aquí
-    }
+  }
 }
-export default function Certifications( { data }: CertificationsProps ) {
+export default function Certifications({ data }: CertificationsProps) {
   const certifications = [
     {
       imageUrl: "/maplight.png",
@@ -132,7 +132,8 @@ export default function Certifications( { data }: CertificationsProps ) {
               color="primary"
               variant="shadow"
               size="lg"
-              className="uppercase flex items-center gap-2"
+              radius='full'
+              className="flex items-center gap-2"
               onClick={handleShowMore}
             >
               Mostrar más
