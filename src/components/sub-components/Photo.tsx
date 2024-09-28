@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 2, duration: 0.4, ease: "easeIn" } }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.4, ease: "easeIn" } }}>
       <div className="relative dark:bg-primary rounded-full aspect-[1192/1192] max-w-full max-h-full">
                 <div className="h-full w-full circle"></div>
                 <Image

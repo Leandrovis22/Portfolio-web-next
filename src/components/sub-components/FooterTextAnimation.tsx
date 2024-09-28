@@ -1,3 +1,5 @@
+// src/components/sub-components/FooterTextAnimation.tsx
+
 "use client"
 
 import React, { useEffect, useState, useRef, forwardRef } from "react"
@@ -72,3 +74,97 @@ export function onLoop<P extends object>(Component: ComponentType<P>) {
         );
     });
 }
+
+interface OnAppearProps {
+    texto: string;
+    className?: string;
+    delaySegundos?: number;
+    as?: React.ElementType;
+  }
+  
+  export const OnAppear: React.FC<OnAppearProps> = ({
+    texto,
+    className,
+    delaySegundos = 0,
+    as: Component = 'span'
+  }) => {
+    const [textoCodificado, setTextoCodificado] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const [iteration, setIteration] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false);
+    const intersectionRef = useRef(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (!hasStarted) {
+              setHasStarted(true);
+            }
+          } else {
+            setIsVisible(false);
+            if (hasStarted) {
+              setIteration(0);
+            }
+          }
+        });
+      });
+  
+      if (intersectionRef.current) {
+        observer.observe(intersectionRef.current);
+      }
+  
+      return () => observer.disconnect();
+    }, [hasStarted]);
+  
+    useEffect(() => {
+      if (!isVisible || !hasStarted) return;
+  
+      const timer = setTimeout(() => {
+        const interval = setInterval(() => {
+          setIteration((prev) => {
+            const newIteration = prev + 5 / 6;
+            return newIteration >= texto.length ? texto.length : newIteration;
+          });
+        }, 20);
+  
+        return () => clearInterval(interval);
+      }, delaySegundos * 1000);
+  
+      return () => clearTimeout(timer);
+    }, [isVisible, delaySegundos, texto, hasStarted]);
+  
+    useEffect(() => {
+      const encryptText = () => {
+        const encrypted = texto.split('').map((char, index) => {
+          if (index < Math.floor(iteration)) {
+            return texto[index];
+          }
+          return letters.includes(char.toLowerCase())
+            ? letters[Math.floor(Math.random() * letters.length)]
+            : char;
+        }).join('');
+        setTextoCodificado(encrypted);
+      };
+  
+      if (isVisible && hasStarted) {
+        encryptText();
+      } else {
+        setTextoCodificado(texto); // Mantener el texto original, pero transparente
+      }
+    }, [texto, iteration, isVisible, hasStarted]);
+  
+    return (
+      <Component 
+        ref={intersectionRef} 
+        className={className}
+        style={{
+          opacity: hasStarted ? 1 : 0,
+          transition: 'opacity 0.3s ease-in-out'
+        }}
+      >
+        {textoCodificado}
+      </Component>
+    );
+  };
