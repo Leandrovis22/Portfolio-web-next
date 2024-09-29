@@ -129,7 +129,7 @@ export const OnAppear: React.FC<OnAppearProps> = ({
         });
       };
 
-      const interval = setInterval(animateText, 200);
+      const interval = setInterval(animateText, 100);
 
       return () => clearInterval(interval);
     }, delaySegundos * 1000);
