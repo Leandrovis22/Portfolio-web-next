@@ -5,14 +5,25 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import ProyectGrid from "./sub-components/ProyectGrid";
 
+interface Proyect {
+  title: string;
+    date: string;
+    description: string;
+     header: string;
+    externalLink: string;
+    githubLink: string;
+}
+
 interface ProyectsProps {
   data: {
-    // Define la estructura de tus datos aquí
+    proyects: Proyect[];
   }
 }
 
 export default function Proyects({ data }: ProyectsProps) {
   const [visibleCount, setVisibleCount] = useState(2);
+
+  const { proyects } = data;
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +66,7 @@ export default function Proyects({ data }: ProyectsProps) {
   );
 }
 
-const proyects = [
+/* const proyects = [
   {
     title: "Tecnologías que adoro",
     date: "Enero 2023 - Mayo 2023, 250 horas",
@@ -101,4 +112,4 @@ const proyects = [
     externalLink: "https://anotherexample.com",
     githubLink: "https://github.com/anotherexample"
   },
-];
+]; */

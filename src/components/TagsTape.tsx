@@ -3,13 +3,17 @@
 import { Card } from '@nextui-org/react';
 import React, { useEffect, useRef, useState } from 'react';
 
-const words = [
+/* const words = [
   "Responsive", "Funcional", "Seguro", "Interactivo", "Mantenible",
   "Escalable", "Moderno", "De Vanguardia", "Al Instante", "Creativo",
   "Innovador", "UX/UI", "Debugged", "Automatizado", "Desarrollo Constante"
-];
+]; */
 
-export const TagsTape = React.memo(() => {
+interface TagTapeProps {
+  words: string[];
+}
+
+export const TagsTape: React.FC<TagTapeProps> = React.memo(({ words }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [animationDuration, setAnimationDuration] = useState('0s');
 

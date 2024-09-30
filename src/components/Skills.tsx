@@ -1,19 +1,24 @@
-// src\components\Skills.tsx
 import { SkillIcons } from "./sub-components/SkillIcons";
 import { TagsTape } from "./TagsTape";
 
 interface SkillsProps {
   data: {
-    // Define la estructura de tus datos aquí
+    cards: Array<{
+      title: string;
+      src: string;
+      content: () => React.ReactNode;
+    }>;
+    words?: string[];
   }
 }
 
-export default function Skills( { data }: SkillsProps ) {
+export default function Skills({ data }: SkillsProps) {
+  const { cards, words = [] } = data;
 
   return (
     <div id="skills" className="">
-      <TagsTape />
-      <SkillIcons />
+      <TagsTape words={words} />
+      <SkillIcons cards={cards} />
     </div>
   )
 }

@@ -7,6 +7,9 @@ C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\next
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\package-lock.json
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\package.json
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\postcss.config.mjs
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\migrations\20240930024703_v1\migration.sql
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\migrations\migration_lock.toml
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\schema.prisma
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\bg-black.jpg
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\bg-white.png
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\img3.png
@@ -22,6 +25,7 @@ C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\publ
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\react.svg
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\Static.png
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\README.md
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\data.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\favicon.ico
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\globals.css
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\layout.tsx

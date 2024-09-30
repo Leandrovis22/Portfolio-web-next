@@ -59,15 +59,23 @@ const AspectRatioBox: React.FC<AspectRatioBoxProps> = ({ children, className, ju
 
 interface ContactProps {
   data: {
-    // Define the structure of your data here
+    githubtext: string;
+    githublink: string;
+    linkedintext: string;
+    linkedinlink: string;
+    emailtext: string;
+    CVpdf: string;
   }
 }
 
-const Contact: React.FC<ContactProps> = ({ data }) => {
+export default function Contact({ data }:ContactProps) {
+
+const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } = data;
+  
   const { theme } = useTheme();
   const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
 
-  const [buttonText, setButtonText] = useState("leandroviscolungo@gmail.com");
+  const [buttonText, setButtonText] = useState(emailtext);
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [mensaje, setMensaje] = useState('');
@@ -78,23 +86,40 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
     mensaje: ''
   });
 
-  const copyToClipboard = () => {
-    const email = "leandroviscolungo@gmail.com";
-    navigator.clipboard.writeText(email)
-      .then(() => {
-        setButtonText("¡Correo copiado!");
-        setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-      })
-      .catch(() => {
-        setButtonText("Error al copiar");
-        setTimeout(() => setButtonText("leandroviscolungo@gmail.com"), 1700);
-      });
+
+
+  const handleDownload = async () => {
+    try {
+      // Realiza una solicitud fetch para obtener el archivo PDF desde la URL pasada por props
+      const response = await fetch(CVpdf);
+      const blob = await response.blob(); // Convierte la respuesta en un Blob
+      const url = window.URL.createObjectURL(blob); // Crea una URL temporal para el Blob
+
+      // Crear un enlace invisible para descargar el archivo
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'CV Leandro Viscolungo.pdf'); // Nombre del archivo descargado
+      document.body.appendChild(link);
+      link.click(); // Forzar el clic en el enlace
+      link.parentNode?.removeChild(link); // Eliminar el enlace después de la descarga
+    } catch (error) {
+      console.error('Error al descargar el archivo:', error);
+    }
   };
 
 
-  function handleDownloadCV(): void {
-    throw new Error('Function not implemented.');
-  }
+  const copyToClipboard = () => {
+    const email = emailtext;
+    navigator.clipboard.writeText(email)
+      .then(() => {
+        setButtonText("¡Correo copiado!");
+        setTimeout(() => setButtonText(emailtext), 1700);
+      })
+      .catch(() => {
+        setButtonText("Error al copiar");
+        setTimeout(() => setButtonText(emailtext), 1700);
+      });
+  };
 
   return (
 
@@ -139,7 +164,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
                 <ResponsiveButton
                   icon={FiDownload}
                   text="Descargar CV"
-                  onClick={handleDownloadCV}
+                  onClick={handleDownload}
                   ariaLabel="Descargar CV"
                   isSmallScreen={false}
                 />
@@ -249,7 +274,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
           <ResponsiveButton
             icon={FiDownload}
             text="Descargar CV"
-            onClick={handleDownloadCV}
+            onClick={handleDownload}
             ariaLabel="Descargar CV"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
@@ -269,15 +294,15 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
 
           <ResponsiveButton
             icon={BsLinkedin}
-            text="leandroviscolungo"
-            onClick={() => window.open('https://www.linkedin.com/in/leandroviscolungo', '_blank', 'noopener,noreferrer')}
+            text={linkedintext}
+            onClick={() => window.open(linkedinlink, '_blank', 'noopener,noreferrer')}
             ariaLabel="Linkedin"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
           <ResponsiveButton
             icon={BsGithub}
-            text="Leandrovis22"
-            onClick={() => window.open('https://github.com/Leandrovis22', '_blank', 'noopener,noreferrer')}
+            text={githubtext}
+            onClick={() => window.open(githublink, '_blank', 'noopener,noreferrer')}
             ariaLabel="Github"
             isSmallScreen={true} // Cambia según el tamaño de pantalla real
           />
@@ -288,5 +313,3 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
     </div>
   );
 };
-
-export default Contact;

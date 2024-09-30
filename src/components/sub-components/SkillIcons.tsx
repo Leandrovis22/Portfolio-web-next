@@ -5,10 +5,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../lib/use-outside-click";
 import { Card } from "@nextui-org/react";
 
-export function SkillIcons() {
-  const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
-    null
-  );
+interface Card {
+  title: string;
+  src: string;
+  content: () => React.ReactNode;
+}
+
+interface SkillIconsProps {
+  cards: Card[];
+}
+
+export function SkillIcons({ cards }: SkillIconsProps) {
+  const [active, setActive] = useState<Card | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
   const [contentWidth, setContentWidth] = useState(0);
@@ -17,11 +25,11 @@ export function SkillIcons() {
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setActive(false);
+        setActive(null);
       }
     }
 
-    if (active && typeof active === "object") {
+    if (active) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -44,7 +52,7 @@ export function SkillIcons() {
   return (
     <>
       <AnimatePresence>
-        {active && typeof active === "object" && (
+        {active && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -54,23 +62,14 @@ export function SkillIcons() {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {active && typeof active === "object" ? (
-          <div className="fixed inset-0  grid place-items-center z-[100]">
+        {active ? (
+          <div className="fixed inset-0 grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.05 } }}
               className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
               onClick={() => setActive(null)}
             >
@@ -79,7 +78,7 @@ export function SkillIcons() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>
                 <Image
@@ -94,7 +93,7 @@ export function SkillIcons() {
 
               <div>
                 <div className="flex justify-between items-start p-4">
-                  <div className="">
+                  <div>
                     <motion.div
                       layoutId={`title-${active.title}-${id}`}
                       className="font-bold text-neutral-700 dark:text-neutral-200"
@@ -111,9 +110,7 @@ export function SkillIcons() {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
+                    {active.content()}
                   </motion.div>
                 </div>
               </div>
@@ -123,10 +120,8 @@ export function SkillIcons() {
       </AnimatePresence>
 
       <div className="px-3 pb-8">
-
         <h3 className="md-840:pt-8 lg:pt-0 pb-6 md-840:pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
         <Card className="card hover:bg-ui overflow-hidden mx-auto max-w-[900px]">
-
           <div className="">
             <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div
@@ -146,7 +141,6 @@ export function SkillIcons() {
                     className=""
                   >
                     <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
-
                       <div className="flex gap-4 flex-col items-center">
                         <motion.div layoutId={`image-${card.title}-${id}-${index}`}>
                           <Image
@@ -187,7 +181,6 @@ export function SkillIcons() {
                     layoutId={`card-${card.title}-${id}-reverse-${index}`}
                     key={`card-${card.title}-${id}-reverse-${index}`}
                     onClick={() => setActive(card)}
-
                   >
                     <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
                       <div className="flex gap-4 flex-col items-center">
@@ -224,18 +217,9 @@ export function SkillIcons() {
 export const CloseIcon = () => {
   return (
     <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.05 } }}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -254,7 +238,7 @@ export const CloseIcon = () => {
   );
 };
 
-const cards = [
+/* const cards = [
   {
     title: "React",
     src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
@@ -355,3 +339,4 @@ const cards = [
     },
   },
 ];
+ */

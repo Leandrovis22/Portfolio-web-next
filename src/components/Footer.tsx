@@ -23,13 +23,16 @@ const AnimatedText = onLoop<AnimatedTextProps>(React.forwardRef<HTMLSpanElement,
 // Define the structure for the FooterProps
 interface FooterProps {
     data: {
-        // Define la estructura de data.footer según lo necesites
+        words: string[];
     };
 }
 
 // Update the Footer component to accept props
-const Footer: React.FC<FooterProps> = ({ data }) => {
-    const words = ["Framer Motion.", "Next.js.", "❤️", "Pasión.", "Dedicación."];
+const Footer: React.FC<FooterProps> = ({ data }: FooterProps) => {
+
+const {words} = data
+
+    //const words = ["Framer Motion.", "Next.js.", "❤️", "Pasión.", "Dedicación."];
     return (
         <footer>
             <Card isBlurred className="h-[4rem] w-full block text-center content-center">

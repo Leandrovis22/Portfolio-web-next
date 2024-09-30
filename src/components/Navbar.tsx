@@ -85,7 +85,7 @@ export default function Navbarcomponent() {
                 activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
                   : ""
-              } capitalize font-medium hover:text-accent transition-all cursor-pointer`}
+              } capitalize text-lg font-medium hover:text-accent transition-all cursor-pointer`}
             >
               {item.name}
             </ReactScrollLink>

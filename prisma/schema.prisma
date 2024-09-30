@@ -1,0 +1,81 @@
+// prisma/schema.prisma 
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// schema.prisma
+model AboutData {
+  id          Int    @id @default(autoincrement())
+  CVpdf       String
+  imageUrl    String
+  description String
+}
+
+model SkillsData {
+  id    Int       @id @default(autoincrement())
+  cards Card[]
+  words String[]
+}
+
+model Card {
+  id      Int    @id @default(autoincrement())
+  title   String
+  src     String
+  content String // Store JSX content as a string or in another suitable format.
+  skills  SkillsData @relation(fields: [skillsDataId], references: [id])
+  skillsDataId Int
+}
+
+model CertificationsData {
+  id             Int             @id @default(autoincrement())
+  certifications Certification[]
+}
+
+model Certification {
+  id            Int    @id @default(autoincrement())
+  imageUrl      String
+  title         String
+  date          String
+  description   String
+  link          String
+  certifications CertificationsData @relation(fields: [certificationsDataId], references: [id])
+  certificationsDataId Int
+}
+
+model ProjectsData {
+  id       Int       @id @default(autoincrement())
+  projects Project[]
+}
+
+model Project {
+  id           Int    @id @default(autoincrement())
+  title        String
+  date         String
+  description  String
+  header       String
+  externalLink String
+  githubLink   String
+  projects     ProjectsData @relation(fields: [projectsDataId], references: [id])
+  projectsDataId Int
+}
+
+model ContactData {
+  id           Int    @id @default(autoincrement())
+  CVpdf        String
+  githubtext   String
+  githublink   String
+  linkedintext String
+  linkedinlink String
+  emailtext    String
+}
+
+model FooterData {
+  id    Int       @id @default(autoincrement())
+  words String[]
+}
