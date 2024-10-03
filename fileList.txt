@@ -1,6 +1,8 @@
 
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.gitignore
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.vscode\settings.json
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\firebase.json
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\firebaseConfig.js
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\generatetxt.js
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\next-env.d.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\next.config.mjs
@@ -25,7 +27,9 @@ C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\publ
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\react.svg
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\Static.png
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\README.md
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\data.ts
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\data\route.ts
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload\route.ts
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-about\route.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\favicon.ico
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\globals.css
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\layout.tsx
@@ -48,7 +52,10 @@ C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\TagsTape.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\ThemeButton.tsx
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\data.ts
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\firebaseAdmin.js
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\use-outside-click.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\utils.ts
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\storage.rules
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\tailwind.config.ts
 C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\tsconfig.json
+C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\vercel.json

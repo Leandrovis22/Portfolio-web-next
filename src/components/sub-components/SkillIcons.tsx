@@ -1,3 +1,5 @@
+// src/components/sub-components/SkillIcons.tsx
+
 "use client";
 import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
@@ -5,10 +7,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../lib/use-outside-click";
 import { Card } from "@nextui-org/react";
 
+interface CardContent{
+  description: string;
+}
+
 interface Card {
   title: string;
   src: string;
-  content: () => React.ReactNode;
+  content: string;
 }
 
 interface SkillIconsProps {
@@ -49,6 +55,16 @@ export function SkillIcons({ cards }: SkillIconsProps) {
 
   const animationDuration = `${contentWidth / 50}s`;
 
+  const parseContent = (content: string): CardContent => {
+    try {
+      return JSON.parse(content);
+    } catch (error) {
+      console.error("Error parsing JSON content:", error);
+      return { description: "Error parsing content" };
+    }
+  };
+
+
   return (
     <>
       <AnimatePresence>
@@ -87,6 +103,7 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                   height={200}
                   src={active.src}
                   alt={active.title}
+                  unoptimized={true}
                   className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-contain"
                 />
               </motion.div>
@@ -110,7 +127,7 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {active.content()}
+                    {parseContent(active.content).description}
                   </motion.div>
                 </div>
               </div>
@@ -148,6 +165,7 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                             height={100}
                             src={card.src}
                             alt={card.title}
+                            unoptimized={true}
                             className="h-20 w-20 rounded-lg object-contain"
                           />
                         </motion.div>
@@ -190,6 +208,7 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                             height={100}
                             src={card.src}
                             alt={card.title}
+                            unoptimized={true}
                             className="h-20 w-20 rounded-lg object-contain"
                           />
                         </motion.div>

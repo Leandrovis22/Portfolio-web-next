@@ -1,5 +1,3 @@
-// src/lib/data.ts
-
 export interface AboutData {
   CVpdf: string;
   imageUrl: string;
@@ -7,7 +5,7 @@ export interface AboutData {
 }
 
 export interface SkillsData {
-  cards: Array<{ title: string; src: string; content: () => JSX.Element }>;
+  cards: Array<{ title: string; src: string; content: string }>;
   words: string[];
 }
 
@@ -16,7 +14,7 @@ export interface CertificationsData {
 }
 
 export interface ProjectsData {
-  proyects: Array<{ title: string; date: string; description: string; header: string; externalLink: string; githubLink: string }>;
+  projects: Array<{ title: string; date: string; description: string; header: string; externalLink: string; githubLink: string }>;
 }
 
 export interface ContactData {
@@ -40,43 +38,58 @@ export async function getData(): Promise<{
   contact: ContactData;
   footer: FooterData;
 }> {
+  try {
+    console.log('Fetching data from API...');
+    const response = await fetch('http://localhost:3000/api/data', {
+      method: 'GET',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    });
+    
+    if (!response.ok) {
+      console.error('Error fetching data:', response.status, response.statusText);
+      throw new Error('Error fetching data');
+    }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data`);
-  
-  if (!response.ok) {
-    console.log(response)
-    throw new Error('Error fetching data');
+    const data = await response.json();
+
+    if (!data || Object.keys(data).length === 0) {
+      console.error('Received empty data from API');
+      throw new Error('Received empty data from API');
+    }
+
+    return {
+      about: {
+        CVpdf: data.about?.CVpdf || '',
+        imageUrl: data.about?.imageUrl || '',
+        description: data.about?.description || ''
+      },
+      skills: {
+        cards: data.skills?.cards || [],
+        words: data.skills?.words || []
+      },
+      certifications: {
+        certifications: data.certifications?.certifications || []
+      },
+      projects: {
+        projects: data.projects?.projects || []
+      },
+      contact: {
+        CVpdf: data.contact?.CVpdf || '',
+        githubtext: data.contact?.githubtext || '',
+        githublink: data.contact?.githublink || '',
+        linkedintext: data.contact?.linkedintext || '',
+        linkedinlink: data.contact?.linkedinlink || '',
+        emailtext: data.contact?.emailtext || ''
+      },
+      footer: {
+        words: data.footer?.words || []
+      }
+    };
+  } catch (error) {
+    console.error('Error in getData():', error);
+    throw error;
   }
-
-  const data = await response.json();
-
-  return {
-    about: {
-      CVpdf: data.about.CVpdf,
-      imageUrl: data.about.imageUrl,
-      description: data.about.description
-    },
-    skills: {
-      cards: data.skills.cards,
-      words: data.skills.words
-    },
-    certifications: {
-      certifications: data.certifications
-    },
-    projects: {
-      proyects: data.projects
-    },
-    contact: {
-      CVpdf: data.contact.CVpdf,
-      githubtext: data.contact.githubtext,
-      githublink: data.contact.githublink,
-      linkedintext: data.contact.linkedintext,
-      linkedinlink:  data.contact.linkedinlink,
-      emailtext: data.contact.emailtext
-    },
-    footer: {
-      words: data.footer.words}
-  };
 }
-
-
