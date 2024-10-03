@@ -1,3 +1,5 @@
+import { downloadImage } from './downloadImages';
+
 export interface AboutData {
   CVpdf: string;
   imageUrl: string;
@@ -58,6 +60,27 @@ export async function getData(): Promise<{
     if (!data || Object.keys(data).length === 0) {
       console.error('Received empty data from API');
       throw new Error('Received empty data from API');
+    }
+
+    // Download and update image URLs
+    const downloadAndUpdateImage = async (url: string, prefix: string) => {
+      if (url) {
+        return await downloadImage(url);
+      }
+      return url;
+    };
+
+    // Update About image
+    data.about.imageUrl = await downloadAndUpdateImage(data.about.imageUrl, 'about');
+
+    // Update Skills card images
+    for (let card of data.skills.cards) {
+      card.src = await downloadAndUpdateImage(card.src, 'skill');
+    }
+
+    // Update Certifications images
+    for (let cert of data.certifications.certifications) {
+      cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl, 'cert');
     }
 
     return {

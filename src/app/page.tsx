@@ -19,6 +19,7 @@ export default async function Home() {
       <Navbarcomponent />
       <About data={data.about} />
       <Skills data={data.skills} />
+      <Certifications data={data.certifications} />
     </>
   );
 }

@@ -23,8 +23,6 @@ export default function Certifications({ data }: CertificationsProps) {
   const [visibleCount, setVisibleCount] = useState(3);
   const certifications = data.certifications;
 
-console.log(certifications)
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1242 && window.innerWidth >= 830) {
