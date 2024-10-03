@@ -2,12 +2,12 @@
 
 "use client";
 import Image from "next/image";
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../../lib/use-outside-click";
 import { Card } from "@nextui-org/react";
 
-interface CardContent{
+interface CardContent {
   description: string;
 }
 
@@ -24,25 +24,17 @@ interface SkillIconsProps {
 export function SkillIcons({ cards }: SkillIconsProps) {
   const [active, setActive] = useState<Card | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const id = useId();
   const [contentWidth, setContentWidth] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setActive(null);
-      }
-    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActive(null);
+    };
 
-    if (active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    document.body.style.overflow = active ? "hidden" : "auto";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [active]);
 
   useEffect(() => {
@@ -53,17 +45,49 @@ export function SkillIcons({ cards }: SkillIconsProps) {
 
   useOutsideClick(ref, () => setActive(null));
 
-  const animationDuration = `${contentWidth / 50}s`;
+  const animationDuration = useMemo(() => `${contentWidth / 50}s`, [contentWidth]);
 
-  const parseContent = (content: string): CardContent => {
+  const parseContent = useCallback((content: string): CardContent => {
     try {
       return JSON.parse(content);
     } catch (error) {
       console.error("Error parsing JSON content:", error);
       return { description: "Error parsing content" };
     }
-  };
+  }, []);
 
+  const renderCard = useCallback((card: Card, index: number, reverse = false) => (
+    <motion.div
+      layoutId={`card-${card.title}-${index}${reverse ? '-reverse' : ''}`}
+      key={`card-${card.title}-${index}${reverse ? '-reverse' : ''}`}
+      onClick={() => setActive(card)}
+    >
+      <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
+        <div className="flex gap-4 flex-col items-center">
+          <motion.div layoutId={`image-${card.title}-${index}${reverse ? '-reverse' : ''}`}>
+            <Image
+              width={100}
+              height={100}
+              src={card.src}
+              alt={card.title}
+              unoptimized={true}
+              className="h-20 w-20 rounded-lg object-contain"
+            />
+          </motion.div>
+          <div className="content-center">
+            <motion.div
+              layoutId={`title-${card.title}-${index}${reverse ? '-reverse' : ''}`}
+              className="font-medium text-center"
+            >
+              {card.title}
+            </motion.div>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  ), []);
+
+  const doubledCards = useMemo(() => [...cards, ...cards], [cards]);
 
   return (
     <>
@@ -78,10 +102,10 @@ export function SkillIcons({ cards }: SkillIconsProps) {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {active ? (
+        {active && (
           <div className="fixed inset-0 grid place-items-center z-[100]">
             <motion.button
-              key={`button-${active.title}-${id}`}
+              key={`button-${active.title}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -92,11 +116,11 @@ export function SkillIcons({ cards }: SkillIconsProps) {
               <CloseIcon />
             </motion.button>
             <motion.div
-              layoutId={`card-${active.title}-${id}`}
+              layoutId={`card-${active.title}`}
               ref={ref}
               className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
+              <motion.div layoutId={`image-${active.title}`}>
                 <Image
                   priority
                   width={200}
@@ -112,7 +136,7 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                 <div className="flex justify-between items-start p-4">
                   <div>
                     <motion.div
-                      layoutId={`title-${active.title}-${id}`}
+                      layoutId={`title-${active.title}`}
                       className="font-bold text-neutral-700 dark:text-neutral-200"
                     >
                       {active.title}
@@ -133,98 +157,37 @@ export function SkillIcons({ cards }: SkillIconsProps) {
               </div>
             </motion.div>
           </div>
-        ) : null}
+        )}
       </AnimatePresence>
 
       <div className="px-3 pb-8">
-        <h3 className="md-840:pt-8 lg:pt-0 pb-6 md-840:pb-12 text-accent text-center text-3xl">Mis Tecnologías & Herramientas favoritas</h3>
+        <h3 className="md-840:pt-8 lg:pt-0 pb-6 md-840:pb-12 text-accent text-center text-3xl">
+          Mis Tecnologías & Herramientas favoritas
+        </h3>
         <Card className="card hover:bg-ui overflow-hidden mx-auto max-w-[900px]">
-          <div className="">
-            <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div
-                className="flex flex-none animate-scroll-right"
-                ref={contentRef}
-                style={{
-                  animationDuration,
-                  animationTimingFunction: 'linear',
-                  animationIterationCount: 'infinite',
-                }}
-              >
-                {[...cards, ...cards].map((card, index) => (
-                  <motion.div
-                    layoutId={`card-${card.title}-${id}-${index}`}
-                    key={`card-${card.title}-${id}-${index}`}
-                    onClick={() => setActive(card)}
-                    className=""
-                  >
-                    <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
-                      <div className="flex gap-4 flex-col items-center">
-                        <motion.div layoutId={`image-${card.title}-${id}-${index}`}>
-                          <Image
-                            width={100}
-                            height={100}
-                            src={card.src}
-                            alt={card.title}
-                            unoptimized={true}
-                            className="h-20 w-20 rounded-lg object-contain"
-                          />
-                        </motion.div>
-                        <div className="content-center">
-                          <motion.div
-                            layoutId={`title-${card.title}-${id}-${index}`}
-                            className="font-medium text-center"
-                          >
-                            {card.title}
-                          </motion.div>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
+          <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div
+              className="flex flex-none animate-scroll-right"
+              ref={contentRef}
+              style={{
+                animationDuration,
+                animationTimingFunction: 'linear',
+                animationIterationCount: 'infinite',
+              }}
+            >
+              {doubledCards.map((card, index) => renderCard(card, index))}
             </div>
           </div>
-          <div>
-            <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-              <div
-                className="flex flex-none animate-scroll-left"
-                style={{
-                  animationDuration,
-                  animationTimingFunction: 'linear',
-                  animationIterationCount: 'infinite',
-                }}
-              >
-                {[...cards, ...cards].reverse().map((card, index) => (
-                  <motion.div
-                    layoutId={`card-${card.title}-${id}-reverse-${index}`}
-                    key={`card-${card.title}-${id}-reverse-${index}`}
-                    onClick={() => setActive(card)}
-                  >
-                    <Card className="card !shadow-lg cursor-pointer inline-block mx-4 pb-[7px] mb-[7px]">
-                      <div className="flex gap-4 flex-col items-center">
-                        <motion.div layoutId={`image-${card.title}-${id}-reverse-${index}`}>
-                          <Image
-                            width={100}
-                            height={100}
-                            src={card.src}
-                            alt={card.title}
-                            unoptimized={true}
-                            className="h-20 w-20 rounded-lg object-contain"
-                          />
-                        </motion.div>
-                        <div className="content-center">
-                          <motion.div
-                            layoutId={`title-${card.title}-${id}-reverse-${index}`}
-                            className="font-medium text-center"
-                          >
-                            {card.title}
-                          </motion.div>
-                        </div>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
+          <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div
+              className="flex flex-none animate-scroll-left"
+              style={{
+                animationDuration,
+                animationTimingFunction: 'linear',
+                animationIterationCount: 'infinite',
+              }}
+            >
+              {doubledCards.reverse().map((card, index) => renderCard(card, index, true))}
             </div>
           </div>
         </Card>
@@ -233,129 +196,24 @@ export function SkillIcons({ cards }: SkillIconsProps) {
   );
 }
 
-export const CloseIcon = () => {
-  return (
-    <motion.svg
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.05 } }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-black"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
-  );
-};
-
-/* const cards = [
-  {
-    title: "React",
-    src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-    content: () => {
-      return (
-        <p>
-          React is a JavaScript library for building user interfaces.
-        </p>
-      );
-    },
-  },
-  {
-    title: "Node.js",
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
-    content: () => {
-      return (
-        <p>
-          Node.js is a runtime environment for executing JavaScript code server-side.
-        </p>
-      );
-    },
-  },
-  {
-    title: "Express",
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
-    content: () => {
-      return (
-        <p>
-          Express is a minimal and flexible Node.js web application framework.
-        </p>
-      );
-    },
-  },
-  {
-    title: "MongoDB",
-    src: "https://w7.pngwing.com/pngs/429/921/png-transparent-mongodb-plain-wordmark-logo-icon-thumbnail.png",
-    content: () => {
-      return (
-        <p>
-          MongoDB is a document-based NoSQL database used for scalable applications.
-        </p>
-      );
-    },
-  },
-  {
-    title: "MySQL",
-    src: "https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg",
-    content: () => {
-      return (
-        <p>
-          MySQL is a popular open-source relational database management system.
-        </p>
-      );
-    },
-  },
-  {
-    title: "Docker",
-    src: "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
-    content: () => {
-      return (
-        <p>
-          Docker is a platform for developing, shipping, and running applications in containers.
-        </p>
-      );
-    },
-  },
-  {
-    title: "Kubernetes",
-    src: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
-    content: () => {
-      return (
-        <p>
-          Kubernetes is an open-source platform for automating the deployment, scaling, and management of containerized applications.
-        </p>
-      );
-    },
-  },
-  {
-    title: "AWS",
-    src: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-    content: () => {
-      return (
-        <p>
-          AWS is a cloud computing platform providing a variety of infrastructure services.
-        </p>
-      );
-    },
-  },
-  {
-    title: "TypeScript",
-    src: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
-    content: () => {
-      return (
-        <p>
-          TypeScript is a strongly typed programming language that builds on JavaScript.
-        </p>
-      );
-    },
-  },
-];
- */
+export const CloseIcon = React.memo(() => (
+  <motion.svg
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0, transition: { duration: 0.05 } }}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-4 w-4 text-black"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M18 6l-12 12" />
+    <path d="M6 6l12 12" />
+  </motion.svg>
+));
