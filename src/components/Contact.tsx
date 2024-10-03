@@ -10,6 +10,8 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { FiDownload } from 'react-icons/fi';
 import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import { IoIosMail } from 'react-icons/io';
+import ClipboardJS from 'clipboard';
+import ContactForm from './sub-components/ContactForm';
 
 interface ResponsiveButtonProps {
   icon: React.ElementType;
@@ -68,10 +70,10 @@ interface ContactProps {
   }
 }
 
-export default function Contact({ data }:ContactProps) {
+export default function Contact({ data }: ContactProps) {
 
-const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } = data;
-  
+  const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } = data;
+
   const { theme } = useTheme();
   const imageSrc = theme === "dark" ? "/mapdark.png" : "/maplight.png";
 
@@ -108,18 +110,18 @@ const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } =
   };
 
 
-  const copyToClipboard = () => {
-    const email = emailtext;
-    navigator.clipboard.writeText(email)
-      .then(() => {
-        setButtonText("¡Correo copiado!");
-        setTimeout(() => setButtonText(emailtext), 1700);
-      })
-      .catch(() => {
-        setButtonText("Error al copiar");
-        setTimeout(() => setButtonText(emailtext), 1700);
-      });
-  };
+  const clipboard = new ClipboardJS('#copyButton');
+
+  clipboard.on('success', function (e) {
+    setButtonText("¡Correo copiado!");
+    setTimeout(() => setButtonText(emailtext), 1700);
+    e.clearSelection();  // Desmarca el texto copiado
+  });
+
+  clipboard.on('error', function (e) {
+    setButtonText("Error al copiar");
+    setTimeout(() => setButtonText(emailtext), 1700);
+  });
 
   return (
 
@@ -174,7 +176,7 @@ const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } =
                   className={`flex items-center justify-start gap-2 h-full min-h-[60px] px-3`}
                   radius="full"
                   aria-label="Correo"
-                  onClick={copyToClipboard}
+                  id="copyButton" data-clipboard-text={emailtext}
                   startContent={<IoIosMail size={50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
                 >
                   <p className={`w-[219.78px] text-[1rem] lg:w-[247.25px] sm:text-base lg:text-lg xl:text-xl xl:w-[274.78px] md-840:truncate`}>{buttonText}</p>
@@ -204,63 +206,7 @@ const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } =
 
 
 
-            <Card className="card w-full h-full sm-570:max-w-[373px] sm-570:max-h-[431px] flex flex-col p-4 justify-center items-center">
-              <h2 className="text-2xl font-bold mb-4 text-center text-text">Envia un Mensaje</h2>
-              <div className="flex-grow flex flex-col space-y-4 overflow-auto w-full">
-                <Input
-                  type="text"
-                  placeholder="Nombre"
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                  required
-                />
-                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre}</p>}
-                <Input
-                  type="email"
-                  placeholder="Correo Electrónico"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  classNames={{
-                    base: "!mt-[16px]",
-                  }}
-                />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                <Textarea
-                  placeholder="Mensaje"
-                  value={mensaje}
-                  onChange={(e) => setMensaje(e.target.value)}
-                  required
-                  disableAutosize
-                  className="!h-[2.5rem] xs-328:!h-full"
-                  classNames={{
-                    inputWrapper: "!h-[2.5rem] xs-328:!h-full",
-                    base: "!mt-[16px]",
-                    input: "!h-[2.5rem] xs-328:!h-full",
-                  }}
-                />
-                {errors.mensaje && <p className="text-red-500 text-sm">{errors.mensaje}</p>}
-                <Input
-                  type="text"
-                  className="hidden"
-                  value={botField}
-                  onChange={(e) => setBotField(e.target.value)}
-                  placeholder="Dejar vacío"
-                />
-              </div>
-              <div className="mt-2 xs-328:mt-4 flex justify-center w-full">
-                <Button
-                  type="submit"
-                  color="primary"
-                  variant="shadow"
-                  size="lg"
-                  radius='full'
-                  className="flex items-center gap-2 w-1/2"
-                >
-                  Enviar
-                </Button>
-              </div>
-            </Card>
+           <ContactForm />
 
 
 
@@ -284,7 +230,7 @@ const { githubtext, githublink, linkedintext, linkedinlink, emailtext, CVpdf } =
             className="flex items-center justify-start gap-2 h-full min-h-[60px] px-3"
             radius="full"
             aria-label="Correo"
-            onClick={copyToClipboard}
+            id="copyButton" data-clipboard-text={emailtext}
             startContent={<IoIosMail size={34} />}
           >
             <p className="w-[219.78px] text-[1rem] sm:text-base lg:text-lg xl:text-xl xl:w-[274.78px] overflow-hidden whitespace-nowrap text-ellipsis">

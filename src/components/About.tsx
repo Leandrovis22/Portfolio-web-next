@@ -61,7 +61,7 @@ export default function About({ data }: AboutProps) {
                 <OnAppear as={'span'} className="text-accent" delaySegundos={0.3} texto=" Leandro Viscolungo" />
               </h1>
               <TypingEffect as="h2" speed={0.07} delayStart={0.5} className="text-fluid-2xl mb-6" text="Fullstack Web Developer" />
-              <TypingEffect as="p" delayStart={1} className="mb-9 text-fluid-xl text-justify px-4 sm:px-0" text={description} />
+              <TypingEffect as="p" delayStart={1} className="mb-9 text-fluid-xl lg:text-justify px-4 sm:px-0" text={description} />
 
               <div className="flex flex-col lg:flex-row items-center lg:gap-8">
                 <Button

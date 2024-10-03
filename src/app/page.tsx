@@ -20,6 +20,8 @@ export default async function Home() {
       <About data={data.about} />
       <Skills data={data.skills} />
       <Certifications data={data.certifications} />
+      <Contact data={data.contact} />
+      <Footer data={data.footer} />
     </>
   );
 }
