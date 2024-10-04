@@ -22,8 +22,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      primary: 'var(--font-nunitoSans)',
-      sans: ['Nunito Sans', 'Helvetica', 'Arial', 'sans-serif'], // Add this line
+      sans: ['var(--font-nunito-sans)'],
     },
     extend: {
       padding: {

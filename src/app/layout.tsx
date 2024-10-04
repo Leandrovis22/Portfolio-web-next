@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   weight: ["200", "300", "400", "600", "700", "800", "900"],
-  variable: "--font-nunitoSans",
+  variable: "--font-nunito-sans",
 });
 
 export default function RootLayout({
@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={nunitoSans.className + " " + "antialiased"}>
+    <html lang="en" className={nunitoSans.variable}>
+      <body className="font-sans antialiased">
         <Providers>
           <div className="relative bg-background text-text bg-[length:61px] dark:bg-grid-white/[0.02] bg-grid-black/[0.02]">
             {children}
@@ -39,4 +39,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-};
+}

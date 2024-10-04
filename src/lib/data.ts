@@ -1,3 +1,5 @@
+// src/lib/data.ts
+
 import { downloadImage } from './downloadImages';
 
 export interface AboutData {
@@ -41,8 +43,11 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
+
+    const URL = process.env.BASE_URL || 'http://localhost:3000';
+
     console.log('Fetching data from API...');
-    const response = await fetch('http://localhost:3000/api/data', {
+    const response = await fetch(`${URL}/api/data`, {
       method: 'GET',
       headers: {
         'Cache-Control': 'no-cache',
