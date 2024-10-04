@@ -39,7 +39,7 @@ export const TagsTape: React.FC<TagTapeProps> = React.memo(({ words }) => {
             }}
           >
             {[...words, ...words].map((word, index) => (
-              <span key={`${word}-${index}`} className="text-text font-extrabold text-sm whitespace-nowrap">
+              <span key={`${word}-${index}`} className="text-text font-medium text-sm whitespace-nowrap">
                 {word} 🏆
               </span>
             ))}

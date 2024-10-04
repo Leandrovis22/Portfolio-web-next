@@ -21,10 +21,11 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    fontFamily: {
-      sans: ['var(--font-nunito-sans)'],
-    },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-nunito-sans)', 'sans-serif'],
+    },
+    
       padding: {
         'clamp-tagtape': 'clamp(1rem, 0.5rem + 1vw, 3rem)',
     },

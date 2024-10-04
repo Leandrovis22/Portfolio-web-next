@@ -58,7 +58,7 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const URL = process.env.BASE_URL || 'http://localhost:3000';
+      const URL = process.env.NEXT_PUBLIC_BASE_URL;
       
       const response = await fetch(`${URL}/api/contact`, {
         method: "POST",

@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nunito-sans {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
 html {
   scroll-behavior: smooth;
