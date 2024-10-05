@@ -52,7 +52,9 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
-    const URL = process.env.BASE_URL;
+    console.log('NEXT_PUBLIC_BASE_URL:', process.env.NEXT_PUBLIC_BASE_URL);
+
+    const URL = process.env.NEXT_PUBLIC_BASE_URL;
 
     console.log('Fetching data from API...');
     const response = await fetch(`${URL}/api/data`, {
