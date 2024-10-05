@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
-import firebaseConfig from '@/app/api/firebaseConfig';
+import firebaseConfig from '../../api/firebaseConfig';
 import { authMiddleware } from '@/lib/authMiddleware';
 
 // Inicializar Firebase
