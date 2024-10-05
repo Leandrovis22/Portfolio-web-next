@@ -17,8 +17,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"], // Ahora solo apunta a archivos dentro de la carpeta src
+      "@root/*": ["*"]  // Agrega esta línea para referenciar desde la raíz
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
