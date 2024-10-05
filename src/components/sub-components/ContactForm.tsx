@@ -60,7 +60,7 @@ export default function ContactForm() {
     try {
 
       const isProduction = process.env.NODE_ENV === 'production';
-      const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+      const URL = isProduction ? `https://${process.env.NEXT_PUBLIC_BASE_URL}` : 'http://localhost:3000';
       
       const response = await fetch(`${URL}/api/contact`, {
         method: "POST",
