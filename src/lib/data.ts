@@ -56,7 +56,7 @@ export async function getData(): Promise<{
 
     const URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-    console.log('Fetching data from API...');
+    console.log('Fetching data from API... ' + `${URL}/api/data`);
     const response = await fetch(`${URL}/api/data`, {
       method: 'GET',
       headers: {
