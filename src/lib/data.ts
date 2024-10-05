@@ -103,7 +103,7 @@ export async function getData(): Promise<{
       throw new Error('Received empty data from API');
     }
 
-    console.log('Received data:', JSON.stringify(data, null, 2));
+   
 
     // Download and update image URLs
     const downloadAndUpdateImage = async (url: string, prefix: string) => {
