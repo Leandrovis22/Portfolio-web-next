@@ -23,6 +23,6 @@
       "@root/*": ["*"]  // Agrega esta línea para referenciar desde la raíz
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "firebaseConfig.ts"],
   "exclude": ["node_modules"]
 }
