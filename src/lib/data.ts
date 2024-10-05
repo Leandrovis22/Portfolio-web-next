@@ -96,7 +96,7 @@ export async function getData(): Promise<SiteData> {
     if (isBuildTime) {
       // Durante el build, usar datos estáticos
       console.log('Using static data during build time');
-      data = siteData as SiteData;
+      data = siteData as unknown as SiteData;
     } else {
       // En desarrollo o en tiempo de ejecución, intentar usar la API
       const isProduction = process.env.NODE_ENV === 'production';
@@ -123,6 +123,6 @@ export async function getData(): Promise<SiteData> {
     console.error('Error in getData(), falling back to static data:', error);
     
     // Usar datos estáticos como fallback y procesarlos
-    return await processImages(siteData as SiteData);
+    return await processImages(siteData as unknown as SiteData);
   }
 }

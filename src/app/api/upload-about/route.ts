@@ -1,29 +1,14 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
-import { getStorage } from 'firebase-admin/storage';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware } from '@root/src/lib/authMiddleware';
+import { adminStorage } from '@/lib/firebaseAdmin';
 
 const prisma = new PrismaClient();
 
-// Inicializar Firebase Admin
-if (!getApps().length) {
-  initializeApp({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    }),
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
-  });
-}
-
-const bucket = getStorage().bucket();
-
 // Función auxiliar para subir archivos a Firebase
 async function uploadFileToFirebase(file: Buffer, fileName: string, contentType: string): Promise<string> {
-    const fileUpload = bucket.file(`portfolio/${fileName}`);
+    const fileUpload = adminStorage.file(`portfolio/${fileName}`);
     
     const blobStream = fileUpload.createWriteStream({
         metadata: {
@@ -42,7 +27,7 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
             await fileUpload.makePublic();
             
             // Construir la URL pública
-            const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`;
+            const publicUrl = `https://storage.googleapis.com/${adminStorage.name}/${fileUpload.name}`;
             resolve(publicUrl);
         });
 

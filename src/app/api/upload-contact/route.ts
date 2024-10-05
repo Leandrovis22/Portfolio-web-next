@@ -1,22 +1,42 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { initializeApp } from 'firebase/app';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
-import firebaseConfig from '../../../../firebaseConfig';
 import { authMiddleware } from '@/lib/authMiddleware';
 
 // Inicializar Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const storage = getStorage(firebaseApp);
+import { adminStorage } from '@/lib/firebaseAdmin';
 
 const prisma = new PrismaClient();
 
+// Función auxiliar para subir archivos a Firebase
 async function uploadFileToFirebase(file: Buffer, fileName: string, contentType: string): Promise<string> {
-  const storageRef = ref(storage, `portfolio/${fileName}`);
-  await uploadBytes(storageRef, file, { contentType });
-  return getDownloadURL(storageRef);
+    const fileUpload = adminStorage.file(`portfolio/${fileName}`);
+    
+    const blobStream = fileUpload.createWriteStream({
+        metadata: {
+            contentType: contentType,
+        },
+        resumable: false
+    });
+
+    return new Promise((resolve, reject) => {
+        blobStream.on('error', (error) => {
+            reject(error);
+        });
+
+        blobStream.on('finish', async () => {
+            // Hacer el archivo público
+            await fileUpload.makePublic();
+            
+            // Construir la URL pública
+            const publicUrl = `https://storage.googleapis.com/${adminStorage.name}/${fileUpload.name}`;
+            resolve(publicUrl);
+        });
+
+        blobStream.end(file);
+    });
 }
+
 
 export async function POST(request: Request) {
   // Primero, autenticar la solicitud
