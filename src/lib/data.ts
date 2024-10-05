@@ -62,13 +62,7 @@ export async function getData(): Promise<{
     }
 
     console.log('Fetching data from API...', `${URL}/api/data`);
-    const response = await fetch(`${URL}/api/data`, {
-      method: 'GET',
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
-      }
-    });
+    const response = await fetch(`${URL}/api/data`);
     
     console.log('Response status:', response.status);
     console.log('Response headers:', response.headers);
