@@ -54,11 +54,14 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
-    console.log('NEXT_PUBLIC_BASE_URL:', process.env.NEXT_PUBLIC_BASE_URL);
+   
+    const isProduction = process.env.NODE_ENV === 'production';
 
-    const URL = process.env.NEXT_PUBLIC_BASE_URL;
+const URL = isProduction ? process.env.VERCEL_URL  : 'http://localhost:3000'; 
+
+console.log('URL:', URL);
     if (!URL) {
-      throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
+      throw new Error('URL is not set');
     }
 
     console.log('Fetching data from API...', `${URL}/api/data`);
