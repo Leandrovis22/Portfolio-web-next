@@ -1,49 +1,62 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { initializeApp } from 'firebase/app';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getStorage } from 'firebase-admin/storage';
 import { v4 as uuidv4 } from 'uuid';
-import firebaseConfig from '../../../../firebaseConfig';
 import { authMiddleware } from '@root/src/lib/authMiddleware';
 
-const firebaseApp = initializeApp(firebaseConfig);
-const storage = getStorage(firebaseApp);
 const prisma = new PrismaClient();
 
+// Inicializar Firebase Admin
+if (!getApps().length) {
+  initializeApp({
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    }),
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
+  });
+}
+
+const bucket = getStorage().bucket();
 
 // Función auxiliar para subir archivos a Firebase
 async function uploadFileToFirebase(file: Buffer, fileName: string, contentType: string): Promise<string> {
-    const storageRef = ref(storage, `portfolio/${fileName}`);
-    await uploadBytes(storageRef, file, { contentType });
+    const fileUpload = bucket.file(`portfolio/${fileName}`);
+    
+    const blobStream = fileUpload.createWriteStream({
+        metadata: {
+            contentType: contentType,
+        },
+        resumable: false
+    });
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    return new Promise((resolve, reject) => {
+        blobStream.on('error', (error) => {
+            reject(error);
+        });
 
-    let downloadURL = '';
-    for (let attempts = 0; attempts < 5; attempts++) {
-        try {
-            downloadURL = await getDownloadURL(storageRef);
-            if (downloadURL) break;
-        } catch (error) {
-            console.error('Error al obtener la URL:', error);
-            await new Promise(resolve => setTimeout(resolve, 1000));
-        }
-    }
+        blobStream.on('finish', async () => {
+            // Hacer el archivo público
+            await fileUpload.makePublic();
+            
+            // Construir la URL pública
+            const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`;
+            resolve(publicUrl);
+        });
 
-    if (!downloadURL) {
-        throw new Error('No se pudo obtener la URL de la imagen después de varios intentos.');
-    }
-
-    return downloadURL;
+        blobStream.end(file);
+    });
 }
 
 export async function POST(request: Request) {
-  // Primero, autenticar la solicitud
-  const authResponse = await authMiddleware(request);
-  if (authResponse) {
-      return authResponse; // Retorna la respuesta de error si la autenticación falla
-  }
+    // Primero, autenticar la solicitud
+    const authResponse = await authMiddleware(request);
+    if (authResponse) {
+        return authResponse;
+    }
 
-    // Si la autenticación es exitosa, proceder con la lógica existente
     async function handleFileUpload(file: File | null, existingUrl: string | null = null): Promise<string | null> {
         if (file) {
             const buffer = Buffer.from(await file.arrayBuffer());
