@@ -57,8 +57,11 @@ export async function getData(): Promise<{
     console.log('NEXT_PUBLIC_BASE_URL:', process.env.NEXT_PUBLIC_BASE_URL);
 
     const URL = process.env.NEXT_PUBLIC_BASE_URL;
+    if (!URL) {
+      throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
+    }
 
-    console.log('Fetching data from API... ' + `${URL}/api/data`);
+    console.log('Fetching data from API...', `${URL}/api/data`);
     const response = await fetch(`${URL}/api/data`, {
       method: 'GET',
       headers: {
@@ -67,17 +70,40 @@ export async function getData(): Promise<{
       }
     });
     
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
+
     if (!response.ok) {
       console.error('Error fetching data:', response.status, response.statusText);
-      throw new Error('Error fetching data');
+      const errorText = await response.text();
+      console.error('Error response body:', errorText);
+      throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      console.error('Unexpected content type:', contentType);
+      const text = await response.text();
+      console.error('Response body:', text);
+      throw new Error('Received non-JSON response');
+    }
+
+    let data;
+    try {
+      data = await response.json();
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      const text = await response.text();
+      console.error('Response body:', text);
+      throw new Error('Failed to parse JSON response');
+    }
 
     if (!data || Object.keys(data).length === 0) {
       console.error('Received empty data from API');
       throw new Error('Received empty data from API');
     }
+
+    console.log('Received data:', JSON.stringify(data, null, 2));
 
     // Download and update image URLs
     const downloadAndUpdateImage = async (url: string, prefix: string) => {
