@@ -12,15 +12,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{
+      "name": "next"
+    }],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"], // Ahora solo apunta a archivos dentro de la carpeta src
-      "@root/*": ["*"]  // Agrega esta línea para referenciar desde la raíz
+      "@/*": ["src/*"], 
+      "@root/*": ["./*"] // Apunta explícitamente a la raíz del proyecto
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "firebaseConfig.ts"],
