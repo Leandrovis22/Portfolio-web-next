@@ -1,7 +1,20 @@
 {
-    "git": {
-      "deploymentEnabled": {
-        "master": true
-      }
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    }
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "master": true
     }
   }
+}

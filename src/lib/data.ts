@@ -1,3 +1,5 @@
+// src/lib/data.ts
+
 import { downloadImage } from './downloadImages';
 
 export interface AboutData {

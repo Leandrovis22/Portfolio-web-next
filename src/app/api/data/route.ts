@@ -10,23 +10,23 @@ export async function GET() {
     const about = await prisma.aboutData.findFirst();
     const skills = await prisma.skillsData.findFirst({
       include: {
-        cards: true,  // Incluye los datos de las cartas
+        cards: true,  
       },
     });
     const certifications = await prisma.certificationsData.findFirst({
       include: {
-        certifications: true,  // Incluye los datos de las certificaciones
+        certifications: true,  
       },
     });
     const projects = await prisma.projectsData.findFirst({
       include: {
-        projects: true,  // Incluye los datos de los proyectos
+        projects: true, 
       },
     });
     const contact = await prisma.contactData.findFirst();
     const footer = await prisma.footerData.findFirst();
 
-    console.log('Data fetched:', about, skills, certifications, projects, contact, footer);
+    // en este punto el servidor obtuvo exitosamente los datos en vercel
 
     return NextResponse.json({
       about: {
@@ -35,14 +35,14 @@ export async function GET() {
         description: about?.description || '',
       },
       skills: {
-        cards: skills?.cards || [],  // Asegúrate de obtener la lista de cards
+        cards: skills?.cards || [],  
         words: skills?.words || [],
       },
       certifications: {
-        certifications: certifications?.certifications || [],  // Asegúrate de obtener la lista de certificaciones
+        certifications: certifications?.certifications || [], 
       },
       projects: {
-        projects: projects?.projects || [],  // Asegúrate de obtener la lista de proyectos
+        projects: projects?.projects || [], 
       },
       contact: {
         CVpdf: contact?.CVpdf || '',
