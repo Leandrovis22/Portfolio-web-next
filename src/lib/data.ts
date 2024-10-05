@@ -158,6 +158,35 @@ export async function getData(): Promise<{
     };
   } catch (error) {
     console.error('Error in getData():', error);
-    throw error;
+    
+    // Provide fallback data during build
+    return {
+      about: {
+        CVpdf: '',
+        imageUrl: '',
+        description: 'Default description'
+      },
+      skills: {
+        cards: [],
+        words: []
+      },
+      certifications: {
+        certifications: []
+      },
+      projects: {
+        projects: []
+      },
+      contact: {
+        CVpdf: '',
+        githubtext: '',
+        githublink: '',
+        linkedintext: '',
+        linkedinlink: '',
+        emailtext: ''
+      },
+      footer: {
+        words: []
+      }
+    };
   }
 }
