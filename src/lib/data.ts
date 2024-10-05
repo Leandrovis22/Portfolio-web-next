@@ -54,19 +54,19 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
-   
+
     const isProduction = process.env.NODE_ENV === 'production';
 
-const URL = isProduction ? process.env.VERCEL_URL  : 'http://localhost:3000'; 
+    const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'; 
 
-console.log('URL:', URL);
+    console.log('URL:', URL);
     if (!URL) {
       throw new Error('URL is not set');
     }
 
     console.log('Fetching data from API...', `${URL}/api/data`);
     const response = await fetch(`${URL}/api/data`);
-    
+
     console.log('Response status:', response.status);
     console.log('Response headers:', response.headers);
 
@@ -100,7 +100,7 @@ console.log('URL:', URL);
       throw new Error('Received empty data from API');
     }
 
-   
+
 
     // Download and update image URLs
     const downloadAndUpdateImage = async (url: string, prefix: string) => {
