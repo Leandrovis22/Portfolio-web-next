@@ -59,7 +59,7 @@ export async function getData(): Promise<{
 
     const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
      */
-    const URL = process.env.NEXT_PUBLIC_BASE_URL;
+    const URL = `https://${process.env.VERCEL_URL}`;
 
     console.log('URL:', URL);
     if (!URL) {
