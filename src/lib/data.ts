@@ -64,6 +64,11 @@ export async function getData(): Promise<{
         'Pragma': 'no-cache'
       }
     });
+    
+    if (!response.ok) {
+      console.error('Error fetching data:', response.status, response.statusText);
+      throw new Error('Error fetching data');
+    }
 
     const data = await response.json();
 

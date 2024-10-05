@@ -7,10 +7,7 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    console.log('Fetching about data from server');
-const about = await prisma.aboutData.findFirst();
-console.log('About data:', about);
-
+    const about = await prisma.aboutData.findFirst();
     const skills = await prisma.skillsData.findFirst({
       include: {
         cards: true,  // Incluye los datos de las cartas
@@ -28,6 +25,8 @@ console.log('About data:', about);
     });
     const contact = await prisma.contactData.findFirst();
     const footer = await prisma.footerData.findFirst();
+
+    console.log('Data fetched:', about, skills, certifications, projects, contact, footer);
 
     return NextResponse.json({
       about: {
