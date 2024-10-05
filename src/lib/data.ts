@@ -1,5 +1,3 @@
-// src/lib/data.ts
-
 import { downloadImage } from './downloadImages';
 
 export interface AboutData {
@@ -17,8 +15,19 @@ export interface CertificationsData {
   certifications: Array<{ imageUrl: string; title: string; date: string; description: string; link: string }>;
 }
 
+export interface Project {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  header: string;
+  externalLink: string;
+  githubLink: string;
+  projectsDataId: number;
+}
+
 export interface ProjectsData {
-  projects: Array<{ title: string; date: string; description: string; header: string; externalLink: string; githubLink: string }>;
+  projects: Project[];
 }
 
 export interface ContactData {
@@ -43,7 +52,6 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
-
     const URL = process.env.NEXT_PUBLIC_BASE_URL;
 
     console.log('Fetching data from API...');
@@ -86,6 +94,11 @@ export async function getData(): Promise<{
     // Update Certifications images
     for (let cert of data.certifications.certifications) {
       cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl, 'cert');
+    }
+
+    // Update Project header images
+    for (let project of data.projects.projects) {
+      project.header = await downloadAndUpdateImage(project.header, 'project');
     }
 
     return {

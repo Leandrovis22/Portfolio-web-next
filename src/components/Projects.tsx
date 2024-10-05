@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import ProyectGrid from "./sub-components/ProyectGrid";
 
-interface Proyect {
+interface Project {
   title: string;
     date: string;
     description: string;
@@ -14,16 +14,16 @@ interface Proyect {
     githubLink: string;
 }
 
-interface ProyectsProps {
+interface ProjectsProps {
   data: {
-    proyects: Proyect[];
+    projects: Project[];
   }
 }
 
-export default function Proyects({ data }: ProyectsProps) {
+export default function Projects({ data }: ProjectsProps) {
   const [visibleCount, setVisibleCount] = useState(2);
 
-  const { proyects } = data;
+  const { projects } = data;
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,9 +45,9 @@ export default function Proyects({ data }: ProyectsProps) {
   return (
     <div id="projects" className="">
       <h5 className="md-840:pt-8 pb-6 md-840:pb-12 text-accent text-center text-3xl">Proyectos</h5>
-      <ProyectGrid items={proyects} visibleCount={visibleCount} />
+      <ProyectGrid items={projects} visibleCount={visibleCount} />
 
-      {visibleCount < proyects.length && (
+      {visibleCount < projects.length && (
         <div className="text-center flex justify-center py-10">
           <Button
             color="primary"
@@ -55,7 +55,7 @@ export default function Proyects({ data }: ProyectsProps) {
             size="lg"
             radius='full'
             className="flex items-center gap-2"
-            onClick={() => setVisibleCount(prev => Math.min(prev + 2, proyects.length))}
+            onClick={() => setVisibleCount(prev => Math.min(prev + 2, projects.length))}
           >
             Mostrar más
           </Button>
