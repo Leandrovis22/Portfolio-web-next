@@ -1,6 +1,6 @@
 // src/lib/data.ts
-
 import { downloadImage } from './downloadImages';
+import siteData from '../lib/data.json';
 
 export interface AboutData {
   CVpdf: string;
@@ -45,150 +45,84 @@ export interface FooterData {
   words: string[];
 }
 
-export async function getData(): Promise<{
+export interface SiteData {
   about: AboutData;
   skills: SkillsData;
   certifications: CertificationsData;
   projects: ProjectsData;
   contact: ContactData;
   footer: FooterData;
-}> {
+}
+
+async function processImages(data: SiteData): Promise<SiteData> {
+  const downloadAndUpdateImage = async (url: string, prefix: string) => {
+    if (url) {
+      return await downloadImage(url);
+    }
+    return url;
+  };
+
+  // Crear una copia profunda de los datos para no modificar el original
+  const processedData = JSON.parse(JSON.stringify(data));
+
+  // Update About image
+  processedData.about.imageUrl = await downloadAndUpdateImage(processedData.about.imageUrl, 'about');
+
+  // Update Skills card images
+  for (let card of processedData.skills.cards) {
+    card.src = await downloadAndUpdateImage(card.src, 'skill');
+  }
+
+  // Update Certifications images
+  for (let cert of processedData.certifications.certifications) {
+    cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl, 'cert');
+  }
+
+  // Update Project header images
+  for (let project of processedData.projects.projects) {
+    project.header = await downloadAndUpdateImage(project.header, 'project');
+  }
+
+  return processedData;
+}
+
+export async function getData(): Promise<SiteData> {
+  // Verificar si estamos en tiempo de build
+  const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
+
   try {
-/* 
-    const isProduction = process.env.NODE_ENV === 'production';
+    let data: SiteData;
 
-    const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
-     */
-    const URL = `https://${process.env.VERCEL_URL}`;
+    if (isBuildTime) {
+      // Durante el build, usar datos estáticos
+      console.log('Using static data during build time');
+      data = siteData as SiteData;
+    } else {
+      // En desarrollo o en tiempo de ejecución, intentar usar la API
+      const isProduction = process.env.NODE_ENV === 'production';
+      const baseUrl = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+      
+      console.log('Fetching data from API...', `${baseUrl}/api/data`);
+      const response = await fetch(`${baseUrl}/api/data`);
 
-    console.log('URL:', URL);
-    if (!URL) {
-      throw new Error('URL is not set');
-    }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    console.log('Fetching data from API...', `${URL}/api/data`);
-    const response = await fetch(`${URL}/api/data`);
-
-    console.log('Response status:', response.status);
-    console.log('Response headers:', response.headers);
-
-    if (!response.ok) {
-      console.error('Error fetching data:', response.status, response.statusText);
-      const errorText = await response.text();
-      console.error('Error response body:', errorText);
-      throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
-    }
-
-    const contentType = response.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      console.error('Unexpected content type:', contentType);
-      const text = await response.text();
-      console.error('Response body:', text);
-      throw new Error('Received non-JSON response');
-    }
-
-    let data;
-    try {
       data = await response.json();
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
-      const text = await response.text();
-      console.error('Response body:', text);
-      throw new Error('Failed to parse JSON response');
-    }
 
-    if (!data || Object.keys(data).length === 0) {
-      console.error('Received empty data from API');
-      throw new Error('Received empty data from API');
-    }
-
-
-
-    // Download and update image URLs
-    const downloadAndUpdateImage = async (url: string, prefix: string) => {
-      if (url) {
-        return await downloadImage(url);
+      if (!data || Object.keys(data).length === 0) {
+        throw new Error('Received empty data from API');
       }
-      return url;
-    };
-
-    // Update About image
-    data.about.imageUrl = await downloadAndUpdateImage(data.about.imageUrl, 'about');
-
-    // Update Skills card images
-    for (let card of data.skills.cards) {
-      card.src = await downloadAndUpdateImage(card.src, 'skill');
     }
 
-    // Update Certifications images
-    for (let cert of data.certifications.certifications) {
-      cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl, 'cert');
-    }
+    // Procesar las imágenes independientemente del origen de los datos
+    return await processImages(data);
 
-    // Update Project header images
-    for (let project of data.projects.projects) {
-      project.header = await downloadAndUpdateImage(project.header, 'project');
-    }
-
-    return {
-      about: {
-        CVpdf: data.about?.CVpdf || '',
-        imageUrl: data.about?.imageUrl || '',
-        description: data.about?.description || ''
-      },
-      skills: {
-        cards: data.skills?.cards || [],
-        words: data.skills?.words || []
-      },
-      certifications: {
-        certifications: data.certifications?.certifications || []
-      },
-      projects: {
-        projects: data.projects?.projects || []
-      },
-      contact: {
-        CVpdf: data.contact?.CVpdf || '',
-        githubtext: data.contact?.githubtext || '',
-        githublink: data.contact?.githublink || '',
-        linkedintext: data.contact?.linkedintext || '',
-        linkedinlink: data.contact?.linkedinlink || '',
-        emailtext: data.contact?.emailtext || ''
-      },
-      footer: {
-        words: data.footer?.words || []
-      }
-    };
   } catch (error) {
-    console.error('Error in getData():', error);
+    console.error('Error in getData(), falling back to static data:', error);
     
-    // Provide fallback data during build
-    return {
-      about: {
-        CVpdf: '',
-        imageUrl: '',
-        description: 'Default description'
-      },
-      skills: {
-        cards: [],
-        words: []
-      },
-      certifications: {
-        certifications: []
-      },
-      projects: {
-        projects: []
-      },
-      contact: {
-        CVpdf: '',
-        githubtext: '',
-        githublink: '',
-        linkedintext: '',
-        linkedinlink: '',
-        emailtext: ''
-      },
-      footer: {
-        words: []
-      }
-    };
+    // Usar datos estáticos como fallback y procesarlos
+    return await processImages(siteData as SiteData);
   }
 }
