@@ -4,6 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 import firebaseConfig from '../../../../firebaseConfig';
+import { authMiddleware } from '@/lib/authMiddleware';
 
 // Inicializar Firebase
 const firebaseApp = initializeApp(firebaseConfig);
@@ -18,6 +19,11 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
 }
 
 export async function POST(request: Request) {
+  // Primero, autenticar la solicitud
+  const authResponse = await authMiddleware(request);
+  if (authResponse) {
+      return authResponse; // Retorna la respuesta de error si la autenticación falla
+  }
   async function handleFileUpload(file: File | null, existingUrl: string | null = null): Promise<string> {
     if (file) {
       const buffer = Buffer.from(await file.arrayBuffer());
