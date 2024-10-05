@@ -54,10 +54,12 @@ export async function getData(): Promise<{
   footer: FooterData;
 }> {
   try {
-
+/* 
     const isProduction = process.env.NODE_ENV === 'production';
 
-    const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'; 
+    const URL = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+     */
+    const URL = process.env.NEXT_PUBLIC_BASE_URL;
 
     console.log('URL:', URL);
     if (!URL) {
