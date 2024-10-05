@@ -21,6 +21,6 @@
       "@root/*": ["./*"] // Apunta explícitamente a la raíz del proyecto
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "firebaseConfig.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "firebaseConfig.ts", "firebaseConfig.js"],
   "exclude": ["node_modules"]
 }
