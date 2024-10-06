@@ -65,8 +65,16 @@ export default function Navbarcomponent() {
     return 0;
   };
 
+  const handleItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <Navbar isBlurred={true} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar 
+      isMenuOpen={isMenuOpen} 
+      onMenuOpenChange={setIsMenuOpen}
+      isBlurred={true}
+    >
       <NavbarContent>
         <NavbarBrand>
           <Image src="/LV logo.png" alt="Logo" width={40} height={40} />
@@ -110,12 +118,12 @@ export default function Navbarcomponent() {
               smooth={true}
               offset={getOffset(item)}
               duration={50}
+              onClick={handleItemClick}
               className={`${
                 activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
                   : ""
               } w-full justify-end flex cursor-pointer`}
-              onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
             </ReactScrollLink>
