@@ -1,17 +1,16 @@
-// Proyects.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@nextui-org/react";
 import ProyectGrid from "./sub-components/ProyectGrid";
 
 interface Project {
   title: string;
-    date: string;
-    description: string;
-     header: string;
-    externalLink: string;
-    githubLink: string;
+  date: string;
+  description: string;
+  header: string;
+  externalLink: string;
+  githubLink: string;
 }
 
 interface ProjectsProps {
@@ -22,18 +21,18 @@ interface ProjectsProps {
 
 export default function Projects({ data }: ProjectsProps) {
   const [visibleCount, setVisibleCount] = useState(2);
-
   const { projects } = data;
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+      // Solo aumentamos el visibleCount si es necesario
       if (width >= 1242) {
-        setVisibleCount(3);
+        setVisibleCount(prev => Math.max(prev, 3));
       } else if (width >= 830) {
-        setVisibleCount(4);
+        setVisibleCount(prev => Math.max(prev, 4));
       } else {
-        setVisibleCount(2);
+        setVisibleCount(prev => Math.max(prev, 2));
       }
     };
 
@@ -42,74 +41,32 @@ export default function Projects({ data }: ProjectsProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleShowMore = () => {
+    setVisibleCount(prev => Math.min(prev + 2, projects.length));
+  };
+
   return (
-    <div id="projects" className="">
-      <h5 className="md-840:pt-8 pb-6 md-840:pb-12 text-accent text-center text-3xl">Proyectos</h5>
+    <section id="projects" className="min-h-screen pb-10">
+      <h5 className="md-840:pt-8 pb-6 md-840:pb-12 text-accent text-center text-3xl">
+        Proyectos
+      </h5>
+      
       <ProyectGrid items={projects} visibleCount={visibleCount} />
 
       {visibleCount < projects.length && (
-        <div className="text-center flex justify-center py-10">
+        <div className="text-center flex justify-center pt-10">
           <Button
             color="primary"
             variant="shadow"
             size="lg"
             radius='full'
             className="flex items-center gap-2"
-            onClick={() => setVisibleCount(prev => Math.min(prev + 2, projects.length))}
+            onClick={handleShowMore}
           >
             Mostrar más
           </Button>
         </div>
       )}
-
-    </div>
+    </section>
   );
 }
-
-/* const proyects = [
-  {
-    title: "Tecnologías que adoro",
-    date: "Enero 2023 - Mayo 2023, 250 horas",
-    description: "inventore lorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore lorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img3.png",
-    externalLink: "https://example.com",
-    githubLink: "https://github.com/example"
-  },
-  {
-    title: "Otro Proyecto",
-    date: "Junio 2023 - Diciembre 2023, 300 horas",
-    description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img5.png",
-    externalLink: "https://anotherexample.com",
-    githubLink: "https://github.com/anotherexample"
-  },
-  {
-    title: "Tecnologías que adoro",
-    date: "Enero 2023 - Mayo 2023, 250 horas",
-    description: "inventore lorem ipsum inventore lorem ipsum inventore lorem ipsum inventore lorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore lorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img3.png",
-    externalLink: "https://example.com",
-    githubLink: "https://github.com/example"
-  }, {
-    title: "Otro Proyecto",
-    date: "Junio 2023 - Diciembre 2023, 300 horas",
-    description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img5.png",
-    externalLink: "https://anotherexample.com",
-    githubLink: "https://github.com/anotherexample"
-  }, {
-    title: "Otro Proyecto",
-    date: "Junio 2023 - Diciembre 2023, 300 horas",
-    description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img5.png",
-    externalLink: "https://anotherexample.com",
-    githubLink: "https://github.com/anotherexample"
-  }, {
-    title: "Otro Proyecto",
-    date: "Junio 2023 - Diciembre 2023, 300 horas",
-    description: "am commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elitam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit ededededededed sdsdsdsdsdsdsdsdsdsdddsdsd ededefjfjfjnfdsjfjnfd deded. Nam commodi, quas magni inventorelorem ipsum dolor sit amet consectetur adipisicing elit. Nam commodi, quas magni inventore",
-    header: "/img5.png",
-    externalLink: "https://anotherexample.com",
-    githubLink: "https://github.com/anotherexample"
-  },
-]; */

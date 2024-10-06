@@ -312,7 +312,7 @@
                 "id": 6,
                 "title": "LaslesVPN Mockup",
                 "date": "Julio 2023",
-                "description": "Este es un frontend estático, es uno de los primeros proyectos front React que realicé, durante mi cursado en Crombie 2023 se pidió; a partir de una imagen hacer un mockup de landing page para un servicio de VPN, el sitio es funcional, tiene un formulario validado, un slider de testimonios y modo oscuro.",
+                "description": "Este es un frontend estático, es uno de los primeros proyectos front React que realicé. Durante mi cursado en Crombie 2023 a partir de una imagen, se pidió realizar un mockup de landing page para un servicio de VPN, el sitio es funcional, tiene un formulario validado, un slider de testimonios y modo oscuro.",
                 "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/5c7166c1-65a6-4d91-b856-68c95cb878cf-img4.png",
                 "externalLink": "https://laslesvpn-mockup.netlify.app",
                 "githubLink": "https://github.com/Leandrovis22/Crombie-LaslesVPN-Mockup",
