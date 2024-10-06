@@ -1,8 +1,5 @@
 // src/lib/data.ts
-import fs from 'fs';
-import path from 'path';
-import { downloadImage } from './downloadImages';
-import siteData from './data.json';
+import siteData from '../lib/data.json';
 
 export interface AboutData {
   CVpdf: string;
@@ -56,63 +53,43 @@ export interface SiteData {
   footer: FooterData;
 }
 
-async function processImages(data: SiteData): Promise<SiteData> {
-  const downloadAndUpdateImage = async (url: string) => {
-    if (url) {
-      return await downloadImage(url);
-    }
-    return url;
-  };
-
-  // Crear una copia profunda de los datos para no modificar el original
-  const processedData: SiteData = JSON.parse(JSON.stringify(data));
-
-  // Update About image
-  processedData.about.imageUrl = await downloadAndUpdateImage(processedData.about.imageUrl);
-
-  // Update Skills card images
-  for (let card of processedData.skills.cards) {
-    card.src = await downloadAndUpdateImage(card.src);
-  }
-
-  // Update Certifications images
-  for (let cert of processedData.certifications.certifications) {
-    cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl);
-  }
-
-  // Update Project header images
-  for (let project of processedData.projects.projects) {
-    project.header = await downloadAndUpdateImage(project.header);
-  }
-
-  return processedData;
-}
-
 export async function getData(): Promise<SiteData> {
+  // Verificar si estamos en tiempo de build
   const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
-  const processedDataPath = path.join(process.cwd(), 'public', 'processed-data.json');
 
-  let data: SiteData;
+  try {
+    let data: SiteData;
 
-  if (isBuildTime) {
-    console.log('Build time: Processing data and images...');
-    data = siteData as SiteData;
-    data = await processImages(data);
-    
-    // Guarda los datos procesados en un archivo JSON
-    fs.writeFileSync(processedDataPath, JSON.stringify(data));
-    console.log('Data processed and saved.');
-  } else {
-    console.log('Runtime: Loading processed data...');
-    if (fs.existsSync(processedDataPath)) {
-      const rawData = fs.readFileSync(processedDataPath, 'utf-8');
-      data = JSON.parse(rawData);
+    if (isBuildTime) {
+      // Durante el build, usar datos estáticos
+      console.log('Using static data during build time');
+      data = siteData as unknown as SiteData;
     } else {
-      console.log('Processed data not found. Using and processing static data...');
-      data = siteData as SiteData;
-      data = await processImages(data);
-    }
-  }
+      // En desarrollo o en tiempo de ejecución, intentar usar la API
+      const isProduction = process.env.NODE_ENV === 'production';
+      const baseUrl = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+      
+      console.log('Fetching data from API...', `${baseUrl}/api/data`);
+      const response = await fetch(`${baseUrl}/api/data`);
 
-  return data;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      data = await response.json();
+
+      if (!data || Object.keys(data).length === 0) {
+        throw new Error('Received empty data from API');
+      }
+    }
+
+    // Devolver los datos directamente sin procesamiento de imágenes
+    return data;
+
+  } catch (error) {
+    console.error('Error in getData(), falling back to static data:', error);
+    
+    // Usar datos estáticos como fallback
+    return siteData as unknown as SiteData;
+  }
 }
