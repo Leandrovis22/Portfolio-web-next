@@ -115,7 +115,7 @@ export async function getData(): Promise<SiteData> {
         throw new Error('Received empty data from API');
       }
     }
-
+    console.log('Data fetched:', data);
     // Procesar las imágenes independientemente del origen de los datos
     return await processImages(data);
 

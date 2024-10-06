@@ -32,7 +32,7 @@ export async function downloadImage(url: string): Promise<string> {
   const res = await fetch(url);
   
   if (!res.ok) {
-    throw new Error(`Error downloading image: ${res.statusText}`);
+    throw new Error(`Error downloading image: ${res.statusText}, URL: ${url}`);
   }
 
   const buffer = Buffer.from(await res.arrayBuffer());
