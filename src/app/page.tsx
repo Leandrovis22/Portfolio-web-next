@@ -9,7 +9,7 @@ import Skills from '@/components/Skills';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 
-export const revalidate = 0; // 3 days in seconds
+export const revalidate = 259200; // 3 days in seconds
 
 export default async function Home() {
   const data = await getData();
