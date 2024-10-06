@@ -1,5 +1,6 @@
 // src/lib/data.ts
-import siteData from '../lib/data.json';
+
+import siteData from './data.json';
 
 export interface AboutData {
   CVpdf: string;
@@ -13,7 +14,13 @@ export interface SkillsData {
 }
 
 export interface CertificationsData {
-  certifications: Array<{ imageUrl: string; title: string; date: string; description: string; link: string }>;
+  certifications: Array<{
+    imageUrl: string;
+    title: string;
+    date: string;
+    description: string;
+    link: string;
+  }>;
 }
 
 export interface Project {
@@ -54,18 +61,15 @@ export interface SiteData {
 }
 
 export async function getData(): Promise<SiteData> {
-  // Verificar si estamos en tiempo de build
   const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
 
   try {
-    let data: SiteData;
-
     if (isBuildTime) {
       // Durante el build, usar datos estáticos
       console.log('Using static data during build time');
-      data = siteData as unknown as SiteData;
+      return siteData as SiteData;
     } else {
-      // En desarrollo o en tiempo de ejecución, intentar usar la API
+      // En desarrollo o en tiempo de ejecución, usar la API
       const isProduction = process.env.NODE_ENV === 'production';
       const baseUrl = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
       
@@ -76,20 +80,18 @@ export async function getData(): Promise<SiteData> {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      data = await response.json();
+      const data: SiteData = await response.json();
 
       if (!data || Object.keys(data).length === 0) {
         throw new Error('Received empty data from API');
       }
+
+      return data;
     }
-
-    // Devolver los datos directamente sin procesamiento de imágenes
-    return data;
-
   } catch (error) {
     console.error('Error in getData(), falling back to static data:', error);
     
     // Usar datos estáticos como fallback
-    return siteData as unknown as SiteData;
+    return siteData as SiteData;
   }
 }
