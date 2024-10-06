@@ -92,34 +92,35 @@ export function SkillIcons({ cards }: SkillIconsProps) {
   return (
     <>
       <AnimatePresence>
-        {active && (
-          <motion.div
+      {active && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/20 h-full w-full z-10"
+        />
+      )}
+    </AnimatePresence>
+    <AnimatePresence>
+      {active && (
+        <div className="fixed inset-0 grid place-items-center z-[100]">
+          <motion.button
+            key={`button-${active.title}`}
+            layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {active && (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
-            <motion.button
-              key={`button-${active.title}`}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
-            <motion.div
-              layoutId={`card-${active.title}`}
-              ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
-            >
+            exit={{ opacity: 0, transition: { duration: 0.05 } }}
+            className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+            onClick={() => setActive(null)}
+          >
+            <CloseIcon />
+          </motion.button>
+          <motion.div
+            layoutId={`card-${active.title}`}
+            ref={ref}
+            className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+          >
+            <div className="flex flex-col h-full pb-4"> {/* Contenedor flexible */}
               <motion.div layoutId={`image-${active.title}`}>
                 <Image
                   priority
@@ -128,11 +129,11 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                   src={active.src}
                   alt={active.title}
                   unoptimized={true}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-contain"
+                  className="w-full h-[16rem] sm:rounded-tr-lg sm:rounded-tl-lg object-contain pt-4"
                 />
               </motion.div>
 
-              <div>
+              <div className="flex flex-col flex-grow overflow-hidden"> {/* Contenedor que crecerá y permitirá scroll */}
                 <div className="flex justify-between items-start p-4">
                   <div>
                     <motion.div
@@ -143,22 +144,23 @@ export function SkillIcons({ cards }: SkillIconsProps) {
                     </motion.div>
                   </div>
                 </div>
-                <div className="relative px-4">
+                <div className="relative flex-grow overflow-auto px-4 pb-4"> {/* Contenedor con scroll */}
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    className="text-base"
                   >
                     {parseContent(active.content).description}
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
 
       <div className="px-3 pb-8">
         <h3 className="md-840:pt-8 lg:pt-0 pb-6 md-840:pb-12 text-accent text-center text-3xl">

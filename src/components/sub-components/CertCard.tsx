@@ -151,9 +151,9 @@ export const CertCard = ({
               childrenClassName
             )}
           >
-            <p className="font-bold text-2xl text-center">{title}</p>
-            <p className="font-normal text-base text-center">{date}</p>
-            <p className="font-normal text-base text-center pt-2">{description}</p>
+            <p className="font-bold text-xl xs-436:text-2xl text-center">{title}</p>
+            <p className="font-normal text-sm xs-436:text-base text-center">{date}</p>
+            <p className="font-normal text-sm xs-436:text-base text-center pt-2">{description}</p>
 
             {showOverlay && (
               <a
