@@ -1,7 +1,7 @@
 {
     "about": {
-        "CVpdf": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c45a3d5a-6e28-46b9-89ff-04c193a23593-CV Leandro Viscolungo.pdf",
-        "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/6f3585c1-12fa-4cdc-885c-5fc8c30a3549-perfil.png",
+        "CVpdf": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/a17cff4e-889f-42af-9a72-3cb6e8bc03f4-CV Leandro Viscolungo.pdf",
+        "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/93b47166-b648-4a9b-9105-67a4c13e7648-perfil.png",
         "description": "En los últimos años participé en varios proyectos colaborando con personas talentosas y actualmente me encuentro finalizando una tecnicatura en Desarrollo. Formo parte del programa de becas de la Fundación Pescar Jp Morgan || Valtech, gracias a las mentorías brindadas por expertos refuerzo mis habilidades laborales y técnicas en programación. Tengo la capacidad de trabajar tanto en español como en inglés. Me gusta ver que un sistema funcione, saber que aportará valor y será usado. Siempre me encuentro dispuesto a aprender nuevas tecnologías y herramientas."
     },
     "skills": {
@@ -9,154 +9,154 @@
             {
                 "id": 1,
                 "title": "React",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/a340debb-deb6-4f28-b8e3-0fb6b155956e-react.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/787853b1-1e28-4f9f-a77c-e17759979b98-react.svg",
                 "content": "{\"description\":\"React es una librería de JavaScript desarrollada por Facebook que se utiliza para construir interfaces de usuario interactivas y dinámicas. Permite crear aplicaciones web de una sola página mediante el uso de componentes reutilizables, lo que facilita el mantenimiento y la escalabilidad. Con su enfoque en la eficiencia, React utiliza un DOM virtual para optimizar el rendimiento, garantizando una experiencia fluida y rápida para los usuarios.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 2,
                 "title": "Chrome",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/4b7c6b43-f68d-47d9-86e3-df65ac9f404d-chrome-color-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/aded210a-9809-43f5-b474-203ca76e3a8f-chrome-color-svgrepo-com.svg",
                 "content": "{\"description\":\"Google Chrome es un navegador web desarrollado por Google, conocido por su velocidad, simplicidad y eficiencia. Ofrece una amplia gama de extensiones que permiten personalizar la experiencia del usuario, además de un motor JavaScript optimizado que mejora el rendimiento de las aplicaciones web. Su enfoque en la seguridad y la privacidad garantiza una navegación segura, siendo una opción popular entre desarrolladores y usuarios.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 3,
                 "title": "Prisma",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/2a3faef2-7b48-4969-97a7-598e221fbe55-light-prisma.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/b507d2da-ceab-4d4c-b6a6-a75ad29df47e-light-prisma.svg",
                 "content": "{\"description\":\"Prisma es un ORM (Object-Relational Mapping) que permite a los desarrolladores interactuar con bases de datos de manera más intuitiva y segura. Facilita la escritura de consultas complejas mediante un enfoque basado en tipos, lo que reduce errores y mejora la productividad. Prisma se integra fácilmente con tecnologías como Node.js y TypeScript, lo que lo convierte en una herramienta valiosa para el desarrollo de aplicaciones modernas.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 4,
                 "title": "Next.js",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c7f62de2-4eb0-4c33-a91d-fcd25cd00b59-nextjs-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/737a5d51-568d-4ef3-adaf-8a4f48dd2b23-nextjs-svgrepo-com.svg",
                 "content": "{\"description\":\"Next.js es un framework de React que permite la creación de aplicaciones web y sitios estáticos con funcionalidades avanzadas. Proporciona características como renderizado del lado del servidor (SSR) y generación de sitios estáticos (SSG), lo que mejora el rendimiento y la optimización para SEO. Con su enfoque en la simplicidad y la flexibilidad, Next.js es ideal para proyectos que requieren una experiencia de usuario rápida y eficiente.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 5,
                 "title": "Postman",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/db23a8e4-d935-4899-97b3-8fe69662b4b3-postman-icon-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/38516062-1285-4318-86de-218d6a9345f2-postman-icon-svgrepo-com.svg",
                 "content": "{\"description\":\"Postman es una herramienta popular para el desarrollo y prueba de APIs, que permite a los desarrolladores enviar solicitudes HTTP, verificar respuestas y documentar servicios web de manera efectiva. Su interfaz intuitiva facilita la creación y gestión de colecciones de solicitudes, lo que agiliza el proceso de desarrollo. Postman también permite la colaboración entre equipos, haciendo que el trabajo en proyectos de API sea más organizado y eficiente.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 6,
                 "title": "Claude",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/e678b249-4c96-4496-8d03-a5023e535be6-Untitled-design-7.png",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/de0f0553-81c2-47e5-8fbf-0676cf0cd177-Untitled-design-7.png",
                 "content": "{\"description\":\"Claude es un modelo de inteligencia artificial desarrollado por Anthropic, diseñado para interactuar de manera conversacional y ayudar en diversas tareas. Su enfoque en la seguridad y la alineación con los valores humanos lo convierte en una herramienta útil para aplicaciones que requieren interacción natural. Claude es capaz de generar texto, responder preguntas y asistir en tareas complejas, mejorando la productividad y la experiencia del usuario.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 7,
                 "title": "Bootstrap",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/b837780f-23f6-4013-b40b-5c6b62de6577-Bootstrap_logo.svg.png",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/9b6997dc-8fed-4050-afba-1e13f21a56b0-Bootstrap_logo.svg.png",
                 "content": "{\"description\":\"Bootstrap es un framework front-end de código abierto que permite a los desarrolladores crear sitios web responsivos y móviles de manera rápida y sencilla. Ofrece una amplia variedad de componentes predefinidos y un sistema de rejilla (grid) flexible, lo que facilita el diseño de interfaces atractivas y funcionales. Bootstrap es ampliamente utilizado en la industria, gracias a su facilidad de uso y personalización.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 8,
                 "title": "Tailwind",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/18e6e9be-8023-436d-9f6d-6313466cc190-tailwind-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/60aaa55e-ebdc-41f6-a12c-e8a9791db43d-tailwind-svgrepo-com.svg",
                 "content": "{\"description\":\"Tailwind CSS es un framework de CSS que proporciona utilidades para construir diseños personalizados sin tener que salir del HTML. Su enfoque en la personalización y la modularidad permite a los desarrolladores crear interfaces únicas y responsivas de manera eficiente. Tailwind facilita el diseño basado en componentes, mejorando la mantenibilidad y escalabilidad de los proyectos web.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 9,
                 "title": "JavaScript",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/402abb80-6ac2-4955-a87a-82e7b6e882a2-javascript-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/e46f1c93-7b7a-4a41-b630-7f5f68da91fa-javascript-svgrepo-com.svg",
                 "content": "{\"description\":\"JavaScript es un lenguaje de programación de alto nivel que se utiliza principalmente para el desarrollo web. Permite agregar interactividad y dinámicas a las páginas web, mejorando la experiencia del usuario. JavaScript es compatible con todos los navegadores y se integra fácilmente con HTML y CSS, lo que lo convierte en un pilar fundamental en la creación de aplicaciones web modernas.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 10,
                 "title": "Express",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/fae959e1-b6a9-42e3-a8d4-4d409c41057a-express-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/63d61a0e-1014-4bae-b2ef-2f255188ac08-express-svgrepo-com.svg",
                 "content": "{\"description\":\"Express es un framework minimalista para Node.js que facilita la creación de aplicaciones web y APIs. Proporciona un conjunto de herramientas y características que permiten a los desarrolladores crear aplicaciones robustas de manera rápida y sencilla. Su flexibilidad y extensibilidad lo convierten en una opción popular para proyectos que requieren un enfoque personalizado en el desarrollo de servidores.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 11,
                 "title": "TypeScript",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/0f7aca24-931e-4027-a756-5f19e1f9d57d-typescript-logo-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/b2f0e634-56b4-4cdb-852d-1e5a73512489-typescript-logo-svgrepo-com.svg",
                 "content": "{\"description\":\"TypeScript es un superset de JavaScript que añade tipado estático al lenguaje, mejorando la calidad del código y reduciendo errores. Es especialmente útil en proyectos grandes, ya que facilita el mantenimiento y la escalabilidad del código. TypeScript se integra fácilmente con herramientas y bibliotecas existentes de JavaScript, lo que lo convierte en una opción preferida entre los desarrolladores que buscan mayor seguridad en sus aplicaciones.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 12,
                 "title": "Docker",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/d80a388a-b795-4f13-b2f3-7386eda917f3-docker-logo-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/d5f47185-1edd-4825-82ae-e419ea795043-docker-logo-svgrepo-com.svg",
                 "content": "{\"description\":\"Docker es una plataforma que permite crear, desplegar y ejecutar aplicaciones en contenedores, lo que facilita la portabilidad y la gestión de aplicaciones en diferentes entornos. Al encapsular todas las dependencias necesarias, Docker simplifica el proceso de implementación y mejora la eficiencia en el desarrollo. Su enfoque en la contenedorización ha transformado la forma en que se desarrollan y despliegan aplicaciones en la nube.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 13,
                 "title": "AWS",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/9093df5b-676c-409d-b63c-f1fed00b25cc-aws-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/e610fab5-6932-4b19-94eb-affe42f281ca-aws-svgrepo-com.svg",
                 "content": "{\"description\":\"Amazon Web Services (AWS) es una plataforma de servicios en la nube que ofrece una amplia gama de herramientas y servicios para el desarrollo y la implementación de aplicaciones. Proporciona soluciones escalables y seguras para almacenamiento, bases de datos, análisis y computación, lo que permite a las empresas construir y escalar aplicaciones de manera eficiente. AWS es reconocido por su confiabilidad y flexibilidad en el ámbito de la computación en la nube.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 14,
                 "title": "MySQL",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/bec3745d-d48f-44bb-8a39-630e806a7afd-mysql-logo-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/509b22db-9373-4444-b433-28cdbced8967-mysql-logo-svgrepo-com.svg",
                 "content": "{\"description\":\"MySQL es un sistema de gestión de bases de datos relacional de código abierto que se utiliza ampliamente en aplicaciones web. Su enfoque en la eficiencia y la escalabilidad lo convierte en una opción popular para gestionar grandes volúmenes de datos. MySQL es compatible con una variedad de lenguajes de programación y ofrece herramientas robustas para la administración y el análisis de datos, lo que facilita el desarrollo de aplicaciones complejas.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 15,
                 "title": "Node.js",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/a8a66e96-3d06-4d4b-bac5-2499880c2e5a-node-js-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/6c71ee78-8a93-4629-8651-3c7a9bcf2dd8-node-js-svgrepo-com.svg",
                 "content": "{\"description\":\"Node.js es un entorno de ejecución de JavaScript del lado del servidor que permite a los desarrolladores construir aplicaciones escalables y de alto rendimiento. Su arquitectura basada en eventos y su modelo de I/O no bloqueante lo hacen ideal para aplicaciones en tiempo real y de red. Node.js ha ganado popularidad por su capacidad para manejar múltiples conexiones simultáneas, facilitando el desarrollo de aplicaciones modernas y eficientes.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 16,
                 "title": "Postgres",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/18477e65-6a19-4f05-893e-7bf6e5d03eff-postgresql-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/ba5f5285-5e94-4b7e-a664-ac9f1bdaeac8-postgresql-svgrepo-com.svg",
                 "content": "{\"description\":\"PostgreSQL es un sistema de gestión de bases de datos relacional de código abierto que se destaca por su robustez y flexibilidad. Ofrece características avanzadas como transacciones, integridad referencial y soporte para datos no estructurados. PostgreSQL es ideal para aplicaciones que requieren un alto nivel de rendimiento y confiabilidad, convirtiéndolo en una opción popular entre desarrolladores y empresas.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 17,
                 "title": "GitHub",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/fbc4bec0-775a-45f0-8755-1c7106d2e0d5-github-142-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/81920078-e68f-4614-88ff-faffd325d01e-github-142-svgrepo-com.svg",
                 "content": "{\"description\":\"GitHub es una plataforma de desarrollo colaborativo que permite a los desarrolladores gestionar sus proyectos y colaborar en código fuente. Ofrece características como control de versiones, gestión de incidencias y revisión de código, lo que facilita el trabajo en equipo y la organización de proyectos. GitHub se ha convertido en una herramienta esencial para desarrolladores de todo el mundo, promoviendo la colaboración y la comunidad en el desarrollo de software.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 18,
                 "title": "Trello",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/f4058ab4-41c8-40f2-95ca-568a7cd51738-trello-color-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/d795b2c8-9641-416c-ac93-7e0852fc67b7-trello-color-svgrepo-com.svg",
                 "content": "{\"description\":\"Trello es una herramienta de gestión de proyectos que utiliza tableros, listas y tarjetas para organizar tareas y colaborar en equipo. Su interfaz visual y fácil de usar permite a los usuarios planificar y seguir el progreso de proyectos de manera eficiente. Trello es altamente personalizable y se integra con otras herramientas, lo que lo convierte en una opción popular para la gestión de tareas y la planificación de proyectos.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 19,
                 "title": "Canva",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/56091814-7429-4033-8999-7e9d683f1dd8-canva-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/8964a61c-e368-482a-bf72-23984a73b6fa-canva-svgrepo-com.svg",
                 "content": "{\"description\":\"Canva es una plataforma de diseño gráfico en línea que permite a los usuarios crear contenido visual atractivo de manera sencilla. Ofrece una amplia gama de plantillas y herramientas de edición que facilitan la creación de gráficos, presentaciones y otros materiales visuales. Canva es especialmente útil para quienes no tienen experiencia en diseño, brindando acceso a recursos de diseño de alta calidad para cualquier proyecto.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 20,
                 "title": "Npm",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/160ad6b5-0dea-4477-abf6-48482e4516e4-npm-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/2519866f-d197-4cc4-b8cd-c476a7d51178-npm-svgrepo-com.svg",
                 "content": "{\"description\":\"Npm (Node Package Manager) es el gestor de paquetes predeterminado para Node.js, que permite a los desarrolladores instalar, compartir y gestionar dependencias en sus proyectos. Su amplio repositorio de paquetes facilita la incorporación de funcionalidades y herramientas a las aplicaciones, acelerando el proceso de desarrollo. Npm también permite la gestión de scripts y la automatización de tareas, mejorando la eficiencia del flujo de trabajo.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 21,
                 "title": "Firebase",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/52c6b837-e183-462f-a648-b8983fcbc198-firebase-svgrepo-com.svg",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/b10490a0-8f8c-4822-8d8c-d26e13fa72c7-firebase-svgrepo-com.svg",
                 "content": "{\"description\":\"Firebase es una plataforma de desarrollo de aplicaciones que ofrece herramientas y servicios para crear aplicaciones web y móviles de manera rápida y eficiente. Proporciona funcionalidades como bases de datos en tiempo real, autenticación y almacenamiento, lo que facilita el desarrollo de aplicaciones escalables y seguras. Firebase es especialmente útil para proyectos que requieren integración rápida y una amplia gama de servicios backend.\"}",
                 "skillsDataId": 1
             },
             {
                 "id": 22,
                 "title": "Framer Motion",
-                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/f809b9ac-39dc-438f-a459-454c94288463-60953119-d3c6f300-a2fc-11e9-9596-4978e5d52180.png",
+                "src": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/5606c99b-bd3d-4650-a307-e2d7b8848048-60953119-d3c6f300-a2fc-11e9-9596-4978e5d52180.png",
                 "content": "{\"description\":\"Framer Motion es una biblioteca de animación para React que permite a los desarrolladores crear animaciones fluidas y personalizadas en sus aplicaciones. Su enfoque basado en componentes y su API sencilla facilitan la integración de animaciones, mejorando la experiencia del usuario. Framer Motion es ideal para proyectos que buscan añadir interactividad y dinamismo, permitiendo a los desarrolladores crear interfaces atractivas y modernas.\"}",
                 "skillsDataId": 1
             }
@@ -184,7 +184,7 @@
         "certifications": [
             {
                 "id": 1,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/2f13b76a-7b78-421b-8876-be22f3c66ebe-Diseño sin título.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/b81750e3-4b3d-4210-a395-bfb4b090eb9d-Diseño sin título.png",
                 "title": "Fundación Pescar | Karuna | Valtech (Educación IT)",
                 "date": "Junio 2024 - Diciembre 2024 (300 hs)",
                 "description": "Formación en Angular 13, MongoDB, POO, Git, Node.js, React.js y Maquetación Web (219 hs). Formación en Habilidades Interpersonales (81 hs).",
@@ -193,16 +193,16 @@
             },
             {
                 "id": 2,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/027c57c3-3d75-4599-b2b7-a6d8969e2d50-google.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c4c97858-5d12-49a1-84e2-18e2515db6fd-google.png",
                 "title": "Google Cybersecurity Certificate (Coursera)",
                 "date": "Agosto 2024 - Diciembre 2024 (166 hs)",
                 "description": "Certificación en ciberseguridad de Google. Proporcionada por la Fundacion Pescar.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/027c57c3-3d75-4599-b2b7-a6d8969e2d50-google.png",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c4c97858-5d12-49a1-84e2-18e2515db6fd-google.png",
                 "certificationsDataId": 1
             },
             {
                 "id": 3,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/50ca94af-a525-45f1-8754-036a4dfe002f-ef set.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/7c923ef1-5bc7-4bd2-a85e-cc7247994daf-ef set.png",
                 "title": "EF SET English Certificate",
                 "date": "Agosto 2024",
                 "description": "EF SET es una suite de exámenes de idiomas en línea que certifica el dominio del inglés para estudiantes y profesionales.",
@@ -211,47 +211,47 @@
             },
             {
                 "id": 4,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c50edd54-2a33-46aa-92ab-235e720ded10-desarrollo.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/143f9c8d-f094-4f4e-92d2-128764ed2a20-desarrollo.png",
                 "title": "Técnico Superior en Desarrollo de Software",
                 "date": "Marzo 2022 - Diciembre 2024",
                 "description": "Un desarrollador de software especializado en la creación, diseño y mantenimiento de aplicaciones y sistemas informáticos.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c50edd54-2a33-46aa-92ab-235e720ded10-desarrollo.png",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/143f9c8d-f094-4f4e-92d2-128764ed2a20-desarrollo.png",
                 "certificationsDataId": 1
             },
             {
                 "id": 5,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/1e225aaf-e131-4177-a699-3c0b93c5e336-crombie 2023.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c02c8829-ad3c-43e6-89af-25c373bfd962-crombie 2023.png",
                 "title": "CROMBIE (Empresa de desarrollo de software)",
                 "date": "Julio 2023 - Diciembre 2023 (192 hs)",
                 "description": "Next.js, React, NPM, JWT, Tailwind CSS, TypeScript, Backend REST API con Node.js y Prisma. Introducción a AWS y SCRUM.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/1e225aaf-e131-4177-a699-3c0b93c5e336-crombie 2023.png",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/c02c8829-ad3c-43e6-89af-25c373bfd962-crombie 2023.png",
                 "certificationsDataId": 1
             },
             {
                 "id": 6,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/4b425d82-37e2-4874-b8dd-450452e3f060-CUI-UBA_page-0001.jpg",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/2bd7c490-5840-470b-aeb7-2df7c177d37f-CUI-UBA_page-0001.jpg",
                 "title": "Curso de Ingles CUI-UBA",
                 "date": "Septiembre 2023 - Septiembre 2023 (48 hs)",
                 "description": "Programa de Lenguas Extranjeras del Ministerio de Educación de la Nación.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/4b425d82-37e2-4874-b8dd-450452e3f060-CUI-UBA_page-0001.jpg",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/2bd7c490-5840-470b-aeb7-2df7c177d37f-CUI-UBA_page-0001.jpg",
                 "certificationsDataId": 1
             },
             {
                 "id": 7,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/68b7ea6b-9462-47ef-beb5-6b43ca8fdebf-img.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/7002309a-43a3-4367-a898-a55caa06783d-img.png",
                 "title": "Argentina Programa 4.0",
                 "date": "Noviembre 2022 - Mayo 2023 (250 hs)",
                 "description": "Introducción a HTML, CSS, TypeScript, Angular, Bootstrap y Java Spring Boot REST API.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/68b7ea6b-9462-47ef-beb5-6b43ca8fdebf-img.png",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/7002309a-43a3-4367-a898-a55caa06783d-img.png",
                 "certificationsDataId": 1
             },
             {
                 "id": 8,
-                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/79acf6fc-cd88-4893-9274-3eb5e1ed3472-access.png",
+                "imageUrl": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/4ef33fdb-2114-41e2-b46b-a9fbf676f7f4-access.png",
                 "title": "Access Alicana",
                 "date": "Enero 2015 - Diciembre 2016 (1056 hs)",
                 "description": "Inglés, capaz de hablar, leer y escribir. Gracias a esta beca obtuve un viaje pago a Córdoba Immersions, un campamento temático en inglés.",
-                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/79acf6fc-cd88-4893-9274-3eb5e1ed3472-access.png",
+                "link": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/4ef33fdb-2114-41e2-b46b-a9fbf676f7f4-access.png",
                 "certificationsDataId": 1
             }
         ]
@@ -263,7 +263,7 @@
                 "title": "Portafolio Web (Actual)",
                 "date": "Septiembre 2024 - Octubre 2024",
                 "description": "Desarrollé mi portafolio web actual utilizando Next.js 14, enfocándome en crear una arquitectura limpia y modular. El proyecto demuestra las mejoras en mis habilidades de desarrollo web en comparación con la versión anterior implementé características como tema claro/oscuro usando Next Themes, animaciones con Framer Motion, y manejo avanzado de formularios utilizando React Hook Form con validación Zod y reCAPTCHA v3. La UI está altamente personalizada y se integra con Firebase storage para servir las imágenes de manera estática a la aplicación cada cierto tiempo.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/121be92b-9eb2-462f-9b77-1899eb14cd17-portfolio.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/de98ecab-a2e8-46ab-a323-883b4183413b-portfolio.png",
                 "externalLink": "",
                 "githubLink": "https://github.com/Leandrovis22/Portfolio-web-next",
                 "projectsDataId": 1
@@ -273,7 +273,7 @@
                 "title": "Verificador Dni",
                 "date": "Julio 2024 - Diciembre 2024",
                 "description": "Se le asignó a mi grupo de trabajo en pasantías Crombie realizar una pequeña aplicación que pueda registrar un usuario, permitirle subir su dni y mediante servicios AWS TextExtract validar los datos de la cuenta con los del dni mostrándole un resultado detallado, se utilizó React y Express, se utilizó JWT (Json Web Token) para validar un usuario de manera segura, servicios de Amazon S3 (bucket de AWS) y S3 Request Presigner que permite obtener un link temporal para mayor seguridad al enviar archivos al usuario, se utilizó Prisma ORM para manejar las consultas a la base de datos, también hosteada en AWS RDS.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/a7550f07-19ec-4794-a835-f85470553582-dniverify.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/3b3ae96d-63e5-4377-85cf-3259842b79cd-dniverify.png",
                 "externalLink": "",
                 "githubLink": "https://github.com/Leandrovis22/API-Proyecto-Verificador-Docs-Crombie",
                 "projectsDataId": 1
@@ -283,7 +283,7 @@
                 "title": "Ecodono - Pescar | Valtech | Educación It",
                 "date": "Agosto 2024 - Diciembre 2024",
                 "description": "Un proyecto en proceso con 5 de mis compañeros distribuidos en el resto del país, también participantes de la Fundación Pescar, consiste en realizar una aplicación web a elección con la condición de ser un e-commerce, se decidió la temática de promover moda sostenible y economía circular, compra, venta y reciclaje de productos de segunda mano, resaltando el compromiso con el medio ambiente y la responsabilidad social, por el lado técnico el sitio deberá permitir registrarse, comprar con dinero ficticio y permitir vender administrando la lógica, además tendrá una vista de admin con control total.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/5f568ac7-6d93-48f8-8024-dbbcc5cb4887-Home.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/bbc87e08-8974-4120-9530-d41d0096480a-Home.png",
                 "externalLink": "",
                 "githubLink": "https://github.com/ezevallelugo/fp-proyecto-integrador/tree/main",
                 "projectsDataId": 1
@@ -293,7 +293,7 @@
                 "title": "Finance Manager",
                 "date": "Septiembre 2023 - Diciembre 2023",
                 "description": "Fue el proyecto que realicé en conjunto con Ornella Grigolato y Agustin Trossero (compañeros de Crombie 2023), es una agenda online que permite tener el historial de los gastos realizados por el usuario, trabajé en los formularios y validaciones de registro, inicio de sesión, manejo de JWT, recuperación de cuenta vía email y toda su lógica de front y back, entre varios otros cambios en todo el proyecto y corrección de errores, también trabajé en un sistema de traducción (Internationalization (i18n) for Next.js) y modo oscuro (Next Themes) que no se implementó para la entrega final por cuestiones de tiempo.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/e2e01ad3-17a6-4856-8aec-f8fe1bdf5a0a-img3.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/6f321c14-411b-40cc-86cb-a5417b6ed06f-img3.png",
                 "externalLink": "https://main.d184zx1fn7kf4i.amplifyapp.com",
                 "githubLink": "https://github.com/Leandrovis22/Finance-Manager",
                 "projectsDataId": 1
@@ -303,7 +303,7 @@
                 "title": "Portafolio web (Antiguo)",
                 "date": "Febrero 2023 - Julio 2023",
                 "description": "Comencé a realizar mi antiguo portafolio para Argentina Programa 4.0 a comienzos de Febrero del 2023 y trabajé durante 5 meses de manera intensiva para finalizarlo. Fue mi primer proyecto, es editable y responsive. Consistió de mucha investigación, prueba y error, aprendí por cuenta propia las bases de un frontend (Angular) y como se relaciona con una api CRUD (Java SpringBoot) para lograr lo que me había imaginado, cumpliendo además, con las condiciones de aprobación, esta hosteado en Firebase.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/952df248-686f-4376-b696-3e3cad07f7cf-img5.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/ce51fa9d-f021-4fbc-82b0-ab656c9d5811-img5.png",
                 "externalLink": "https://viscolungoleandro.web.app/",
                 "githubLink": "https://github.com/Leandrovis22/miportfolio",
                 "projectsDataId": 1
@@ -313,7 +313,7 @@
                 "title": "LaslesVPN Mockup",
                 "date": "Julio 2023",
                 "description": "Este es un frontend estático, es uno de los primeros proyectos front React que realicé. Durante mi cursado en Crombie 2023 a partir de una imagen, se pidió realizar un mockup de landing page para un servicio de VPN, el sitio es funcional, tiene un formulario validado, un slider de testimonios y modo oscuro.",
-                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/5c7166c1-65a6-4d91-b856-68c95cb878cf-img4.png",
+                "header": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/541bf292-adc2-463d-a236-e7356c930574-img4.png",
                 "externalLink": "https://laslesvpn-mockup.netlify.app",
                 "githubLink": "https://github.com/Leandrovis22/Crombie-LaslesVPN-Mockup",
                 "projectsDataId": 1
@@ -321,7 +321,7 @@
         ]
     },
     "contact": {
-        "CVpdf": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/55e4785e-9000-4766-bb16-eb3fb4e5a66d-CV Leandro Viscolungo.pdf",
+        "CVpdf": "https://storage.googleapis.com/bucket-firebase-a8522.appspot.com/portfolio/7f3624de-3554-46f1-8330-4ab273c777c4-CV Leandro Viscolungo.pdf",
         "githubtext": "Leandrovis22",
         "githublink": "https://github.com/Leandrovis22",
         "linkedintext": "leandroviscolungo",
