@@ -31,6 +31,12 @@ const nextConfig = {
       },
     ];
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      require('./src/lib/data'); // Asegura que getData se ejecute durante la compilación
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;

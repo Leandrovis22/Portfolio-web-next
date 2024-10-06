@@ -1,6 +1,8 @@
 // src/lib/data.ts
+import fs from 'fs';
+import path from 'path';
 import { downloadImage } from './downloadImages';
-import siteData from '../lib/data.json';
+import siteData from './data.json';
 
 export interface AboutData {
   CVpdf: string;
@@ -55,7 +57,7 @@ export interface SiteData {
 }
 
 async function processImages(data: SiteData): Promise<SiteData> {
-  const downloadAndUpdateImage = async (url: string, prefix: string) => {
+  const downloadAndUpdateImage = async (url: string) => {
     if (url) {
       return await downloadImage(url);
     }
@@ -63,65 +65,54 @@ async function processImages(data: SiteData): Promise<SiteData> {
   };
 
   // Crear una copia profunda de los datos para no modificar el original
-  const processedData = JSON.parse(JSON.stringify(data));
+  const processedData: SiteData = JSON.parse(JSON.stringify(data));
 
   // Update About image
-  processedData.about.imageUrl = await downloadAndUpdateImage(processedData.about.imageUrl, 'about');
+  processedData.about.imageUrl = await downloadAndUpdateImage(processedData.about.imageUrl);
 
   // Update Skills card images
   for (let card of processedData.skills.cards) {
-    card.src = await downloadAndUpdateImage(card.src, 'skill');
+    card.src = await downloadAndUpdateImage(card.src);
   }
 
   // Update Certifications images
   for (let cert of processedData.certifications.certifications) {
-    cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl, 'cert');
+    cert.imageUrl = await downloadAndUpdateImage(cert.imageUrl);
   }
 
   // Update Project header images
   for (let project of processedData.projects.projects) {
-    project.header = await downloadAndUpdateImage(project.header, 'project');
+    project.header = await downloadAndUpdateImage(project.header);
   }
 
   return processedData;
 }
 
 export async function getData(): Promise<SiteData> {
-  // Verificar si estamos en tiempo de build
   const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
+  const processedDataPath = path.join(process.cwd(), 'public', 'processed-data.json');
 
-  try {
-    let data: SiteData;
+  let data: SiteData;
 
-    if (isBuildTime) {
-      // Durante el build, usar datos estáticos
-      console.log('Using static data during build time');
-      data = siteData as unknown as SiteData;
-    } else {
-      // En desarrollo o en tiempo de ejecución, intentar usar la API
-      const isProduction = process.env.NODE_ENV === 'production';
-      const baseUrl = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
-      
-      console.log('Fetching data from API...', `${baseUrl}/api/data`);
-      const response = await fetch(`${baseUrl}/api/data`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      data = await response.json();
-
-      if (!data || Object.keys(data).length === 0) {
-        throw new Error('Received empty data from API');
-      }
-    }
-    // Procesar las imágenes independientemente del origen de los datos
-    return await processImages(data);
-
-  } catch (error) {
-    console.error('Error in getData(), falling back to static data:', error);
+  if (isBuildTime) {
+    console.log('Build time: Processing data and images...');
+    data = siteData as SiteData;
+    data = await processImages(data);
     
-    // Usar datos estáticos como fallback y procesarlos
-    return await processImages(siteData as unknown as SiteData);
+    // Guarda los datos procesados en un archivo JSON
+    fs.writeFileSync(processedDataPath, JSON.stringify(data));
+    console.log('Data processed and saved.');
+  } else {
+    console.log('Runtime: Loading processed data...');
+    if (fs.existsSync(processedDataPath)) {
+      const rawData = fs.readFileSync(processedDataPath, 'utf-8');
+      data = JSON.parse(rawData);
+    } else {
+      console.log('Processed data not found. Using and processing static data...');
+      data = siteData as SiteData;
+      data = await processImages(data);
+    }
   }
+
+  return data;
 }
