@@ -1,6 +1,6 @@
 // src/lib/data.ts
 
-import siteData from './data.json';
+import siteData from './fallbackdata.json';
 
 export interface AboutData {
   CVpdf: string;
@@ -14,13 +14,7 @@ export interface SkillsData {
 }
 
 export interface CertificationsData {
-  certifications: Array<{
-    imageUrl: string;
-    title: string;
-    date: string;
-    description: string;
-    link: string;
-  }>;
+  certifications: Array<{ imageUrl: string; title: string; date: string; description: string; link: string }>;
 }
 
 export interface Project {
@@ -63,35 +57,38 @@ export interface SiteData {
 export async function getData(): Promise<SiteData> {
   const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
 
-  try {
-    if (isBuildTime) {
-      // Durante el build, usar datos estáticos
-      console.log('Using static data during build time');
-      return siteData as SiteData;
-    } else {
-      // En desarrollo o en tiempo de ejecución, usar la API
-      const isProduction = process.env.NODE_ENV === 'production';
-      const baseUrl = isProduction ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
-      
-      console.log('Fetching data from API...', `${baseUrl}/api/data`);
+  let data: SiteData;
+
+  if (isBuildTime) {
+
+    console.log('Using build-time data...');
+    data = siteData as SiteData;
+
+  } else {
+
+    console.log('Using server-side data...');
+
+    try {
+
+      const baseUrl = process.env.VERCEL_URL || 'http://localhost:3000';
       const response = await fetch(`${baseUrl}/api/data`);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Failed to fetch data from server: ${response.status} ${response.statusText}`);
       }
 
-      const data: SiteData = await response.json();
+      data = await response.json() as SiteData;
 
-      if (!data || Object.keys(data).length === 0) {
-        throw new Error('Received empty data from API');
-      }
+    } catch (error) {
 
-      return data;
+      console.error('Failed to fetch data from server:', error);
+      console.warn('Falling back to build-time data...');
+
+      data = siteData as SiteData;
+
     }
-  } catch (error) {
-    console.error('Error in getData(), falling back to static data:', error);
-    
-    // Usar datos estáticos como fallback
-    return siteData as SiteData;
+
   }
+
+  return data;
 }
