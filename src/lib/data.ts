@@ -1,6 +1,6 @@
 // src/lib/data.ts
 
-import siteData from './fallbackdata.json';
+import siteData from './data.json';
 
 export interface AboutData {
   CVpdf: string;
