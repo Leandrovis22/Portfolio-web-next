@@ -3,12 +3,6 @@
 import { Card } from '@nextui-org/react';
 import React, { useEffect, useRef, useState } from 'react';
 
-/* const words = [
-  "Responsive", "Funcional", "Seguro", "Interactivo", "Mantenible",
-  "Escalable", "Moderno", "De Vanguardia", "Al Instante", "Creativo",
-  "Innovador", "UX/UI", "Debugged", "Automatizado", "Desarrollo Constante"
-]; */
-
 interface TagTapeProps {
   words: string[];
 }
@@ -23,7 +17,7 @@ export const TagsTape: React.FC<TagTapeProps> = React.memo(({ words }) => {
       setAnimationDuration(duration);
       contentRef.current.style.animationDuration = duration;
     }
-  }, []); // The empty dependency array ensures this runs only on mount
+  }, []);
 
   return (
     <div className="py-8 xl:py-16 overflow-hidden">
@@ -39,9 +33,12 @@ export const TagsTape: React.FC<TagTapeProps> = React.memo(({ words }) => {
             }}
           >
             {[...words, ...words].map((word, index) => (
-              <span key={`${word}-${index}`} className="text-text font-medium text-sm whitespace-nowrap">
-                {word} 🏆
-              </span>
+              <div key={`${word}-${index}`} className="inline-flex gap-4 items-center">
+                <span className="text-text font-medium text-sm whitespace-nowrap">
+                  {word}
+                </span>
+                <span className="text-sm -rotate-12">🏆</span>
+              </div>
             ))}
           </div>
         </div>
