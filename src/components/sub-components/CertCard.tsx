@@ -11,7 +11,7 @@ export const CertCard = ({
   title,
   date,
   description,
-  link, // Recibimos el link aquí
+  link,
   childrenClassName,
   imageClassName,
   className,
@@ -20,7 +20,7 @@ export const CertCard = ({
   title: string;
   date: string;
   description: string;
-  link: string; // Aceptamos el tipo string para el link
+  link: string;
   childrenClassName?: string;
   imageClassName?: string;
   className?: string;
@@ -33,7 +33,6 @@ export const CertCard = ({
   const [isClicked, setIsClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detectar si el dispositivo es táctil usando window.matchMedia
   useEffect(() => {
     const checkIfMobile = () => {
       const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;

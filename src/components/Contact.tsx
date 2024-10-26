@@ -88,34 +88,30 @@ export default function Contact({ data }: ContactProps) {
     mensaje: ''
   });
 
-
-
   const handleDownload = async () => {
     try {
-      // Realiza una solicitud fetch para obtener el archivo PDF desde la URL pasada por props
-      const response = await fetch(CVpdf);
-      const blob = await response.blob(); // Convierte la respuesta en un Blob
-      const url = window.URL.createObjectURL(blob); // Crea una URL temporal para el Blob
 
-      // Crear un enlace invisible para descargar el archivo
+      const response = await fetch(CVpdf);
+      const blob = await response.blob(); 
+      const url = window.URL.createObjectURL(blob); 
+
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'CV Leandro Viscolungo.pdf'); // Nombre del archivo descargado
+      link.setAttribute('download', 'CV Leandro Viscolungo.pdf'); 
       document.body.appendChild(link);
-      link.click(); // Forzar el clic en el enlace
-      link.parentNode?.removeChild(link); // Eliminar el enlace después de la descarga
+      link.click(); 
+      link.parentNode?.removeChild(link); 
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
     }
   };
-
 
   const clipboard = new ClipboardJS('#copyButton');
 
   clipboard.on('success', function (e) {
     setButtonText("¡Correo copiado!");
     setTimeout(() => setButtonText(emailtext), 1700);
-    e.clearSelection();  // Desmarca el texto copiado
+    e.clearSelection();  
   });
 
   clipboard.on('error', function (e) {
@@ -134,9 +130,6 @@ export default function Contact({ data }: ContactProps) {
         <div className="h-full w-full flex gap-4 sm-570:flex-row flex-col xl:w-[1160px]">
           <AspectRatioBox className="flex-1" justifyClass="justify-end">
 
-
-
-
             <Card className="card w-full h-full sm-570:max-w-[373px] sm-570:max-h-[431px] flex flex-col justify-center items-center p-4">
               <div className="relative w-full h-full overflow-hidden rounded-3xl">
                 <Image
@@ -154,12 +147,8 @@ export default function Contact({ data }: ContactProps) {
               </p>
             </Card>
 
-
-
           </AspectRatioBox>
           <AspectRatioBox className="flex-1 hidden md-840:block" justifyClass="justify-center">
-
-
 
             <div className="w-full h-full flex items-center justify-center">
               <div className="flex flex-col gap-3 w-full max-w-md items-center">
@@ -177,7 +166,7 @@ export default function Contact({ data }: ContactProps) {
                   radius="full"
                   aria-label="Correo"
                   id="copyButton" data-clipboard-text={emailtext}
-                  startContent={<IoIosMail size={50} />} // Ajusta el tamaño del icono según el tamaño de la pantalla
+                  startContent={<IoIosMail size={50} />} 
                 >
                   <p className={`w-[219.78px] text-[1rem] lg:w-[247.25px] sm:text-base lg:text-lg xl:text-xl xl:w-[274.78px] md-840:truncate`}>{buttonText}</p>
                 </Button>
@@ -199,16 +188,10 @@ export default function Contact({ data }: ContactProps) {
               </div>
             </div>
 
-
           </AspectRatioBox>
           <AspectRatioBox className="flex-1" justifyClass="justify-start">
 
-
-
-
            <ContactForm />
-
-
 
           </AspectRatioBox>
         </div>
@@ -222,7 +205,7 @@ export default function Contact({ data }: ContactProps) {
             text="Descargar CV"
             onClick={handleDownload}
             ariaLabel="Descargar CV"
-            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+            isSmallScreen={true} 
           />
 
           <Button
@@ -243,14 +226,14 @@ export default function Contact({ data }: ContactProps) {
             text={linkedintext}
             onClick={() => window.open(linkedinlink, '_blank', 'noopener,noreferrer')}
             ariaLabel="Linkedin"
-            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+            isSmallScreen={true} 
           />
           <ResponsiveButton
             icon={BsGithub}
             text={githubtext}
             onClick={() => window.open(githublink, '_blank', 'noopener,noreferrer')}
             ariaLabel="Github"
-            isSmallScreen={true} // Cambia según el tamaño de pantalla real
+            isSmallScreen={true} 
           />
 
         </div>

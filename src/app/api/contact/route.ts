@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
 
-// Inicializar SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
-// Crear un Set para almacenar los IDs de las solicitudes procesadas
 const processedRequests = new Set();
-// Limpiar el Set cada hora para evitar que crezca indefinidamente
+
 setInterval(() => processedRequests.clear(), 3600000);
 
 async function verifyRecaptcha(token: string) {
@@ -39,26 +37,21 @@ export async function POST(request:any) {
   try {
     const { name, email, message, username, reCaptchaToken, requestId } = await request.json();
 
-    // Verificar si la solicitud ya ha sido procesada
     if (processedRequests.has(requestId)) {
       return NextResponse.json({ message: "Solicitud duplicada" }, { status: 409 });
     }
 
-    // Verificar honeypot
     if (username) {
       return NextResponse.json({ message: "Spam detected" }, { status: 400 });
     }
 
-    // Verificar reCAPTCHA
     const isRecaptchaValid = await verifyRecaptcha(reCaptchaToken);
     if (!isRecaptchaValid) {
       return NextResponse.json({ message: "reCAPTCHA verification failed" }, { status: 400 });
     }
 
-    // Agregar el ID de la solicitud al Set
     processedRequests.add(requestId);
 
-    // Enviar email usando SendGrid
     const msg = {
       to: process.env.SENDGRID_TO_EMAIL,
       from: `${name} <${process.env.SENDGRID_FROM_EMAIL}>`,

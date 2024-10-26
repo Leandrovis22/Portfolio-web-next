@@ -25,7 +25,6 @@ export default function Certifications({ data }: CertificationsProps) {
 
   useEffect(() => {
     const handleResize = () => {
-      // Solo ajustamos el visibleCount si es necesario aumentarlo
       if (window.innerWidth < 1242 && window.innerWidth >= 830) {
         setVisibleCount(prev => Math.max(prev, 4));
       } else {

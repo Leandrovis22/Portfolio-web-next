@@ -97,7 +97,6 @@ export default function Gradient({
     const drawGradients = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Usar promedio del ancho y alto para un tamaño más equilibrado
       const avgRadius = (canvas.width + canvas.height) / 4 * parseFloat(size) / 100;
 
       gradientCircles.forEach((circle) => {
@@ -109,11 +108,9 @@ export default function Gradient({
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Actualizar posición
         circle.x += circle.vx;
         circle.y += circle.vy;
 
-        // Rebote en los bordes
         if (circle.x < 0 || circle.x > canvas.width) circle.vx *= -1;
         if (circle.y < 0 || circle.y > canvas.height) circle.vy *= -1;
       });

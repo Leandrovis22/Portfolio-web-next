@@ -17,7 +17,6 @@ const ThemeButton = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  // Evitar renderizar hasta que el componente esté montado
   if (!mounted) return null;
 
   return (

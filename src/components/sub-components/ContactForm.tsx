@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 const GoogleReCaptchaWrapper = dynamic(() => 
   import('../sub-components/GoogleReCaptchaWrapper').then(mod => mod.default),
-  { ssr: false } // Esto es importante
+  { ssr: false }
 );
 
 const formSchema = z.object({

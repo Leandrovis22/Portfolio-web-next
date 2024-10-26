@@ -7,7 +7,7 @@ interface TypingEffectProps {
   text: string;
   as?: React.ElementType;
   className?: string;
-  delayStart?: number; // Nueva prop para controlar el retraso inicial
+  delayStart?: number;
   speed?: number;
 }
 
@@ -15,7 +15,7 @@ export function TypingEffect({
   text = 'Typing Effect', 
   as: Component = 'span', 
   className = '',
-  delayStart = 0, // Valor por defecto de 0 segundos
+  delayStart = 0,
   speed = 0.009
 }: TypingEffectProps) {
   const ref = React.useRef(null);

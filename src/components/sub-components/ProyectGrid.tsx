@@ -53,7 +53,7 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
         <Image
           alt="image"
           className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
-          objectFit="contain" // O usa 'cover' si prefieres que la imagen cubra todo el espacio
+          objectFit="contain"
           width={500}
           height={500}
           objectPosition="center"

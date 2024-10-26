@@ -113,7 +113,6 @@ export function SkillIcons({ cards }: SkillIconsProps) {
 
   const animationDuration = `${contentWidth / 50}s`;
 
-  // Crear dos arrays sincronizados pero desplazados
   const createSyncedArrays = useCallback(() => {
     const doubledCards = [...cards, ...cards];
     const halfLength = cards.length;

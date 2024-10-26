@@ -6,7 +6,7 @@ interface SkillsProps {
     cards: Array<{
       title: string;
       src: string;
-      content: string; // JSON string
+      content: string;
     }>;
     words?: string[];
   }

@@ -5,8 +5,8 @@
 import React, { useEffect, useState, useRef, forwardRef } from "react";
 import type { ComponentType } from "react";
 
-const WORD_DISPLAY_TIME = 4000; // 4 seconds
-const ANIMATION_SPEED = 100; // 100ms between each letter reveal
+const WORD_DISPLAY_TIME = 4000; 
+const ANIMATION_SPEED = 100; 
 const letters = "abcdefghijklmnopqrstuvwxyz-.,+*!?@&%/=";
 
 export function onLoop<P extends object>(Component: ComponentType<P>) {
@@ -59,7 +59,7 @@ export function onLoop<P extends object>(Component: ComponentType<P>) {
       return (
           <Component
               ref={(node: HTMLElement | null) => {
-                  // Forward the ref to both the internal ref and the one passed from the parent
+
                   intersectionRef.current = node;
                   if (typeof ref === 'function') {
                       ref(node);
@@ -153,7 +153,7 @@ export const OnAppear: React.FC<OnAppearProps> = ({
     if (isVisible && hasStarted) {
       encryptText();
     } else {
-      const espaciosEnBlanco = texto.replace(/./g, '.'); // Reemplaza todos los caracteres por espacios
+      const espaciosEnBlanco = texto.replace(/./g, '.'); 
       setTextoCodificado(espaciosEnBlanco);
     }
   }, [texto, iteration, isVisible, hasStarted]);

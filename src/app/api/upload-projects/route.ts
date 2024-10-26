@@ -3,12 +3,10 @@ import { PrismaClient } from '@prisma/client';
 import { v4 as uuidv4 } from 'uuid';
 import { authMiddleware } from '@/lib/authMiddleware';
 
-// Initialize Firebase
 import { adminStorage } from '@/lib/firebaseAdmin';
 
 const prisma = new PrismaClient();
 
-// Función auxiliar para subir archivos a Firebase
 async function uploadFileToFirebase(file: Buffer, fileName: string, contentType: string): Promise<string> {
     const fileUpload = adminStorage.file(`portfolio/${fileName}`);
     
@@ -25,10 +23,9 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
         });
 
         blobStream.on('finish', async () => {
-            // Hacer el archivo público
+
             await fileUpload.makePublic();
             
-            // Construir la URL pública
             const publicUrl = `https://storage.googleapis.com/${adminStorage.name}/${fileUpload.name}`;
             resolve(publicUrl);
         });
@@ -39,10 +36,10 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
 
 
 export async function POST(request: Request) {
-  // Primero, autenticar la solicitud
+
   const authResponse = await authMiddleware(request);
   if (authResponse) {
-      return authResponse; // Retorna la respuesta de error si la autenticación falla
+      return authResponse;
   }
   async function handleFileUpload(file: File | null, existingUrl: string | null = null): Promise<string> {
     if (file) {
@@ -58,7 +55,6 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const body = JSON.parse(formData.get('data') as string);
 
-    // Handle Projects Data
     const projectsData = await prisma.projectsData.upsert({
       where: { id: 1 },
       update: {

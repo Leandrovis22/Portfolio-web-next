@@ -2,20 +2,18 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { authMiddleware } from '@/lib/authMiddleware';
 
-// Inicializar Prisma
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
-  // Primero, autenticar la solicitud
+
   const authResponse = await authMiddleware(request);
   if (authResponse) {
-      return authResponse; // Retorna la respuesta de error si la autenticación falla
+      return authResponse;
   }
   try {
     const formData = await request.formData();
     const body = JSON.parse(formData.get('data') as string);
 
-    // Actualizar o crear FooterData
     const footerData = await prisma.footerData.upsert({
       where: { id: 1 },
       update: { words: body.footer.words },

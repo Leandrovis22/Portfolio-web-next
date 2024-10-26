@@ -25,7 +25,6 @@ function ReCaptchaContent({ onVerify }: Props) {
       }
     };
 
-    // Pequeño delay para asegurarnos de que reCAPTCHA esté completamente cargado
     const timeoutId = setTimeout(() => {
       handleReCaptchaVerify();
     }, 1000);

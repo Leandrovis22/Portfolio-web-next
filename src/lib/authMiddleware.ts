@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
 import { verify } from 'jsonwebtoken';
 
-// Tipo para el token decodificado
 type DecodedToken = {
     message: string;
-    // Añade aquí otros campos que necesites del token
 };
 
-// Middleware de autenticación
 export async function authenticateRequest(request: Request): Promise<DecodedToken | null> {
     const token = request.headers.get('Authorization')?.split(' ')[1];
 
@@ -26,7 +23,6 @@ export async function authenticateRequest(request: Request): Promise<DecodedToke
     }
 }
 
-// Middleware para manejar la autenticación en las rutas
 export async function authMiddleware(request: Request) {
     const decodedToken = await authenticateRequest(request);
     
@@ -37,6 +33,5 @@ export async function authMiddleware(request: Request) {
         );
     }
 
-    // Si la autenticación es exitosa, continuar con la solicitud
-    return null; // Continúa con la lógica de la ruta
+    return null;
 }

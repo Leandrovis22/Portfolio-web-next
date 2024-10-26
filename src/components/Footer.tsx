@@ -4,14 +4,12 @@ import React from 'react';
 import { Card } from "@nextui-org/react";
 import { onLoop } from './sub-components/FooterTextAnimation';
 
-// Define types for the props expected by AnimatedText
 interface AnimatedTextProps {
     words: string[];
-    text?: string;  // Optional, since it's set inside onLoop
-    textClass?: string;  // Optional, since it's set inside onLoop
+    text?: string; 
+    textClass?: string; 
 }
 
-// Create AnimatedText using the onLoop HOC
 const AnimatedText = onLoop<AnimatedTextProps>(React.forwardRef<HTMLSpanElement, AnimatedTextProps>(
     ({ text, textClass }, ref) => (
         <span ref={ref} className={`inline-block w-[3rem] text-start whitespace-nowrap ${textClass}`}>
@@ -20,14 +18,12 @@ const AnimatedText = onLoop<AnimatedTextProps>(React.forwardRef<HTMLSpanElement,
     )
 ));
 
-// Define the structure for the FooterProps
 interface FooterProps {
     data: {
         words: string[];
     };
 }
 
-// Update the Footer component to accept props
 const Footer: React.FC<FooterProps> = ({ data }: FooterProps) => {
 
 const {words} = data

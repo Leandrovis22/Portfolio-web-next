@@ -6,7 +6,6 @@ import { adminStorage } from '@/lib/firebaseAdmin';
 
 const prisma = new PrismaClient();
 
-// Función auxiliar para subir archivos a Firebase
 async function uploadFileToFirebase(file: Buffer, fileName: string, contentType: string): Promise<string> {
     const fileUpload = adminStorage.file(`portfolio/${fileName}`);
     
@@ -23,10 +22,9 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
         });
 
         blobStream.on('finish', async () => {
-            // Hacer el archivo público
+
             await fileUpload.makePublic();
             
-            // Construir la URL pública
             const publicUrl = `https://storage.googleapis.com/${adminStorage.name}/${fileUpload.name}`;
             resolve(publicUrl);
         });
@@ -36,7 +34,7 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
 }
 
 export async function POST(request: Request) {
-    // Primero, autenticar la solicitud
+
     const authResponse = await authMiddleware(request);
     if (authResponse) {
         return authResponse;

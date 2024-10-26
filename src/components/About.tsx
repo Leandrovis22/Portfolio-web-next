@@ -19,30 +19,27 @@ interface AboutProps {
   }
 }
 
-
 export default function About({ data }: AboutProps) {
 
   const { imageUrl, description, CVpdf } = data;
 
   const handleDownload = async () => {
     try {
-      // Realiza una solicitud fetch para obtener el archivo PDF desde la URL pasada por props
-      const response = await fetch(CVpdf);
-      const blob = await response.blob(); // Convierte la respuesta en un Blob
-      const url = window.URL.createObjectURL(blob); // Crea una URL temporal para el Blob
 
-      // Crear un enlace invisible para descargar el archivo
+      const response = await fetch(CVpdf);
+      const blob = await response.blob(); 
+      const url = window.URL.createObjectURL(blob); 
+
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'CV Leandro Viscolungo.pdf'); // Nombre del archivo descargado
+      link.setAttribute('download', 'CV Leandro Viscolungo.pdf'); 
       document.body.appendChild(link);
-      link.click(); // Forzar el clic en el enlace
-      link.parentNode?.removeChild(link); // Eliminar el enlace después de la descarga
+      link.click(); 
+      link.parentNode?.removeChild(link); 
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
     }
   };
-
 
   return (
     <Gradient
@@ -95,7 +92,6 @@ export default function About({ data }: AboutProps) {
             </div>
 
           </div>
-
 
         </div>
       </section>

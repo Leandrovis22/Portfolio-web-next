@@ -26,7 +26,6 @@ export default function Projects({ data }: ProjectsProps) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      // Solo aumentamos el visibleCount si es necesario
       if (width >= 1242) {
         setVisibleCount(prev => Math.max(prev, 3));
       } else if (width >= 830) {

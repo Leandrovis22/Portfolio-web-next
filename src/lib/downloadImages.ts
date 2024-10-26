@@ -6,7 +6,6 @@ import crypto from 'crypto';
 
 const IMAGE_DIR = path.join(process.cwd(), 'public', 'images');
 
-// Asegúrate de que el directorio de imágenes exista
 if (!fs.existsSync(IMAGE_DIR)) {
   fs.mkdirSync(IMAGE_DIR, { recursive: true });
 }
@@ -24,5 +23,5 @@ export async function downloadImage(url: string): Promise<string> {
     fs.writeFileSync(filePath, buffer);
   }
 
-  return `/images/${filename}`; // Devuelve la ruta relativa a la carpeta public
+  return `/images/${filename}`;
 }

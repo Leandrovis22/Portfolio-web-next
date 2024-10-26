@@ -9,9 +9,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'dark'; // 'dark' como tema predeterminado
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
-    document.documentElement.classList.add(savedTheme); // Aplica el tema al HTML
+    document.documentElement.classList.add(savedTheme);
     setIsMounted(true);
   }, []);
 

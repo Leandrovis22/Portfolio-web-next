@@ -22,10 +22,9 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
       });
 
       blobStream.on('finish', async () => {
-          // Hacer el archivo público
+
           await fileUpload.makePublic();
           
-          // Construir la URL pública
           const publicUrl = `https://storage.googleapis.com/${adminStorage.name}/${fileUpload.name}`;
           resolve(publicUrl);
       });
@@ -36,10 +35,10 @@ async function uploadFileToFirebase(file: Buffer, fileName: string, contentType:
 
 
 export async function POST(request: Request) {
-  // Primero, autenticar la solicitud
+
   const authResponse = await authMiddleware(request);
   if (authResponse) {
-      return authResponse; // Retorna la respuesta de error si la autenticación falla
+      return authResponse;
   }
   async function handleFileUpload(file: File | null, existingUrl: string | null = null): Promise<string> {
     if (file) {
@@ -55,7 +54,6 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const body = JSON.parse(formData.get('data') as string);
 
-    // Actualizar o crear SkillsData
     const skillsData = await prisma.skillsData.upsert({
       where: { id: 1 },
       update: {
