@@ -11,6 +11,7 @@ import Contact from '@/components/Contact';
 
 // export const revalidate = 259200; // 3 days in seconds
 export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const data = await getData();
