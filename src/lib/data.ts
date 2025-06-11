@@ -1,7 +1,5 @@
 // src/lib/data.ts
 
-import siteData from './data.json';
-
 export interface AboutData {
   CVpdf: string;
   imageUrl: string;
@@ -55,16 +53,8 @@ export interface SiteData {
 }
 
 export async function getData(): Promise<SiteData> {
-  const isBuildTime = process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV === 'production';
 
   let data: SiteData;
-
-  if (isBuildTime) {
-
-    console.log('Using build-time data...');
-    data = siteData as SiteData;
-
-  } else {
 
     console.log('Using server-side data...');
 
@@ -82,13 +72,8 @@ export async function getData(): Promise<SiteData> {
     } catch (error) {
 
       console.error('Failed to fetch data from server:', error);
-      console.warn('Falling back to build-time data...');
-
-      data = siteData as SiteData;
-
+      throw error;
     }
-
-  }
 
   return data;
 }
