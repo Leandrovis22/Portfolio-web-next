@@ -56,11 +56,12 @@ export async function getData(): Promise<SiteData> {
 
   let data: SiteData;
 
-    console.log('Using server-side data...');
-
     try {
 
-      const baseUrl = process.env.VERCEL_URL || 'http://localhost:3000';
+      const isProduction = process.env.NODE_ENV === 'production';
+      console.log(`isProduction: ${isProduction}, NEXT_PUBLIC_BASE_URL: ${process.env.NEXT_PUBLIC_BASE_URL}`);
+      const baseUrl = isProduction ? `https://${process.env.NEXT_PUBLIC_BASE_URL}` : 'http://localhost:3000';
+      
       const response = await fetch(`${baseUrl}/api/data`);
 
       if (!response.ok) {
