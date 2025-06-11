@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const ignoreDirs = ['node_modules', '.next'];
+const ignoreDirs = ['node_modules', '.next', '.git'];
 
 function walkDir(dir, fileList = []) {
   const files = fs.readdirSync(dir);
@@ -15,7 +15,7 @@ function walkDir(dir, fileList = []) {
         fileList = walkDir(filePath, fileList);
       }
     } else {
-      fileList.push(filePath);
+      fileList.push(path.relative(process.cwd(), filePath));
     }
   });
 
@@ -26,3 +26,4 @@ const fileList = walkDir(process.cwd());
 fs.writeFileSync('fileList.txt', fileList.join('\n'), 'utf-8');
 
 console.log('Archivo fileList.txt generado con éxito.');
+

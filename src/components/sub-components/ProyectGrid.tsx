@@ -50,15 +50,27 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
         )}>
 
 
-        <Image
-          alt="image"
-          className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
-          objectFit="contain"
-          width={500}
-          height={500}
-          objectPosition="center"
-          src={header}
-        />
+        {header.endsWith('.gif') ? (
+          <img
+            alt="image"
+            className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
+            style={{ objectFit: 'contain', objectPosition: 'center' }}
+            width={500}
+            height={500}
+            src={header}
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            alt="image"
+            className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
+            objectFit="contain"
+            width={500}
+            height={500}
+            objectPosition="center"
+            src={header}
+          />
+        )}
 
         <div className="lg-1242:relative w-full lg-1242:w-[65%]">
           <p className="font-bold text-2xl mt-2">{title}</p>

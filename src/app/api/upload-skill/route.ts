@@ -66,7 +66,7 @@ export async function POST(request: Request) {
             return {
               title: card.title,
               src,
-              content: JSON.stringify(card.content),
+              content: JSON.stringify({ description: card.content }),
             };
           })),
         },
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
             return {
               title: card.title,
               src,
-              content: JSON.stringify(card.content),
+              content: JSON.stringify({ description: card.content }),
             };
           })),
         },

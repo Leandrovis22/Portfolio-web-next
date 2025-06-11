@@ -9,7 +9,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// schema.prisma
 model AboutData {
   id          Int    @id @default(autoincrement())
   CVpdf       String
@@ -27,7 +26,7 @@ model Card {
   id      Int    @id @default(autoincrement())
   title   String
   src     String
-  content String // Store JSX content as a string or in another suitable format.
+  content String
   skills  SkillsData @relation(fields: [skillsDataId], references: [id])
   skillsDataId Int
 }

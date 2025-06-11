@@ -1,62 +1,64 @@
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.env
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.firebaserc
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.gitignore
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\.vscode\settings.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\cors.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\dirgenerate.js
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\firebase.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\firebaseConfig.js
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\next-env.d.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\next.config.js
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\package-lock.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\package.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\postcss.config.mjs
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\migrations\20240930024703_v1\migration.sql
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\migrations\migration_lock.toml
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\prisma\schema.prisma
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\LV logo.png
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\mapdark.png
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\maplight.png
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\public\Static.png
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\README.md
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\contact\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\data\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-about\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-cert\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-contact\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-footer\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-projects\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\api\upload-skill\route.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\favicon.ico
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\globals.css
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\layout.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\page.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\app\providers.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\About.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Certifications.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Contact.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Footer.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Navbar.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Proyects.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\Skills.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\CertCard.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\ContactForm.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\FooterTextAnimation.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\GoogleReCaptchaWrapper.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\Gradient.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\Photo.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\ProyectGrid.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\SkillIcons.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\sub-components\TypingEffect.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\TagsTape.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\components\ThemeButton.tsx
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\data.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\downloadImages.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\firebaseAdmin.js
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\use-outside-click.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\src\lib\utils.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\storage.rules
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\tailwind.config.ts
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\tsconfig.json
-C:\Users\leand\OneDrive\Escritorio\Programacion\Portfolio web\portfolio-web\vercel.json
+.env
+.firebaserc
+.gitignore
+.vscode\settings.json
+cors.json
+dirgenerate.js
+fileList.txt
+firebase.json
+firebaseConfig.js
+next-env.d.ts
+next.config.js
+package-lock.json
+package.json
+postcss.config.mjs
+prisma\migrations\20241006022741_v1\migration.sql
+prisma\migrations\migration_lock.toml
+prisma\schema.prisma
+public\LV logo.png
+public\mapdark.png
+public\maplight.png
+public\Static.png
+README.md
+src\app\api\contact\route.ts
+src\app\api\data\route.ts
+src\app\api\login\route.ts
+src\app\api\upload-about\route.ts
+src\app\api\upload-cert\route.ts
+src\app\api\upload-contact\route.ts
+src\app\api\upload-footer\route.ts
+src\app\api\upload-projects\route.ts
+src\app\api\upload-skill\route.ts
+src\app\favicon.ico
+src\app\globals.css
+src\app\layout.tsx
+src\app\page.tsx
+src\app\providers.tsx
+src\components\About.tsx
+src\components\Certifications.tsx
+src\components\Contact.tsx
+src\components\Footer.tsx
+src\components\Navbar.tsx
+src\components\Projects.tsx
+src\components\Skills.tsx
+src\components\sub-components\CertCard.tsx
+src\components\sub-components\ContactForm.tsx
+src\components\sub-components\FooterTextAnimation.tsx
+src\components\sub-components\GoogleReCaptchaWrapper.tsx
+src\components\sub-components\Gradient.tsx
+src\components\sub-components\Photo.tsx
+src\components\sub-components\ProyectGrid.tsx
+src\components\sub-components\SkillIcons.tsx
+src\components\sub-components\TypingEffect.tsx
+src\components\TagsTape.tsx
+src\components\ThemeButton.tsx
+src\lib\authMiddleware.ts
+src\lib\data.json
+src\lib\data.ts
+src\lib\downloadImages.ts
+src\lib\firebaseAdmin.ts
+src\lib\use-outside-click.ts
+src\lib\utils.ts
+storage.rules
+tailwind.config.ts
+tsconfig.json

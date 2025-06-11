@@ -154,7 +154,7 @@ export const CertCard = ({
             <p className="font-normal text-sm xs-436:text-base text-center">{date}</p>
             <p className="font-normal text-sm xs-436:text-base text-center pt-2">{description}</p>
 
-            {showOverlay && (
+            {showOverlay && link !== "null" && (
               <a
                 href={link}
                 target="_blank"
