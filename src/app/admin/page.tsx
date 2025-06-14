@@ -18,7 +18,8 @@ import {
     Eye,
     Upload,
     ChevronUp,
-    ChevronDown   
+    ChevronDown,
+    RefreshCw
 } from 'lucide-react';
 
 interface AboutData {
@@ -171,6 +172,18 @@ export default function AdminPage() {
         }
     };
 
+    const handleRevalidate = async () => {
+        try {
+            const response = await fetch('/api/revalidate', { method: 'POST' })
+            const result = await response.json()
+            if (result.revalidated) {
+                alert('¡Datos actualizados!')
+            }
+        } catch (error) {
+            alert('Error al actualizar')
+        }
+    }
+
     const sections = [
         { id: 'about', name: 'Acerca de', icon: User },
         { id: 'skills', name: 'Habilidades', icon: Code },
@@ -201,6 +214,12 @@ export default function AdminPage() {
                             Panel de Administración
                         </h1>
                         <div className="flex items-center space-x-4">
+                            <button
+                                onClick={handleRevalidate}
+                                className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                                <RefreshCw className="w-4 h-4" />
+                                <span>Revalidar datos</span>
+                            </button>
                             <button
                                 onClick={() => window.open('/', '_blank')}
                                 className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
@@ -655,16 +674,16 @@ function CertificationsSection({ data, onUpdate }: { data: CertificationsData; o
     };
 
     const updateCertification = (index: number, field: keyof Certification, value: string) => {
-    const updatedCerts = formData.certifications.map((cert, i) => {
-        if (i === index) {
-            // Si el campo es 'link' y el valor es la cadena "null", mantenerlo como string
-            const updatedValue = (field === 'link' && value === 'null') ? 'null' : value;
-            return { ...cert, [field]: updatedValue };
-        }
-        return cert;
-    });
-    setFormData({ ...formData, certifications: updatedCerts });
-};
+        const updatedCerts = formData.certifications.map((cert, i) => {
+            if (i === index) {
+                // Si el campo es 'link' y el valor es la cadena "null", mantenerlo como string
+                const updatedValue = (field === 'link' && value === 'null') ? 'null' : value;
+                return { ...cert, [field]: updatedValue };
+            }
+            return cert;
+        });
+        setFormData({ ...formData, certifications: updatedCerts });
+    };
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex items-center justify-between mb-4">
@@ -821,19 +840,19 @@ function ProjectsSection({ data, onUpdate }: { data: ProjectsData; onUpdate: (da
     // NUEVAS FUNCIONES PARA ORDENAR
     const moveProjectUp = (index: number) => {
         if (index === 0) return; // Ya está en la primera posición
-        
+
         const newProjects = [...formData.projects];
         [newProjects[index - 1], newProjects[index]] = [newProjects[index], newProjects[index - 1]];
-        
+
         setFormData({ ...formData, projects: newProjects });
     };
 
     const moveProjectDown = (index: number) => {
         if (index === formData.projects.length - 1) return; // Ya está en la última posición
-        
+
         const newProjects = [...formData.projects];
         [newProjects[index], newProjects[index + 1]] = [newProjects[index + 1], newProjects[index]];
-        
+
         setFormData({ ...formData, projects: newProjects });
     };
 
@@ -864,11 +883,10 @@ function ProjectsSection({ data, onUpdate }: { data: ProjectsData; onUpdate: (da
                                     type="button"
                                     onClick={() => moveProjectUp(index)}
                                     disabled={index === 0}
-                                    className={`p-1 rounded ${
-                                        index === 0
+                                    className={`p-1 rounded ${index === 0
                                             ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
                                             : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                                    }`}
+                                        }`}
                                     title="Subir"
                                 >
                                     <ChevronUp className="w-4 h-4" />
@@ -877,11 +895,10 @@ function ProjectsSection({ data, onUpdate }: { data: ProjectsData; onUpdate: (da
                                     type="button"
                                     onClick={() => moveProjectDown(index)}
                                     disabled={index === formData.projects.length - 1}
-                                    className={`p-1 rounded ${
-                                        index === formData.projects.length - 1
+                                    className={`p-1 rounded ${index === formData.projects.length - 1
                                             ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
                                             : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                                    }`}
+                                        }`}
                                     title="Bajar"
                                 >
                                     <ChevronDown className="w-4 h-4" />

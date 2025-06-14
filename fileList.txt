@@ -1,6 +1,8 @@
 .env
 .firebaserc
 .gitignore
+.vercel\project.json
+.vercel\README.txt
 .vscode\settings.json
 cors.json
 dirgenerate.js
@@ -20,6 +22,7 @@ public\mapdark.png
 public\maplight.png
 public\Static.png
 README.md
+src\app\admin\page.tsx
 src\app\api\contact\route.ts
 src\app\api\data\route.ts
 src\app\api\login\route.ts
@@ -32,6 +35,7 @@ src\app\api\upload-skill\route.ts
 src\app\favicon.ico
 src\app\globals.css
 src\app\layout.tsx
+src\app\login\page.tsx
 src\app\page.tsx
 src\app\providers.tsx
 src\components\About.tsx
@@ -53,7 +57,6 @@ src\components\sub-components\TypingEffect.tsx
 src\components\TagsTape.tsx
 src\components\ThemeButton.tsx
 src\lib\authMiddleware.ts
-src\lib\data.json
 src\lib\data.ts
 src\lib\downloadImages.ts
 src\lib\firebaseAdmin.ts
@@ -62,3 +65,4 @@ src\lib\utils.ts
 storage.rules
 tailwind.config.ts
 tsconfig.json
+vercel.json
