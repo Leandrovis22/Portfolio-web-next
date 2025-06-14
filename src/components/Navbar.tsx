@@ -48,7 +48,7 @@ export default function Navbarcomponent() {
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-    
+
     handleResize();
     handleScroll();
 
@@ -69,9 +69,13 @@ export default function Navbarcomponent() {
     setIsMenuOpen(false);
   };
 
+  const handleThemeChange = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <Navbar 
-      isMenuOpen={isMenuOpen} 
+    <Navbar
+      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       isBlurred={true}
     >
@@ -89,11 +93,10 @@ export default function Navbarcomponent() {
               smooth={true}
               offset={getOffset(item)}
               duration={50}
-              className={`${
-                activeSection === item.id
+              className={`${activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
                   : ""
-              } capitalize text-lg font-medium hover:text-accent transition-all cursor-pointer`}
+                } capitalize text-lg font-medium hover:text-accent transition-all cursor-pointer`}
             >
               {item.name}
             </ReactScrollLink>
@@ -119,18 +122,17 @@ export default function Navbarcomponent() {
               offset={getOffset(item)}
               duration={50}
               onClick={handleItemClick}
-              className={`${
-                activeSection === item.id
+              className={`${activeSection === item.id
                   ? "text-accent border-b-2 border-accent"
                   : ""
-              } w-full justify-end flex cursor-pointer`}
+                } w-full justify-end flex cursor-pointer`}
             >
               {item.name}
             </ReactScrollLink>
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem className="justify-end flex">
-          <ThemeButton />
+          <ThemeButton onThemeChange={handleThemeChange} />
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

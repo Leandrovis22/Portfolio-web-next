@@ -5,7 +5,11 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
-const ThemeButton = () => {
+interface ThemeButtonProps {
+  onThemeChange?: () => void;
+}
+
+const ThemeButton = ({ onThemeChange }: ThemeButtonProps) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,6 +19,10 @@ const ThemeButton = () => {
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+    // Llamar al callback si existe
+    if (onThemeChange) {
+      onThemeChange();
+    }
   };
 
   if (!mounted) return null;
