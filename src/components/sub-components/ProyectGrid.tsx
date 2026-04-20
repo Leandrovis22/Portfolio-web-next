@@ -31,6 +31,9 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
   index,
 }) => {
   const isLongDescription = description.length > 371;
+  const headerLower = header.toLowerCase();
+  const isGif = headerLower.endsWith(".gif");
+  const isWebm = headerLower.endsWith(".webm");
 
   return (
     <motion.div
@@ -50,7 +53,19 @@ const ProjectGridItem: React.FC<ProjectItem & { reverse: boolean; index: number 
         )}>
 
 
-        {header.endsWith('.gif') ? (
+        {isWebm ? (
+          <video
+            className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"
+            style={{ objectFit: 'contain', objectPosition: 'center' }}
+            width={500}
+            height={500}
+            src={header}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : isGif ? (
           <img
             alt="image"
             className="rounded-2xl h-full w-auto max-h-[239px] lg-1242:h-auto lg-1242:max-h-full"

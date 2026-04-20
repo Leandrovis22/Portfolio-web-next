@@ -988,7 +988,7 @@ function ProjectsSection({ data, onUpdate }: { data: ProjectsData; onUpdate: (da
                             </label>
                             <input
                                 type="file"
-                                accept="image/*"
+                                accept="image/*,video/webm"
                                 onChange={(e) => {
                                     const file = e.target.files?.[0];
                                     if (file) {
