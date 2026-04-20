@@ -765,6 +765,18 @@ function CertificationsSection({ data, onUpdate }: { data: CertificationsData; o
                                 }}
                                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
                             />
+                            {cert.imageUrl && (
+                                <div className="mt-2">
+                                    <a
+                                        href={cert.imageUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-indigo-600 hover:text-indigo-800"
+                                    >
+                                        Ver imagen actual
+                                    </a>
+                                </div>
+                            )}
                         </div>
 
                         <div className="md:col-span-2">

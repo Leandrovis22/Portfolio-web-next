@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Environment Variables
+
+Create a `.env.local` file with your R2 configuration:
+
+```env
+IMAGE_STORAGE_PROVIDER=r2
+R2_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
+R2_ACCESS_KEY_ID=<access-key-id>
+R2_SECRET_ACCESS_KEY=<secret-access-key>
+R2_BUCKET_NAME=<bucket-name>
+R2_PUBLIC_URL=https://pub-xxxxxxxx.r2.dev
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
